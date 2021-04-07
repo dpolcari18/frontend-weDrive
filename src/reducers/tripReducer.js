@@ -4,7 +4,6 @@ const tripReducer = (state = { trips: []} , action) => {
             return {
 
             }
-            break
         default:
             return state
     }

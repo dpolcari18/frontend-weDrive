@@ -1,10 +1,5 @@
-import React from 'react'
-
-// Provide react app access to store
-import { Provider } from 'react-redux'
-
-// Global Store
-import store from '../store'
+import React, { useEffect } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 // Containers
 import NavBar from './NavBar'
@@ -13,16 +8,28 @@ import NavBar from './NavBar'
 import About from '../components/About'
 import Login from '../components/Login'
 
-const MainContainer = () => {
+// Redux
+import { connect } from 'react-redux'
+
+const MainContainer = ({ dispatch }) => {
+
+    useEffect(() => {
+        if (localStorage.getItem('auth_key')) {
+            dispatch({type: 'LOGIN_USER', loggedIn: true})
+        }
+    }, [])
+
     return(
-        <Provider store={store}>
-            <NavBar />
+        <Router>
             <div>
-                <About />
-                <Login />
+                <NavBar />
+                <div>
+                    <About />
+                    <Login />
+                </div>
             </div>
-        </Provider>
+        </Router>
     )
 }
 
-export default MainContainer
+export default connect()(MainContainer)

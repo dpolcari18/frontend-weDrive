@@ -1,9 +1,9 @@
 import { createStore  } from 'redux'
 
-import tripReducer from './reducers/tripReducer'
+import userReducer from './reducers/userReducer'
 
 const store = createStore(
-        tripReducer,
+        userReducer,
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
 
