@@ -1,8 +1,12 @@
 import React from 'react'
 
 const NavBar = () => {
+
     return (
-        <h1>NavBar</h1>
+        <div>
+            <h1>NavBar</h1>
+            <button onClick={() => localStorage.removeItem('auth_key')}>Logout</button>
+        </div>
     )
 }
 
