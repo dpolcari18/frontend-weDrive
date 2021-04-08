@@ -15,7 +15,7 @@ import SignUp from '../components/SignUp'
 // Redux
 import { connect } from 'react-redux'
 
-const MainContainer = ({ login_user }) => {
+const MainContainer = ({ login_user, loggedIn }) => {
 
     // Maintain state logged in on refresh
     useEffect(() => {
@@ -25,9 +25,8 @@ const MainContainer = ({ login_user }) => {
     }, [login_user])
 
     // Check if auth_key is stored in local storage before routing
-    const loggedIn = async () => {
-        const confirmed = await localStorage.getItem('auth_key') ? true : false
-        return confirmed
+    const checkLoggedIn = () => {
+        return loggedIn  ? true : false
     }
 
     return(
@@ -36,13 +35,17 @@ const MainContainer = ({ login_user }) => {
                 <NavBar />
                 <Route exact path='/' render={() => <Landing />} />
                 <Route path='/signup' render={() => <SignUp />} />
-                <Route path='/home' render={() => { loggedIn() ? <Home /> : <Redirect to='/' />}} />
-                <Route path='/profile' render={() => <Profile />} />
-                <Route path='/trips' render={() => <Trips />} />
-                <Route path='/vehicles' render={() => <Vehicles />} />
+                <Route path='/home' render={() => { return checkLoggedIn() ? <Home /> : <Redirect to='/' />}} />
+                <Route path='/profile' render={() => { return checkLoggedIn() ? <Profile /> : <Redirect to='/' />}} />
+                <Route path='/trips' render={() => { return checkLoggedIn() ? <Trips /> : <Redirect to='/' />}} />
+                <Route path='/vehicles' render={() => { return checkLoggedIn() ? <Vehicles /> : <Redirect to='/' />}} />
             </div>
         </Router>
     )
+}
+
+const mapStateToProps = (state) => {
+    return { loggedIn: state.loginSignUp.loggedIn}
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -51,4 +54,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(MainContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer)
