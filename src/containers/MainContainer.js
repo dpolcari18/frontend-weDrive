@@ -38,7 +38,6 @@ const MainContainer = () => {
 
         const fetchUser = await fetch(USER_URL+'/'+userId, fetchObj)
         const userRes = await fetchUser.json()
-        console.log(userRes)
 
         dispatch({ type: 'SET_USER', user: userRes.user})
         dispatch({ type: 'SET_TRIPS', trips: userRes.user.trips})

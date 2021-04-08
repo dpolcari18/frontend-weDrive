@@ -9,6 +9,11 @@ import SearchBar from '../components/SearchBar'
 import TripDetails from '../components/TripDetails'
 import Map from '../components/Map'
 
+// react-bootstrap
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 const Home = () => {
     
     // redux hooks
@@ -30,10 +35,21 @@ const Home = () => {
 
     return(
         <div>
-            <h1>HOME</h1>
-            <SearchBar/>
-            <TripDetails/>
-            <Map/>
+            <Container>
+                <Row>
+                    <Col>
+                        <SearchBar/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <TripDetails/>
+                    </Col>
+                    <Col>
+                        <Map/>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     )
 }
