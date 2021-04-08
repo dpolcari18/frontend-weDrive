@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
+import { withRouter } from 'react-router'
 
 // Redux
 import { connect } from 'react-redux'
 
+// Containers
+import About from './About'
+
 // Endpoints
 const SIGN_UP_URL = 'http://localhost:3000/users'
 
-const SignUp = ({ sign_up, throw_error, showError, errors }) => {
+const SignUp = ({ history, throw_error, showError, errors }) => {
 
     // State for controlled form
     const [firstName, setFirstName] = useState('')
@@ -43,7 +47,7 @@ const SignUp = ({ sign_up, throw_error, showError, errors }) => {
         // If success redirect to home for login or show errors
         if (userRes.status === 'Success') {
             alert(userRes.msg)
-            sign_up()
+            history.push('/')
         } else if (userRes.status === 'Failed') {
             throw_error(userRes.msg)
         }
@@ -53,6 +57,7 @@ const SignUp = ({ sign_up, throw_error, showError, errors }) => {
     
     return (
         <div>
+            <About />
             <h3>Sign Up</h3>
             <div>
                 <form onSubmit={(e) => handleSubmit(e)}>
@@ -91,9 +96,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return { 
-        sign_up: () => dispatch({ type: 'SIGN_UP', signUp: false}),
         throw_error: (errors) => dispatch({ type: 'SHOW_ERRORS', showError: true, errors: errors})
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUp))

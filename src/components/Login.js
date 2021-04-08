@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // Redux
 import { connect } from 'react-redux'
@@ -6,7 +7,7 @@ import { connect } from 'react-redux'
 // Endpoints
 const LOGIN_URL = 'http://localhost:3000/sessions'
 
-const Login = ({ login_user, sign_up }) => {
+const Login = ({ login_user }) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -62,8 +63,7 @@ const Login = ({ login_user, sign_up }) => {
                 </form>
             </div>
             <div>
-                <div>or</div>
-               <button type='submit' onClick={() => sign_up()}>Sign Up</button>
+               Not a user? <Link to='/signup'>Sign Up</ Link>
             </div>
         </div>
     )
@@ -71,8 +71,7 @@ const Login = ({ login_user, sign_up }) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        login_user: () => dispatch({ type: 'LOGIN_USER', loggedIn: true}),
-        sign_up: () => dispatch({ type: 'SIGN_UP', signUp: true})
+        login_user: () => dispatch({ type: 'LOGIN_USER', loggedIn: true})
     }
 }
 

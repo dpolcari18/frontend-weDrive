@@ -1,6 +1,5 @@
 const loginSignUpReducer = (state = { 
-        loggedIn: false, 
-        signUp: false, 
+        loggedIn: false,
         showError: false,
         errors: []
     } , action) => {
@@ -14,11 +13,6 @@ const loginSignUpReducer = (state = {
             return {
                 ...state,
                 loggedIn: action.loggedIn
-            }
-        case 'SIGN_UP':
-            return {
-                ...state,
-                signUp: action.signUp
             }
         case 'SHOW_ERRORS':
             return {

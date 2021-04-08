@@ -4,8 +4,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 // Containers
 import NavBar from './NavBar'
 
-// Components
+// Containers
 import Home from './Home'
+
+// Components
+import SignUp from '../components/SignUp'
 
 // Redux
 import { connect } from 'react-redux'
@@ -24,6 +27,7 @@ const MainContainer = ({ login_user }) => {
             <div>
                 <NavBar />
                 <Route exact path='/' render={() => <Home />} />
+                <Route path='/signup' render={() => <SignUp />} />
             </div>
         </Router>
     )
