@@ -2,10 +2,12 @@ import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 // Containers
-import NavBar from './NavBar'
-
-// Containers
 import Home from './Home'
+import Landing from './Landing'
+import NavBar from './NavBar'
+import Profile from './Profile'
+import Trips from './Trips'
+import Vehicles from './Vehicles'
 
 // Components
 import SignUp from '../components/SignUp'
@@ -26,8 +28,12 @@ const MainContainer = ({ login_user }) => {
         <Router>
             <div>
                 <NavBar />
-                <Route exact path='/' render={() => <Home />} />
+                <Route exact path='/' render={() => <Landing />} />
                 <Route path='/signup' render={() => <SignUp />} />
+                <Route path='/home' render={() => <Home />} />
+                <Route path='/profile' render={() => <Profile />} />
+                <Route path='/trips' render={() => <Trips />} />
+                <Route path='/vehicles' render={() => <Vehicles />} />
             </div>
         </Router>
     )
