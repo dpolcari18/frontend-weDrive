@@ -4,6 +4,13 @@ import { useHistory } from 'react-router-dom'
 // Redux
 import { connect } from 'react-redux'
 
+// Containers
+import EmergencyContactList from './EmergencyContactList'
+
+// Components
+import User from '../components/User'
+
+
 const Profile = ({ loggedIn }) => {
 
     const history = useHistory()
@@ -20,7 +27,11 @@ const Profile = ({ loggedIn }) => {
     })
 
     return(
-        <h1>PROFILE</h1>
+        <>
+            <h1>PROFILE</h1>
+            <User />
+            <EmergencyContactList />
+        </>
     )
 }
 

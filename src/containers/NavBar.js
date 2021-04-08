@@ -3,7 +3,7 @@ import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 
 // Redux 
-import { connect, Provider } from 'react-redux'
+import { connect } from 'react-redux'
 
 // React-Bootstrap
 import Navbar from 'react-bootstrap/Navbar'
@@ -25,10 +25,10 @@ const NavBar = ({ history, logout_user, loggedIn }) => {
                 <Navbar bg="light" variant="light" fixed='top'>
                     <Navbar.Brand><Link to='/home'>weDrive</ Link></Navbar.Brand>
                     <Nav className="mr-auto">
-                        <Nav.Link><Link to='/home'>Home</Link></Nav.Link>
-                        <Nav.Link><Link to='/profile'>Profile</Link></Nav.Link>
-                        <Nav.Link><Link to='trips'>Trips</Link></Nav.Link>
-                        <Nav.Link><Link to='vehicles'>Vehicles</Link></Nav.Link>
+                        <Link to='/home'>Home</Link>
+                        <Link to='/profile'>Profile</Link>
+                        <Link to='trips'>Trips</Link>
+                        <Link to='vehicles'>Vehicles</Link>
                         <Nav.Link onClick={() => handleLogout()}>Logout</Nav.Link>
                     </Nav>
                 </Navbar>

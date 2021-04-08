@@ -4,6 +4,9 @@ import { useHistory } from 'react-router-dom'
 // Redux
 import { connect } from 'react-redux'
 
+// Containers
+import VehiclesList from './VehiclesList'
+import MaintenanceReportList from './MaintenanceReportList'
 
 const Vehicles = ({ loggedIn}) => {
 
@@ -21,7 +24,11 @@ const Vehicles = ({ loggedIn}) => {
     })
 
     return(
-        <h1>Vehicles</h1>
+        <>
+            <h1>Vehicles</h1>
+            <VehiclesList />
+            <MaintenanceReportList />
+        </>
     )
 }
 

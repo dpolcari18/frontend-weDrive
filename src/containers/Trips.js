@@ -4,6 +4,9 @@ import { useHistory } from 'react-router-dom'
 // Redux
 import { connect } from 'react-redux'
 
+// Components
+import TripComponents from '../components/TripComponents'
+
 const Trips = ({ loggedIn }) => {
 
     const history = useHistory()
@@ -20,7 +23,10 @@ const Trips = ({ loggedIn }) => {
     })
 
     return(
-        <h1>Trips</h1>
+        <>
+            <h1>Trips</h1>
+            <TripComponents />
+        </>
     )
 }
 

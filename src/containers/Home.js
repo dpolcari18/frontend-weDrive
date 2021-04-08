@@ -4,6 +4,11 @@ import { useHistory } from 'react-router-dom'
 // Redux
 import { connect } from 'react-redux'
 
+// Components
+import SearchBar from '../components/SearchBar'
+import TripDetails from '../components/TripDetails'
+import Map from '../components/Map'
+
 const Home = ({ loggedIn }) => {
     
     const history = useHistory()
@@ -22,6 +27,9 @@ const Home = ({ loggedIn }) => {
     return(
         <div>
             <h1>HOME</h1>
+            <SearchBar/>
+            <TripDetails/>
+            <Map/>
         </div>
     )
 }
