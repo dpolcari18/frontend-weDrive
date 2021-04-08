@@ -35,7 +35,7 @@ const NavBar = ({ history, logout_user, loggedIn }) => {
             ) 
         } else {
             return(
-                <Navbar bg="light" variant="light">
+                <Navbar bg="light" variant="light" fixed='top'>
                     <Navbar.Brand><Link to='/home'>weDrive</ Link></Navbar.Brand>
                 </Navbar>
             )
