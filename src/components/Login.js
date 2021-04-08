@@ -39,8 +39,10 @@ const Login = ({ history }) => {
         const postSes = await fetch(LOGIN_URL, userObj)
         const sesRes = await postSes.json()
 
+        // set all state
         if (sesRes.status === 'Success') {
             localStorage.setItem('auth_key', sesRes.token)
+            localStorage.setItem('user_id', sesRes.user.id)
             dispatch({ type: 'LOGIN_USER', loggedIn: true})
             dispatch({ type: 'SET_USER', user: sesRes.user})
             dispatch({ type: 'SET_TRIPS', trips: sesRes.user.trips})
