@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { withRouter } from 'react-router'
 
 // Redux
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 // Containers
 import About from './About'
@@ -10,9 +10,14 @@ import About from './About'
 // Endpoints
 const SIGN_UP_URL = 'http://localhost:3000/users'
 
-const SignUp = ({ history, throw_error, showError, errors }) => {
+const SignUp = ({ history }) => {
 
-    // State for controlled form
+    // redux hook
+    const dispatch = useDispatch()
+    const showError = useSelector(state => state.loginSignUp.showError)
+    const errors = useSelector(state => state.loginSignUp.errors)
+
+    // local state for controlled form
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
@@ -49,7 +54,8 @@ const SignUp = ({ history, throw_error, showError, errors }) => {
             alert(userRes.msg)
             history.push('/')
         } else if (userRes.status === 'Failed') {
-            throw_error(userRes.msg)
+            // throw_error(userRes.msg)
+            dispatch({ type: 'SHOW_ERRORS', showError: true, errors: userRes.msg})
         }
 
 
@@ -80,24 +86,11 @@ const SignUp = ({ history, throw_error, showError, errors }) => {
                         <button type='submit'>Sign Up</button>
                     </div>
                     <div>* Mandatory Fields</div>
-                    { showError ? <ul>{errors.map(msg => <li>{msg}</li>)}</ul> : null}
+                    { showError ? <ul>{errors.map(msg => <li key={errors.indexOf(msg)}>{msg}</li>)}</ul> : null}
                 </form>
             </div>
         </div>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        showError: state.loginSignUp.showError,
-        errors: state.loginSignUp.errors
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return { 
-        throw_error: (errors) => dispatch({ type: 'SHOW_ERRORS', showError: true, errors: errors})
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUp))
+export default withRouter(SignUp)

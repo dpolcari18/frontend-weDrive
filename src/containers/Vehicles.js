@@ -2,14 +2,18 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 // Redux
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 // Containers
 import VehiclesList from './VehiclesList'
 import MaintenanceReportList from './MaintenanceReportList'
 
-const Vehicles = ({ loggedIn}) => {
-
+const Vehicles = () => {
+    
+    // redux hooks
+    const loggedIn = useSelector(state => state.loginSignUp.loggedIn)
+    
+    // react-router-dom hooks
     const history = useHistory()
 
     // Confirm logged in
@@ -32,8 +36,4 @@ const Vehicles = ({ loggedIn}) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return { loggedIn: state.loginSignUp.loggedIn }
-}
-
-export default connect(mapStateToProps)(Vehicles)
+export default Vehicles

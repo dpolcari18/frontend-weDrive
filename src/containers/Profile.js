@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 // Redux
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 // Containers
 import EmergencyContactList from './EmergencyContactList'
@@ -11,8 +11,12 @@ import EmergencyContactList from './EmergencyContactList'
 import User from '../components/User'
 
 
-const Profile = ({ loggedIn }) => {
+const Profile = () => {
 
+    // redux hooks
+    const loggedIn = useSelector(state => state.loginSignUp.loggedIn)
+    
+    // react-router-dom hooks
     const history = useHistory()
 
     // Confirm logged in
@@ -35,8 +39,4 @@ const Profile = ({ loggedIn }) => {
     )
 }
 
-const mapStateToProps =(state) => {
-    return { loggedIn: state.loginSignUp.loggedIn }
-}
-
-export default connect(mapStateToProps)(Profile)
+export default Profile

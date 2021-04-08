@@ -13,16 +13,24 @@ import Vehicles from './Vehicles'
 import SignUp from '../components/SignUp'
 
 // Redux
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
-const MainContainer = ({ login_user }) => {
+const MainContainer = () => {
+
+    // redux hooks
+    const dispatch = useDispatch()
+
+    // On refresh - refetch user information
+    const refetchUser = async () => {
+
+    }
 
     // Maintain state logged in on refresh
     useEffect(() => {
         if (localStorage.getItem('auth_key')) {
-            login_user()
+            dispatch({type: 'LOGIN_USER', loggedIn: true})
         }
-    }, [login_user])
+    }, [dispatch])
 
     return(
         <Router>
@@ -39,10 +47,4 @@ const MainContainer = ({ login_user }) => {
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        login_user: () => dispatch({type: 'LOGIN_USER', loggedIn: true})
-    }
-}
-
-export default connect(null, mapDispatchToProps)(MainContainer)
+export default MainContainer

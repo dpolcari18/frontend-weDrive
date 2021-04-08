@@ -2,13 +2,17 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 // Redux
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 // Components
 import TripComponents from '../components/TripComponents'
 
-const Trips = ({ loggedIn }) => {
+const Trips = () => {
 
+    // redux hooks
+    const loggedIn = useSelector(state => state.loginSignUp.loggedIn)
+
+    // react-router-dom hooks
     const history = useHistory()
 
     // Confirm logged in
@@ -30,8 +34,4 @@ const Trips = ({ loggedIn }) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return { loggedIn: state.loginSignUp.loggedIn }
-}
-
-export default connect(mapStateToProps)(Trips)
+export default Trips

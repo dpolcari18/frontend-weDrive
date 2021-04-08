@@ -3,18 +3,22 @@ import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 
 // Redux 
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 // React-Bootstrap
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 
-const NavBar = ({ history, logout_user, loggedIn }) => {
+const NavBar = ({ history }) => {
+
+    // redux hooks
+    const dispatch = useDispatch()
+    const loggedIn = useSelector(state => state.loginSignUp.loggedIn)
 
     // Logout user
     const handleLogout = () => {
         localStorage.removeItem('auth_key')
-        logout_user()
+        dispatch({type: 'LOGOUT_USER', loggedIn: false})
         history.push('/')
     }
 
@@ -49,14 +53,4 @@ const NavBar = ({ history, logout_user, loggedIn }) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return { loggedIn: state.loginSignUp.loggedIn }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        logout_user: () => dispatch({type: 'LOGOUT_USER', loggedIn: false})
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBar))
+export default withRouter(NavBar)

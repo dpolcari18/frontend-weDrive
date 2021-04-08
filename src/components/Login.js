@@ -3,13 +3,17 @@ import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 
 // Redux
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 // Endpoints
 const LOGIN_URL = 'http://localhost:3000/sessions'
 
-const Login = ({ history, login_user }) => {
+const Login = ({ history }) => {
 
+    // redux hooks
+    const dispatch = useDispatch()
+    
+    // local state for form
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -37,7 +41,7 @@ const Login = ({ history, login_user }) => {
 
         if (sesRes.status === 'Success') {
             localStorage.setItem('auth_key', sesRes.token)
-            login_user()
+            dispatch({ type: 'LOGIN_USER', loggedIn: true})
             history.push('/home')
         } else if (sesRes.status === 'Failed') {
             alert(sesRes.msg)
@@ -71,10 +75,4 @@ const Login = ({ history, login_user }) => {
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        login_user: () => dispatch({ type: 'LOGIN_USER', loggedIn: true})
-    }
-}
-
-export default connect(null, mapDispatchToProps)(withRouter(Login))
+export default withRouter(Login)

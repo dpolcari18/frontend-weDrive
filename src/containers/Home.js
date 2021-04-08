@@ -2,15 +2,19 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 // Redux
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 // Components
 import SearchBar from '../components/SearchBar'
 import TripDetails from '../components/TripDetails'
 import Map from '../components/Map'
 
-const Home = ({ loggedIn }) => {
+const Home = () => {
     
+    // redux hooks
+    const loggedIn = useSelector(state => state.loginSignUp.loggedIn)
+    
+    // react-router-dom hooks
     const history = useHistory()
 
     // Confirm logged in
@@ -34,8 +38,4 @@ const Home = ({ loggedIn }) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return { loggedIn: state.loginSignUp.loggedIn }
-}
-
-export default connect(mapStateToProps)(Home)
+export default Home
