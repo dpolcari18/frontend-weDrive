@@ -1,4 +1,9 @@
-const loginSignUpReducer = (state = { loggedIn: false, signUp: false} , action) => {
+const loginSignUpReducer = (state = { 
+        loggedIn: false, 
+        signUp: false, 
+        showError: false,
+        errors: []
+    } , action) => {
     switch(action.type) {
         case 'LOGIN_USER':
             return {
@@ -14,6 +19,12 @@ const loginSignUpReducer = (state = { loggedIn: false, signUp: false} , action) 
             return {
                 ...state,
                 signUp: action.signUp
+            }
+        case 'SHOW_ERRORS':
+            return {
+                ...state,
+                showError: action.showError,
+                errors: action.errors
             }
         default:
             return state

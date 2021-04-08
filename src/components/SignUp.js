@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 // Endpoints
 const SIGN_UP_URL = 'http://localhost:3000/users'
 
-const SignUp = ({ sign_up }) => {
+const SignUp = ({ sign_up, throw_error, showError, errors }) => {
 
     // State for controlled form
     const [firstName, setFirstName] = useState('')
@@ -44,8 +44,8 @@ const SignUp = ({ sign_up }) => {
         if (userRes.status === 'Success') {
             alert(userRes.msg)
             sign_up()
-        } else if (userRes.statue === 'Failed') {
-
+        } else if (userRes.status === 'Failed') {
+            throw_error(userRes.msg)
         }
 
 
@@ -57,31 +57,43 @@ const SignUp = ({ sign_up }) => {
             <div>
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <div>
-                        <input type='text' name='firstName' placeholder='First Name' value={firstName} onChange={(e) => setFirstName(e.target.value)}></input>
+                        <input type='text' name='firstName' placeholder='* First Name' required value={firstName} onChange={(e) => setFirstName(e.target.value)}></input>
                     </div>
                     <div>
-                        <input type='text' name='lastName' placeholder='Last Name' value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
+                        <input type='text' name='lastName' placeholder='* Last Name' required value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
                     </div>
                     <div>
-                        <input type='text' name='phoneNumber' placeholder='Phone Number' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}></input>
+                        <input type='text' name='phoneNumber' placeholder='* Phone Number' required value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}></input>
                     </div>
                     <div>
-                        <input type='email' name='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
+                        <input type='email' name='email' placeholder='* Email' required value={email} onChange={(e) => setEmail(e.target.value)}></input>
                     </div>
                     <div>
-                        <input type='password' name='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
+                        <input type='password' name='password' placeholder='* Password' required value={password} onChange={(e) => setPassword(e.target.value)}></input>
                     </div>
                     <div>
                         <button type='submit'>Sign Up</button>
                     </div>
+                    <div>* Mandatory Fields</div>
+                    { showError ? <ul>{errors.map(msg => <li>{msg}</li>)}</ul> : null}
                 </form>
             </div>
         </div>
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return { sign_up: () => dispatch({ type: 'SIGN_UP', signUp: false}) }
+const mapStateToProps = (state) => {
+    return {
+        showError: state.loginSignUp.showError,
+        errors: state.loginSignUp.errors
+    }
 }
 
-export default connect(null, mapDispatchToProps)(SignUp)
+const mapDispatchToProps = (dispatch) => {
+    return { 
+        sign_up: () => dispatch({ type: 'SIGN_UP', signUp: false}),
+        throw_error: (errors) => dispatch({ type: 'SHOW_ERRORS', showError: true, errors: errors})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
