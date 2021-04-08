@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 // Endpoints
 const LOGIN_URL = 'http://localhost:3000/sessions'
 
-const Login = ({ dispatch }) => {
+const Login = ({ login_user, sign_up }) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -35,7 +35,7 @@ const Login = ({ dispatch }) => {
 
         if (sesRes.status === 'Success') {
             localStorage.setItem('auth_key', sesRes.token)
-            dispatch({ type: 'LOGIN_USER', loggedIn: true})
+            login_user()
         } else if (sesRes.status === 'Failed') {
             alert(sesRes.msg)
             // Reset form if login fails
@@ -61,8 +61,19 @@ const Login = ({ dispatch }) => {
                     </div>
                 </form>
             </div>
+            <div>
+                <div>or</div>
+               <button type='submit' onClick={() => sign_up()}>Sign Up</button>
+            </div>
         </div>
     )
 }
 
-export default connect()(Login)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        login_user: () => dispatch({ type: 'LOGIN_USER', loggedIn: true}),
+        sign_up: () => dispatch({ type: 'SIGN_UP', signUp: true})
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Login)

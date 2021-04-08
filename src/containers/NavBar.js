@@ -3,11 +3,11 @@ import React from 'react'
 // Redux 
 import { connect } from 'react-redux'
 
-const NavBar = ({ dispatch, loggedIn }) => {
+const NavBar = ({ logout_user, loggedIn }) => {
 
     const handleLogout = () => {
         localStorage.removeItem('auth_key')
-        dispatch({type: 'LOGOUT_USER', loggedIn: false})
+        logout_user()
     }
 
     return (
@@ -19,7 +19,13 @@ const NavBar = ({ dispatch, loggedIn }) => {
 }
 
 const mapStateToProps = (state) => {
-    return { loggedIn: state.loggedIn }
+    return { loggedIn: state.loginSignUp.loggedIn }
 }
 
-export default connect(mapStateToProps)(NavBar)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout_user: () => dispatch({type: 'LOGOUT_USER', loggedIn: false})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

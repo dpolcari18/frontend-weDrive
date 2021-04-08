@@ -5,31 +5,34 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import NavBar from './NavBar'
 
 // Components
-import About from '../components/About'
-import Login from '../components/Login'
+import Home from './Home'
 
 // Redux
 import { connect } from 'react-redux'
 
-const MainContainer = ({ dispatch }) => {
+const MainContainer = ({ login_user }) => {
 
+    // Maintain state logged in on refresh
     useEffect(() => {
         if (localStorage.getItem('auth_key')) {
-            dispatch({type: 'LOGIN_USER', loggedIn: true})
+            login_user()
         }
-    }, [])
+    }, [login_user])
 
     return(
         <Router>
             <div>
                 <NavBar />
-                <div>
-                    <About />
-                    <Login />
-                </div>
+                <Route exact path='/' render={() => <Home />} />
             </div>
         </Router>
     )
 }
 
-export default connect()(MainContainer)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        login_user: () => dispatch({type: 'LOGIN_USER', loggedIn: true})
+    }
+}
+
+export default connect(null, mapDispatchToProps)(MainContainer)
