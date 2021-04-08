@@ -7,6 +7,11 @@ const maintenanceReportReducer = (state = {
                 ...state,
                 maintenanceReports: action.maintenanceReports
             }
+        case 'RESET':
+            return {
+                ...state,
+                maintenanceReports: []
+            }
         default:
             return state
     }

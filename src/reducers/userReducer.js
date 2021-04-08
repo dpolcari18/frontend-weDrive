@@ -15,6 +15,15 @@ const userReducer = (state = {
                 phone: action.user.phone,
                 email: action.user.email
             }
+        case 'RESET':
+            return {
+                ...state,
+                id: '',
+                firstName: '',
+                lastName: '',
+                phone: '',
+                email: ''
+            }
         default:
             return state
     }

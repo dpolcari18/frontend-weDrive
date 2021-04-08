@@ -18,7 +18,8 @@ const NavBar = ({ history }) => {
     // Logout user
     const handleLogout = () => {
         localStorage.removeItem('auth_key')
-        dispatch({type: 'LOGOUT_USER', loggedIn: false})
+        dispatch({ type: 'LOGOUT_USER', loggedIn: false })
+        dispatch({ type: 'RESET' })
         history.push('/')
     }
 

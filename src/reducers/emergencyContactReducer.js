@@ -7,6 +7,11 @@ const emergencyContactReducer = (state = {
                 ...state,
                 emergencyContacts: action.emergencyContacts
             }
+        case 'RESET':
+            return {
+                ...state,
+                emergencyContacts: []
+            }
         default:
             return state
     }

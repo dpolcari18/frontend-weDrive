@@ -7,6 +7,11 @@ const vehicleReducer = (state = {
                 ...state,
                 vehicles: action.vehicles
             }
+        case 'RESET':
+            return {
+                ...state,
+                vehicles: []
+            }
         default:
             return state
     }

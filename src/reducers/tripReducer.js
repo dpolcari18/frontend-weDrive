@@ -5,6 +5,11 @@ const tripReducer = (state = { trips: [] } , action) => {
                 ...state,
                 trips: action.trips
             }
+        case 'RESET':
+            return {
+                ...state,
+                trips: []
+            }
         default:
             return state
     }
