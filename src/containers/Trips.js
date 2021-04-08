@@ -1,9 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
-const Trips = () => {
+// Redux
+import { connect } from 'react-redux'
+
+const Trips = ({ loggedIn }) => {
+
+    const history = useHistory()
+
+    // Confirm logged in
+    useEffect(() => {
+        if (loggedIn === true) {
+            return
+        } else if (localStorage.getItem('auth_key')) {
+            return
+        } else if (loggedIn === false) {
+            history.push('/')
+        }
+    })
+
     return(
         <h1>Trips</h1>
     )
 }
 
-export default Trips
+const mapStateToProps = (state) => {
+    return { loggedIn: state.loginSignUp.loggedIn }
+}
+
+export default connect(mapStateToProps)(Trips)

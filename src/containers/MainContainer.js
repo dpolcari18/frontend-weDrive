@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 // Containers
 import Home from './Home'
@@ -15,7 +15,7 @@ import SignUp from '../components/SignUp'
 // Redux
 import { connect } from 'react-redux'
 
-const MainContainer = ({ login_user, loggedIn }) => {
+const MainContainer = ({ login_user }) => {
 
     // Maintain state logged in on refresh
     useEffect(() => {
@@ -24,28 +24,19 @@ const MainContainer = ({ login_user, loggedIn }) => {
         }
     }, [login_user])
 
-    // Check if auth_key is stored in local storage before routing
-    const checkLoggedIn = () => {
-        return loggedIn  ? true : false
-    }
-
     return(
         <Router>
             <div>
                 <NavBar />
-                <Route exact path='/' render={() => <Landing />} />
-                <Route path='/signup' render={() => <SignUp />} />
-                <Route path='/home' render={() => { return checkLoggedIn() ? <Home /> : <Redirect to='/' />}} />
-                <Route path='/profile' render={() => { return checkLoggedIn() ? <Profile /> : <Redirect to='/' />}} />
-                <Route path='/trips' render={() => { return checkLoggedIn() ? <Trips /> : <Redirect to='/' />}} />
-                <Route path='/vehicles' render={() => { return checkLoggedIn() ? <Vehicles /> : <Redirect to='/' />}} />
+                <Route exact path='/' render={() => <Landing /> } />
+                <Route path='/signup' render={() => <SignUp /> } />
+                <Route path='/home' render={() => <Home /> } />
+                <Route path='/profile' render={() => <Profile /> } />
+                <Route path='/trips' render={() => <Trips /> } />
+                <Route path='/vehicles' render={() => <Vehicles /> } />
             </div>
         </Router>
     )
-}
-
-const mapStateToProps = (state) => {
-    return { loggedIn: state.loginSignUp.loggedIn}
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -54,4 +45,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainContainer)
+export default connect(null, mapDispatchToProps)(MainContainer)
