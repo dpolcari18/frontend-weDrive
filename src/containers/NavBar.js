@@ -1,13 +1,15 @@
 import React from 'react'
+import { withRouter } from 'react-router'
 
 // Redux 
 import { connect } from 'react-redux'
 
-const NavBar = ({ logout_user, loggedIn }) => {
+const NavBar = ({ history, logout_user, loggedIn }) => {
 
     const handleLogout = () => {
         localStorage.removeItem('auth_key')
         logout_user()
+        history.push('/')
     }
 
     return (
@@ -28,4 +30,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBar))

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 
 // Redux
@@ -7,7 +8,7 @@ import { connect } from 'react-redux'
 // Endpoints
 const LOGIN_URL = 'http://localhost:3000/sessions'
 
-const Login = ({ login_user }) => {
+const Login = ({ history, login_user }) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -37,6 +38,7 @@ const Login = ({ login_user }) => {
         if (sesRes.status === 'Success') {
             localStorage.setItem('auth_key', sesRes.token)
             login_user()
+            history.push('/home')
         } else if (sesRes.status === 'Failed') {
             alert(sesRes.msg)
             // Reset form if login fails
@@ -75,4 +77,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(null, mapDispatchToProps)(withRouter(Login))

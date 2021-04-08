@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 // Containers
 import Home from './Home'
@@ -24,13 +24,19 @@ const MainContainer = ({ login_user }) => {
         }
     }, [login_user])
 
+    // Check if auth_key is stored in local storage before routing
+    const loggedIn = async () => {
+        const confirmed = await localStorage.getItem('auth_key') ? true : false
+        return confirmed
+    }
+
     return(
         <Router>
             <div>
                 <NavBar />
                 <Route exact path='/' render={() => <Landing />} />
                 <Route path='/signup' render={() => <SignUp />} />
-                <Route path='/home' render={() => <Home />} />
+                <Route path='/home' render={() => { loggedIn() ? <Home /> : <Redirect to='/' />}} />
                 <Route path='/profile' render={() => <Profile />} />
                 <Route path='/trips' render={() => <Trips />} />
                 <Route path='/vehicles' render={() => <Vehicles />} />

@@ -1,8 +1,11 @@
 import React from 'react'
 
 const Home = () => {
+    debugger
     return(
-        <h1>HOME</h1>
+        <div>
+            <h1>HOME</h1>
+        </div>
     )
 }
 
