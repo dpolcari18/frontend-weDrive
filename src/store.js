@@ -8,6 +8,9 @@ import vehicleReducer from './reducers/vehicleReducer'
 import maintenanceReportReducer from './reducers/maintenanceReportReducer'
 import emergencyContactReducer from './reducers/emergencyContactReducer'
 import searchReducer from './reducers/searchReducer'
+import tripDetailsReducer from './reducers/tripDetailsReducer'
+import locationsReducer from './reducers/locationsReducer'
+import segmentsReducer from './reducers/segmentsReducer'
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -16,6 +19,9 @@ const rootReducer = combineReducers({
     maintenanceReport: maintenanceReportReducer,
     emergencyContact: emergencyContactReducer,
     search: searchReducer,
+    tripDetails: tripDetailsReducer,
+    locations: locationsReducer,
+    segments: segmentsReducer,
     loginSignUp: loginSignUpReducer
 })
 

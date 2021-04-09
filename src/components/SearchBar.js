@@ -10,7 +10,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-const SearchBar = ({ loadMap }) => {
+const SearchBar = ({ searchRoute }) => {
 
     // redux hooks
     const dispatch = useDispatch()
@@ -19,11 +19,10 @@ const SearchBar = ({ loadMap }) => {
 
     return (
         <Container>
-            {/* add back in loadMap(e) when getting closer!! */}
-            <Form onSubmit={(e) => console.log('searching') }>
+            <Form onSubmit={(e) => searchRoute(e) }>
                 <Row>
                     <Col>
-                        <Form.Group controlId="formBasicEmail">
+                        <Form.Group controlId="origin">
                             {/* <Form.Label>Origin</Form.Label> */}
                             <Form.Control 
                                 type="text" 
@@ -34,7 +33,7 @@ const SearchBar = ({ loadMap }) => {
                         </Form.Group>
                     </Col>
                     <Col>
-                        <Form.Group>
+                        <Form.Group controlId='destination'>
                             {/* <Form.Label>Destination</Form.Label> */}
                             <Form.Control 
                                 type="text" 

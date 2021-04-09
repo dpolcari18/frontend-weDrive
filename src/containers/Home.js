@@ -14,6 +14,12 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
+// Endpoints
+const ROUTE_URL = 'http://localhost:3000/routes'
+const TRIP_URL = 'http://localhost:3000/trips'
+const LOCATION_URL = 'http://localhost:3000/locations'
+const SEGMENT_URL = 'http://localhost:3000/segments'
+
 // API KEY
 // const API_KEY = process.env.REACT_APP_MAP_API
 const API_KEY = 'jGOGNEMHEi4MNjU7LSSVTTYOoozrHXRW'
@@ -75,17 +81,139 @@ const Home = () => {
         map.addControl(window.L.mapquest.control())
     }
 
-    const loadMap = (e) => {
+    // 4. post segments to rails
+    const postSegment = async (tripId, segment) => {
 
-        e.preventDefault()
+        const authKey = localStorage.getItem('auth_key')
+
+        const segmentInfo = {
+            segment: {
+                trip_id: tripId,
+                index_num: segment.index,
+                instructions: segment.narrative,
+                icon_url: segment.iconUrl,
+                distance: segment.distance,
+                time: segment.time,
+                direction: segment.directionName,
+                turn_type: segment.turnType,
+                map_url: segment.mapUrl
+            }
+        }
+
+        const postObj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'POST',
+            body: JSON.stringify(segmentInfo)
+        }
+
+        const postSeg = await  fetch(SEGMENT_URL, postObj)
+        const segRes = await postSeg.json()
+
+        console.log(segRes)
+        debugger
+    }
+
+    // 3. post locations to rails
+    const postLocation = async (tripId, location, point) => {
+
+        const authKey = localStorage.getItem('auth_key')
+
+        const locationInfo = {
+            location: {
+                trip_id: tripId,
+                start_end: point,
+                street: location.street,
+                city: location.adminArea5,
+                county: location.adminArea4,
+                state: location.adminArea3,
+                zip_code: location.postalCode
+            }
+        }
+
+        const postObj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'POST',
+            body: JSON.stringify(locationInfo)
+        }
+
+        const postLocation = await fetch(LOCATION_URL, postObj)
+        const locRes = await postLocation.json()
+    }
+
+    // 2. post trip to rails (status = not_started)
+    const postTrip = async (route) => {
+
+        const userId = localStorage.getItem('user_id')
+        const authKey = localStorage.getItem('auth_key')
+
+        const tripInfo = {
+            trip: {
+                user_id: userId,
+                time: route.route.time,
+                real_time: route.route.realTime,
+                distance: route.route.distance,
+                has_tolls: route.route.hasTollRoad,
+                fuel_usage: route.route.fuelUsed
+            }
+        }
+
+        const postObj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'POST',
+            body: JSON.stringify(tripInfo)
+        }
+
+        const postTrip = await fetch(TRIP_URL, postObj)
+        const tripRes = await postTrip.json()
+
+        // Post start and end locations to rails
+        postLocation(tripRes.trip.id, route.route.locations[0], 'Start')
+        postLocation(tripRes.trip.id, route.route.locations[1], 'End')
+
+        // Post each segment to rails
+        route.route.legs[0].maneuvers.forEach(segment => postSegment(tripRes.trip.id, segment))
+
+    }
+
+    // 1. fetch trip information => Rails => MQ
+    const findDirections = async (start, end) => {
+
+        const authKey = localStorage.getItem('auth_key')
+
+        const fetchObj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'GET'
+        }
+
+        const fetchRoute = await fetch(ROUTE_URL + '/' + start + '/' + end, fetchObj)
+        const routeRes = await fetchRoute.json()
         
-        // save search results before clearing form
-        const start = origin
-        const end = destination
+        // response from mapquest (contains all trip, location and segment information)
+        const route = JSON.parse(routeRes.route)
 
-        // reset search form
-        dispatch({ type: 'RESET_SEARCH'})
+        // post trip to rails
+        postTrip(route)
+        
+        // dispatch({ type: 'SET_LOCATIONS', locations: route.route.locations})
+        // dispatch({ type: 'SET_SEGMENTS', segments: route.route.legs[0].maneuvers})
+        // dispatch({ type: 'SET_TRIP_DETAILS', time: route.route.time, realTime: route.route.realTime, distance: route.route.distance, hasTolls: route.route.hasTollRoad, fuelUsage: route.route.fuelUsed })
+    }
 
+    const loadMap = (start, end) => {
+
+        
         window.L.mapquest.key = API_KEY;
 
         let map = window.L.mapquest.map('map', {
@@ -102,12 +230,30 @@ const Home = () => {
         map.addControl(window.L.mapquest.control());
     }
 
+    const searchRoute = (e) => {
+        
+        e.preventDefault()
+
+        // save search results before clearing form
+        const start = origin
+        const end = destination
+        
+        // need to uncomment for demo!
+        // loadMap(start, end)
+
+        findDirections(start, end)
+        
+        // reset search form
+        dispatch({ type: 'RESET_SEARCH'})
+
+    }
+
     return(
         <div>
             <Container>
                 <Row>
                     <Col>
-                        <SearchBar loadMap={() => loadMap}/>
+                        <SearchBar searchRoute={(e) => searchRoute(e)}/>
                     </Col>
                 </Row>
                 <Row>
