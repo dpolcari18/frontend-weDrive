@@ -40,7 +40,7 @@ const MainContainer = () => {
         const userRes = await fetchUser.json()
 
         dispatch({ type: 'SET_USER', user: userRes.user})
-        dispatch({ type: 'SET_TRIPS', trips: userRes.user.trips})
+        dispatch({ type: 'SET_TRIPS', trips: userRes.user.trips, locations: userRes.user.locations})
         dispatch({ type: 'SET_VEHICLES', vehicles: userRes.user.vehicles})
         dispatch({ type: 'SET_MAINTENANCE_REPORTS', maintenanceReports: userRes.user.maintenance_reports})
         dispatch({ type: 'SET_EMERGENCY_CONTACTS', emergencyContacts: userRes.user.emergency_contacts})

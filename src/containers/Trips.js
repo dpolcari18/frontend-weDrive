@@ -17,6 +17,7 @@ const Trips = () => {
     // redux hooks
     const loggedIn = useSelector(state => state.loginSignUp.loggedIn)
     const trips = useSelector(state => state.trip.trips)
+    const locations = useSelector(state => state.trip.locations)
 
     // react-router-dom hooks
     const history = useHistory()
@@ -37,7 +38,11 @@ const Trips = () => {
         <h1>Trips</h1>
             <Row>
                 <Col>
-                    {trips.map(trip => <TripComponents trip={trip} /> )}
+                    {trips.map(trip => <TripComponents 
+                                            trip={trip}
+                                            start={locations.filter(loc => trip.id === loc.trip_id && loc.start_end === 'Start')[0]}
+                                            end={locations.filter(loc => trip.id === loc.trip_id && loc.start_end === 'End')[0]}
+                                        /> )}
                 </Col>
             </Row>
         </Container>

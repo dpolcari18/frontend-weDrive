@@ -1,14 +1,16 @@
-const tripReducer = (state = { trips: [] } , action) => {
+const tripReducer = (state = { trips: [], locations: [] } , action) => {
     switch(action.type) {
         case 'SET_TRIPS':
             return {
                 ...state,
-                trips: action.trips
+                trips: action.trips,
+                locations: action.locations
             }
         case 'RESET':
             return {
                 ...state,
-                trips: []
+                trips: [],
+                locations: []
             }
         default:
             return state

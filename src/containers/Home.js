@@ -4,9 +4,11 @@ import { useHistory } from 'react-router-dom'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 
+// Containers
+import TripDetails from './TripDetails'
+
 // Components
 import SearchBar from '../components/SearchBar'
-import TripDetails from '../components/TripDetails'
 import Map from '../components/Map'
 
 // react-bootstrap

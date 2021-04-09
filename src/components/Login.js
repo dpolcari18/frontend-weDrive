@@ -43,9 +43,10 @@ const Login = ({ history }) => {
         if (sesRes.status === 'Success') {
             localStorage.setItem('auth_key', sesRes.token)
             localStorage.setItem('user_id', sesRes.user.id)
+            
             dispatch({ type: 'LOGIN_USER', loggedIn: true})
             dispatch({ type: 'SET_USER', user: sesRes.user})
-            dispatch({ type: 'SET_TRIPS', trips: sesRes.user.trips})
+            dispatch({ type: 'SET_TRIPS', trips: sesRes.user.trips, locations: sesRes.user.locations})
             dispatch({ type: 'SET_VEHICLES', vehicles: sesRes.user.vehicles})
             dispatch({ type: 'SET_MAINTENANCE_REPORTS', maintenanceReports: sesRes.user.maintenance_reports})
             dispatch({ type: 'SET_EMERGENCY_CONTACTS', emergencyContacts: sesRes.user.emergency_contacts})
