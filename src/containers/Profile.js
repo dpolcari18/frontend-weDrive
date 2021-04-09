@@ -10,11 +10,20 @@ import EmergencyContactList from './EmergencyContactList'
 // Components
 import User from '../components/User'
 
+// react-bootstrap
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 const Profile = () => {
 
     // redux hooks
     const loggedIn = useSelector(state => state.loginSignUp.loggedIn)
+    const firstName = useSelector(state => state.user.firstName)
+    const lastName = useSelector(state => state.user.lastName)
+
+    // combine first and last names
+    const fullName = firstName.concat(' ', lastName)
     
     // react-router-dom hooks
     const history = useHistory()
@@ -31,11 +40,23 @@ const Profile = () => {
     })
 
     return(
-        <>
-            <h1>PROFILE</h1>
-            <User />
-            <EmergencyContactList />
-        </>
+        <Container>
+            <Row>
+                <Col>
+                    <h1>{fullName}'s Profile</h1>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <User />
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <EmergencyContactList />
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

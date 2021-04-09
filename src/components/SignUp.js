@@ -12,7 +12,7 @@ const SIGN_UP_URL = 'http://localhost:3000/users'
 
 const SignUp = ({ history }) => {
 
-    // redux hook
+    // redux hooks
     const dispatch = useDispatch()
     const showError = useSelector(state => state.loginSignUp.showError)
     const errors = useSelector(state => state.loginSignUp.errors)

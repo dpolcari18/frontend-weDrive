@@ -1,13 +1,20 @@
 import React from 'react'
 
+// redux
+import { useSelector } from 'react-redux'
+
 // Components
 import EmergencyContact from '../components/EmergencyContact'
 
 const EmergencyContactList = () => {
+
+    // redux hooks
+    const emergencyContacts = useSelector(state => state.emergencyContact.emergencyContacts)
+
     return (
         <>
             <h4>Emergency Contact List</h4>
-            <EmergencyContact />
+            {emergencyContacts.map(ice => <EmergencyContact key={ice.id} ice={ice} /> )}
         </>
     )
 }

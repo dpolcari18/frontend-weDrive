@@ -7,6 +7,7 @@ import loginSignUpReducer from './reducers/loginSignUpReducer'
 import vehicleReducer from './reducers/vehicleReducer'
 import maintenanceReportReducer from './reducers/maintenanceReportReducer'
 import emergencyContactReducer from './reducers/emergencyContactReducer'
+import searchReducer from './reducers/searchReducer'
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     vehicle: vehicleReducer,
     maintenanceReport: maintenanceReportReducer,
     emergencyContact: emergencyContactReducer,
+    search: searchReducer,
     loginSignUp: loginSignUpReducer
 })
 
