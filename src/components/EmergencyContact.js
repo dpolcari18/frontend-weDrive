@@ -5,26 +5,24 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-const EmergencyContact = (props) => {
-
-    console.log(props)
+const EmergencyContact = ({ ice }) => {
 
     return (
         <Container>
             <Row>
                 <Col>
-                    <div>First Name: {props.ice.first_name}</div>
+                    <div>First Name: {ice.first_name}</div>
                 </Col>
                 <Col>
-                    <div>Last Name: {props.ice.last_name}</div>
+                    <div>Last Name: {ice.last_name}</div>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <div>Email: {props.ice.email}</div>
+                    <div>Email: {ice.email}</div>
                 </Col>
                 <Col>
-                    <div>Phone Number: {props.ice.phone}</div>
+                    <div>Phone Number: {ice.phone}</div>
                 </Col>
             </Row>
         </Container>

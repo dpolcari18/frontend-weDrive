@@ -7,10 +7,16 @@ import { useSelector } from 'react-redux'
 // Components
 import TripComponents from '../components/TripComponents'
 
+// react-bootstrap
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 const Trips = () => {
 
     // redux hooks
     const loggedIn = useSelector(state => state.loginSignUp.loggedIn)
+    const trips = useSelector(state => state.trip.trips)
 
     // react-router-dom hooks
     const history = useHistory()
@@ -27,10 +33,14 @@ const Trips = () => {
     })
 
     return(
-        <>
-            <h1>Trips</h1>
-            <TripComponents />
-        </>
+        <Container>
+        <h1>Trips</h1>
+            <Row>
+                <Col>
+                    {trips.map(trip => <TripComponents trip={trip} /> )}
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

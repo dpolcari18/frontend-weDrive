@@ -1,8 +1,30 @@
 import React from 'react'
 
-const VehicleComponent = () => {
+// react-bootstrap
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
+const VehicleComponent = ({ car }) => {
     return (
-        <h4>Individual Vehicle</h4>
+        <Container>
+            <Row>
+                <Col>
+                    Make: {car.make}
+                </Col>
+                <Col>
+                    Model: {car.model}
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    Year: {car.year}
+                </Col>
+                <Col>
+                    Mileage: {car.mileage}
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

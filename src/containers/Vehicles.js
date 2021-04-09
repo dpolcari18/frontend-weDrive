@@ -8,6 +8,11 @@ import { useSelector } from 'react-redux'
 import VehiclesList from './VehiclesList'
 import MaintenanceReportList from './MaintenanceReportList'
 
+// react-bootstrap
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 const Vehicles = () => {
     
     // redux hooks
@@ -28,11 +33,17 @@ const Vehicles = () => {
     })
 
     return(
-        <>
-            <h1>Vehicles</h1>
-            <VehiclesList />
-            <MaintenanceReportList />
-        </>
+        <Container>
+            <h1>Vehicle Maintenance</h1>
+            <Row>
+                <Col>
+                    <VehiclesList />
+                </Col>
+                <Col>
+                    <MaintenanceReportList />
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

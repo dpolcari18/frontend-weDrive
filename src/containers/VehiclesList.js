@@ -1,14 +1,26 @@
 import React from 'react'
 
+// Redux
+import { useSelector } from 'react-redux'
+
 // Components
 import VehicleComponent from '../components/VehicleComponent'
 
+// react-bootstrap
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 const VehiclesList = () => {
+
+    // redux hooks
+    const vehicles = useSelector(state => state.vehicle.vehicles)
+
     return (
-        <>
-            <h4>Vehicles List Container</h4>
-            <VehicleComponent />
-        </>
+        <Container>
+            <h4>Vehicles</h4>
+            {vehicles.map(car => <Row><VehicleComponent car={car} /></Row> )}
+        </Container>
     )
 }
 

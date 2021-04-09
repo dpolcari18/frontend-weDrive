@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
   // Global Store
   import store from './store'
 
-
 function App() {
   return (
     <Provider store={store}>
