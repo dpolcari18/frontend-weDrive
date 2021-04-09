@@ -48,7 +48,7 @@ const Home = () => {
 
     // mount and unmount MQ scripts to head
     useEffect(() => {
-        
+
         const firstScript = document.createElement('script')
         firstScript.src = 'https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js'
         firstScript.async = true
@@ -81,6 +81,27 @@ const Home = () => {
         map.addControl(window.L.mapquest.control())
     }
 
+    // 5. Fetch trip including locations and segments
+    const fetchTrip = async (tripId) => {
+
+        const authKey = localStorage.getItem('auth_key')
+
+        const fetchObj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'GET'
+        }
+        const fetchTrip = await fetch(TRIP_URL+'/'+tripId, fetchObj)
+        const tripRes = await fetchTrip.json()
+
+        dispatch({ type: 'SET_LOCATIONS', locations: tripRes.trip.locations})
+        dispatch({ type: 'SET_SEGMENTS', segments: tripRes.trip.segments})
+        dispatch({ type: 'SET_TRIP_DETAILS', time: tripRes.trip.time, realTime: tripRes.trip.real_time, distance: tripRes.trip.distance, hasTolls: tripRes.trip.has_tolls, fuelUsage: tripRes.trip.fuel_usage })
+
+    }
+
     // 4. post segments to rails
     const postSegment = async (tripId, segment) => {
 
@@ -111,9 +132,6 @@ const Home = () => {
 
         const postSeg = await  fetch(SEGMENT_URL, postObj)
         const segRes = await postSeg.json()
-
-        console.log(segRes)
-        debugger
     }
 
     // 3. post locations to rails
@@ -182,6 +200,8 @@ const Home = () => {
         // Post each segment to rails
         route.route.legs[0].maneuvers.forEach(segment => postSegment(tripRes.trip.id, segment))
 
+        // Refetch trip with locations and segments
+        fetchTrip(tripRes.trip.id)
     }
 
     // 1. fetch trip information => Rails => MQ
@@ -205,10 +225,6 @@ const Home = () => {
 
         // post trip to rails
         postTrip(route)
-        
-        // dispatch({ type: 'SET_LOCATIONS', locations: route.route.locations})
-        // dispatch({ type: 'SET_SEGMENTS', segments: route.route.legs[0].maneuvers})
-        // dispatch({ type: 'SET_TRIP_DETAILS', time: route.route.time, realTime: route.route.realTime, distance: route.route.distance, hasTolls: route.route.hasTollRoad, fuelUsage: route.route.fuelUsed })
     }
 
     const loadMap = (start, end) => {
