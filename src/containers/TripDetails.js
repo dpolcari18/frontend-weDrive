@@ -69,7 +69,7 @@ const TripDetails = () => {
         dispatch({ type: 'END_TRIP'})
     }
 
-    // if locations === [] render message else render trip details
+    // display prompt, trip details or trip segments
     const renderTripDetails = () => {
         switch (tripDetails.display) {
             case 'details':
