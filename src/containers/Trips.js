@@ -39,6 +39,7 @@ const Trips = () => {
             <Row>
                 <Col>
                     {trips.map(trip => <TripComponents 
+                                            key={trip.id}
                                             trip={trip}
                                             start={locations.filter(loc => trip.id === loc.trip_id && loc.start_end === 'Start')[0]}
                                             end={locations.filter(loc => trip.id === loc.trip_id && loc.start_end === 'End')[0]}

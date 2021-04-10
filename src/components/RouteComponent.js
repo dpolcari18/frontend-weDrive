@@ -21,7 +21,7 @@ const RouteComponent = ({ segment }) => {
                     Est. Time: {Math.floor(segment.time/3600)} hrs and {Math.floor((segment.time % 3600)/60)} min
                 </Col>
                 <Col>
-                    <img src={segment.icon_url}/>
+                    <img src={segment.icon_url} alt='Depicting Directions' />
                 </Col>
             </Row>
         </Container>

@@ -100,7 +100,7 @@ const Home = () => {
 
         dispatch({ type: 'SET_LOCATIONS', locations: tripRes.trip.locations})
         dispatch({ type: 'SET_SEGMENTS', segments: tripRes.trip.segments})
-        dispatch({ type: 'SET_TRIP_DETAILS', time: tripRes.trip.time, realTime: tripRes.trip.real_time, distance: tripRes.trip.distance, hasTolls: tripRes.trip.has_tolls, fuelUsage: tripRes.trip.fuel_usage })
+        dispatch({ type: 'SET_TRIP_DETAILS', tripId: tripRes.trip.id, time: tripRes.trip.time, realTime: tripRes.trip.real_time, distance: tripRes.trip.distance, hasTolls: tripRes.trip.has_tolls, fuelUsage: tripRes.trip.fuel_usage })
 
     }
 

@@ -18,7 +18,7 @@ const VehiclesList = () => {
     return (
         <Container>
             <h4>Vehicles</h4>
-            {vehicles.map(car => <Row><VehicleComponent car={car} /></Row> )}
+            {vehicles.map(car => <Row><VehicleComponent key={car.id} car={car} /></Row> )}
         </Container>
     )
 }
