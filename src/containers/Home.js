@@ -18,6 +18,7 @@ import Col from 'react-bootstrap/Col'
 
 // Endpoints
 const ROUTE_URL = 'http://localhost:3000/routes'
+const WEATHER_URL = 'http://localhost:3000/weather'
 const TRIP_URL = 'http://localhost:3000/trips'
 const LOCATION_URL = 'http://localhost:3000/locations'
 const SEGMENT_URL = 'http://localhost:3000/segments'
@@ -83,6 +84,44 @@ const Home = () => {
         map.addControl(window.L.mapquest.control())
     }
 
+    const fetchWeather = async (city) => {
+
+        const authKey = localStorage.getItem('auth_key')
+    
+        const fetchObj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'GET'
+        }
+    
+        const fetchWeather = await fetch(WEATHER_URL + '/' + city, fetchObj)
+        const wethRes = await fetchWeather.json()
+
+        const weather = JSON.parse(wethRes.weather)
+        return weather
+    }
+
+    // 6. Fetch weather at start and end locations
+    const getWeather = async (locations) => {
+
+        const startCity = locations.filter(loc => loc.start_end === 'Start')[0].city
+        const endCity = locations.filter(loc => loc.start_end === 'End')[0].city
+    
+        if (startCity === endCity) {
+            const startWeather = await fetchWeather(startCity)
+
+            dispatch({ type: 'ADD_WEATHER', weather: startWeather })
+        } else {
+            const startWeather = await fetchWeather(startCity)
+            const endWeather = await fetchWeather(endCity)
+            debugger
+            dispatch({ type: 'ADD_WEATHER', weather: startWeather })
+            dispatch({ type: 'ADD_WEATHER', weather: endWeather })
+        }
+    }
+
     // 5. Fetch trip including locations and segments
     const fetchTrip = async (tripId) => {
 
@@ -97,6 +136,9 @@ const Home = () => {
         }
         const fetchTrip = await fetch(TRIP_URL+'/'+tripId, fetchObj)
         const tripRes = await fetchTrip.json()
+
+        // fetch weather from open weather API
+        getWeather(tripRes.trip.locations)
 
         dispatch({ type: 'SET_LOCATIONS', locations: tripRes.trip.locations})
         dispatch({ type: 'SET_SEGMENTS', segments: tripRes.trip.segments})

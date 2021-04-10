@@ -14,7 +14,7 @@ const tripReducer = (state = { trips: [], locations: [] } , action) => {
             }
         case 'ADD_TRIP':
             const locations = action.trip.locations
-            debugger
+            
             const trip = {
                 id: action.trip.id,
                 time: action.trip.time,

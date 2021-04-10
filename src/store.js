@@ -11,6 +11,7 @@ import searchReducer from './reducers/searchReducer'
 import tripDetailsReducer from './reducers/tripDetailsReducer'
 import locationsReducer from './reducers/locationsReducer'
 import segmentsReducer from './reducers/segmentsReducer'
+import weatherReducer from './reducers/weatherReducer'
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     tripDetails: tripDetailsReducer,
     locations: locationsReducer,
     segments: segmentsReducer,
+    weather: weatherReducer,
     loginSignUp: loginSignUpReducer
 })
 

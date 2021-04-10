@@ -45,8 +45,6 @@ const TripDetails = () => {
         const patchTrip = await fetch(TRIP_URL+'/'+tripDetails.tripId, patchObj)
         const tripRes = await patchTrip.json()
 
-        console.log(tripRes)
-
         if (status === 'Finished') { return tripRes.trip}
     }
     
@@ -67,6 +65,7 @@ const TripDetails = () => {
         dispatch({ type: 'ADD_TRIP', trip: trip})
 
         dispatch({ type: 'END_TRIP'})
+        dispatch({ type: 'CLEAR_WEATHER'})
     }
 
     // display prompt, trip details or trip segments
