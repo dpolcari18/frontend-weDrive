@@ -5,6 +5,11 @@ const segmentsReducer = (state = { segments: [] } , action) => {
                 ...state,
                 segments: action.segments
             }
+        case 'CLEAR_SEGMENTS':
+            return {
+                ...state,
+                segments: []
+            }
         default:
             return state
     }

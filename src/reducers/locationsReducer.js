@@ -5,6 +5,11 @@ const locationsReducer = (state = { locations: [] } , action) => {
                 ...state,
                 locations: action.locations
             }
+        case 'CLEAR_LOCATIONS':
+            return {
+                ...state,
+                locations: []
+            }
         default:
             return state
     }

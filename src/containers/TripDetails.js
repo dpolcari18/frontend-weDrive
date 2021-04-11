@@ -67,6 +67,8 @@ const TripDetails = () => {
         dispatch({ type: 'ADD_TRIP', trip: trip})
 
         dispatch({ type: 'END_TRIP'})
+        dispatch({ type: 'CLEAR_LOCATIONS'})
+        dispatch({ type: 'CLEAR_SEGMENTS'})
         dispatch({ type: 'CLEAR_WEATHER'})
     }
 
