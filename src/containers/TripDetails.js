@@ -53,7 +53,9 @@ const TripDetails = () => {
 
         updateStatus('Started')
 
-        dispatch({ type: 'START_TRIP'})
+        dispatch({ type: 'OPEN_POPUP' })
+
+        dispatch({ type: 'START_TRIP' })
     }
 
     // finish trip

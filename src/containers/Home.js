@@ -10,6 +10,7 @@ import TripDetails from './TripDetails'
 // Components
 import SearchBar from '../components/SearchBar'
 import Map from '../components/Map'
+import WeatherPopUp from '../components/WeatherPopUp'
 
 // react-bootstrap
 import Container from 'react-bootstrap/Container'
@@ -34,6 +35,7 @@ const Home = () => {
     const loggedIn = useSelector(state => state.loginSignUp.loggedIn)
     const origin = useSelector(state => state.search.origin)
     const destination = useSelector(state => state.search.destination)
+    const weatherPopup = useSelector(state => state.weather.popup)
     
     // react-router-dom hooks
     const history = useHistory()
@@ -116,7 +118,7 @@ const Home = () => {
         } else {
             const startWeather = await fetchWeather(startCity)
             const endWeather = await fetchWeather(endCity)
-            debugger
+            
             dispatch({ type: 'ADD_WEATHER', weather: startWeather })
             dispatch({ type: 'ADD_WEATHER', weather: endWeather })
         }
@@ -324,6 +326,9 @@ const Home = () => {
                         <Map />
                     </Col>
                 </Row>
+            </Container>
+            <Container>
+                { weatherPopup ? <WeatherPopUp /> : null }
             </Container>
         </div>
     )
