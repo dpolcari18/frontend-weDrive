@@ -94,10 +94,56 @@ const WeatherPopUp = () => {
         } else {
             const originWeather = weather.filter(loc => loc.name === locations.filter(city => city.start_end === "Start")[0].city)[0]
             
-            // return (
-
-            // )
-        }
+            return (
+                <Container>
+                    <Row>
+                        <Col>
+                            <h3>Weather Report</h3>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            {originWeather.name}
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                        <img src={`http://openweathermap.org/img/wn/${originWeather.weather[0].icon}@2x.png`} alt='icon' />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            {originWeather.weather[0].main} - {originWeather.weather[0].description}
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            {Math.floor(originWeather.main.temp)} F
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            Winds @ {Math.floor(originWeather.wind.speed*10)/10} mph
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            1 hr Rainfall: {originWeather.rain ? originWeather.rain['1h'] : 0 } inches
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            1 hr Snowfall: {originWeather.snow ? originWeather.snow['1h'] : 0 } inches
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <h5>Please plan accordingly and drive safely!</h5>
+                        </Col>
+                    </Row>
+                </Container>
+            )
+        }   
     }
 
     return (
