@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // Redux
 import { useDispatch } from 'react-redux'
@@ -30,6 +30,28 @@ const WeatherPopup = () => {
     const [oilChange, setOilChange] = useState(false)
     const [wiperFluid, setWiperFluid] = useState(false)
     const [brakeDust, setBrakeDust] = useState(false)
+    // check if all list items are checked => if true enable button
+    const [allChecked, setAllChecked] = useState(false)
+
+    useEffect (() => {
+        
+        // create array of state variables to test against
+        const arr = [tirePressure, treadDepth, tireBulges, blinkers, headlights, highBeams, brakeLights, windshieldCracks, dirtyWindows, wiperCondition, drippingFluid, mirrors, headRest, shoulderStrap, oilChange, wiperFluid, brakeDust]
+
+        // check if variable is true
+        const isTrue = (i) => i === true 
+
+        // check all variables in array
+        const allTrue = arr.every(i => isTrue(i))
+
+        // set state to true for enabling button if all true
+        if (allTrue) {
+            setAllChecked(true)
+        } else {
+            setAllChecked(false)
+        }
+
+    }, [tirePressure, treadDepth, tireBulges, blinkers, headlights, highBeams, brakeLights, windshieldCracks, dirtyWindows, wiperCondition, drippingFluid, mirrors, headRest, shoulderStrap, oilChange, wiperFluid, brakeDust])
 
 
     const dispatch = useDispatch()
@@ -216,7 +238,7 @@ const WeatherPopup = () => {
                     </Form>
                     <Row>
                         <Col>
-                            <Button onClick={() => closeChecklist()}>Finish Inspection</Button>
+                            <Button disabled={!allChecked} onClick={() => closeChecklist()}>Finish Inspection</Button>
                         </Col>
                     </Row>
                 </Container>
