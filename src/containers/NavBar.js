@@ -9,6 +9,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 
+// Styling
+import Logo from '../images/horizontal_logo.png'
+
 const NavBar = ({ history }) => {
 
     // redux hooks
@@ -29,7 +32,7 @@ const NavBar = ({ history }) => {
         if (loggedIn) {
             return (
                 <Navbar bg="light" variant="light" fixed='top'>
-                    <Navbar.Brand><Link to='/home'>weDrive</ Link></Navbar.Brand>
+                    <Navbar.Brand><Link to='/home'><img src={Logo} alt='weDrive logo' /></ Link></Navbar.Brand>
                     <Nav className="mr-auto">
                         <Link to='/home'>Home</Link>
                         <Link to='/profile'>Profile</Link>
