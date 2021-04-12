@@ -288,7 +288,17 @@ const Home = () => {
     
     // remove route from map
     const removeRoute = () => {
-        window.L.mapquest.directions().remove()
+
+        document.getElementById('map').remove()
+
+        const newMap = document.createElement('div')
+            newMap.id = 'map'
+            newMap.style.width = '100%'
+            newMap.style.height = '60vh'
+
+        document.getElementById('map-container').appendChild(newMap)
+
+        renderBlankMap()
     }
 
     const searchRoute = (e) => {
