@@ -9,18 +9,23 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 
-const WeatherPopUp = () => {
+const WeatherPopup = () => {
 
     const dispatch = useDispatch()
     const weather = useSelector(state => state.weather.weather)
     const locations = useSelector(state => state.locations.locations)
 
+    const openChecklist = () => {
+        dispatch({ type: 'CLOSE_WEATHER_POPUP' })
+        dispatch({ type: 'OPEN_CHECKLIST_POPUP' })
+    }
+    
     const displayWeather = () => {
         if (weather.length === 2) {
             // filter the weather array by origin / destination
             const originWeather = weather.filter(loc => loc.name === locations.filter(city => city.start_end === "Start")[0].city)[0]
             const destinationWeather = weather.filter(loc => loc.name === locations.filter(city => city.start_end === "End")[0].city)[0]
-            
+
             return (
                 <Container>
                     <Row>
@@ -91,7 +96,7 @@ const WeatherPopUp = () => {
                     </Row>
                     <Row>
                         <Col>
-                            <Button onClick={() => dispatch({ type: 'CLOSE_WEATHER_POPUP' })}>Continue</Button>
+                            <Button onClick={() => openChecklist()}>Continue</Button>
                         </Col>
                     </Row>
                 </Container>
@@ -149,7 +154,7 @@ const WeatherPopUp = () => {
                     </Row>
                     <Row>
                         <Col>
-                        <Button onClick={() => dispatch({ type: 'CLOSE_WEATHER_POPUP' })}>Continue</Button>
+                        <Button onClick={() => openChecklist()}>Continue</Button>
                         </Col>
                     </Row>
                 </Container>
@@ -170,4 +175,4 @@ const WeatherPopUp = () => {
     )
 }
 
-export default WeatherPopUp
+export default WeatherPopup

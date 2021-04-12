@@ -10,7 +10,8 @@ import TripDetails from './TripDetails'
 // Components
 import SearchBar from '../components/SearchBar'
 import Map from '../components/Map'
-import WeatherPopUp from '../components/WeatherPopUp'
+import WeatherPopup from '../components/WeatherPopup'
+import CheckListPopup from '../components/CheckListPopup'
 
 // react-bootstrap
 import Container from 'react-bootstrap/Container'
@@ -338,8 +339,8 @@ const Home = () => {
                 </Row>
             </Container>
             <Container>
-                { weatherPopup ? <WeatherPopUp /> : null }
-                {/* { checkListPopup ? <CheckListPopup /> : null} */}
+                { weatherPopup ? <WeatherPopup /> : null }
+                { checkListPopup ? <CheckListPopup /> : null}
             </Container>
         </div>
     )
