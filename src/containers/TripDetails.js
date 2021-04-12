@@ -62,9 +62,6 @@ const TripDetails = () => {
         }
 
         const fetchEmail = await fetch(url, obj)
-        const emailRes = await fetchEmail.json()
-
-        console.log(emailRes)
     }
 
     // start trip
