@@ -1,23 +1,20 @@
-const searchReducer = (state = { origin: '', destination: '', map: false} , action) => {
+const searchReducer = (state = { origin: '', destination: '' } , action) => {
     switch(action.type) {
         case 'SET_ORIGIN':
             return {
                 ...state,
-                origin: action.origin,
-                map: false
+                origin: action.origin
             }
         case 'SET_DESTINATION':
             return {
                 ...state,        
-                destination: action.destination,
-                map: false
+                destination: action.destination
             }
         case 'RESET_SEARCH':
             return {
                 ...state,
                 origin: '',
-                destination: '',
-                map: true
+                destination: ''
             }
         default:
             return state

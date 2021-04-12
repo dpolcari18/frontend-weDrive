@@ -36,7 +36,6 @@ const Home = () => {
     const origin = useSelector(state => state.search.origin)
     const destination = useSelector(state => state.search.destination)
     const weatherPopup = useSelector(state => state.weather.popup)
-    const map = useSelector(state => state.search.map)
     
     // react-router-dom hooks
     const history = useHistory()
