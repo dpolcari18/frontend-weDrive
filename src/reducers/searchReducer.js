@@ -1,4 +1,4 @@
-const searchReducer = (state = { origin: '', destination: ''} , action) => {
+const searchReducer = (state = { origin: '', destination: '' } , action) => {
     switch(action.type) {
         case 'SET_ORIGIN':
             return {

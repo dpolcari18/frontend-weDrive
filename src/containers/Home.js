@@ -57,7 +57,7 @@ const Home = () => {
         const firstScript = document.createElement('script')
         firstScript.src = 'https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js'
         firstScript.async = true
-        // firstScript.onload = () => renderBlankMap()
+        firstScript.onload = () => renderBlankMap()
         document.head.appendChild(firstScript)
     
         // mount link for mapQuest css
@@ -75,6 +75,8 @@ const Home = () => {
     }, [])
     
     const renderBlankMap = () => {
+
+
         window.L.mapquest.key = API_KEY;
     
         let map = window.L.mapquest.map('map', {
@@ -273,23 +275,30 @@ const Home = () => {
         postTrip(route)
     }
 
+    // add route to map
     const loadMap = (start, end) => {
-
         
         window.L.mapquest.key = API_KEY;
-
-        let map = window.L.mapquest.map('map', {
-            center: [30.2672, -97.7431],
-            layers: window.L.mapquest.tileLayer('map'),
-            zoom: 12
-        });
 
         window.L.mapquest.directions().route({
             start: start,
             end: end
         });
-            
-        map.addControl(window.L.mapquest.control());
+    }
+    
+    // remove route from map
+    const removeRoute = () => {
+
+        document.getElementById('map').remove()
+
+        const newMap = document.createElement('div')
+            newMap.id = 'map'
+            newMap.style.width = '100%'
+            newMap.style.height = '60vh'
+
+        document.getElementById('map-container').appendChild(newMap)
+
+        renderBlankMap()
     }
 
     const searchRoute = (e) => {
@@ -301,7 +310,7 @@ const Home = () => {
         const end = destination
         
         // need to uncomment for demo!
-        // loadMap(start, end)
+        loadMap(start, end)
 
         findDirections(start, end)
         
@@ -320,7 +329,7 @@ const Home = () => {
                 </Row>
                 <Row>
                     <Col>
-                        <TripDetails />
+                        <TripDetails removeRoute={() => removeRoute()} />
                     </Col>
                     <Col>
                         <Map />

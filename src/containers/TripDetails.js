@@ -17,7 +17,7 @@ const TRIP_URL = 'http://localhost:3000/trips'
 const START_EMAIL_URL = 'http://localhost:3000/starttrip/'
 const END_EMAIL_URL = 'http://localhost:3000/endtrip/'
 
-const TripDetails = () => {
+const TripDetails = ({ removeRoute }) => {
 
     // redux hooks 
     const dispatch = useDispatch()
@@ -84,6 +84,9 @@ const TripDetails = () => {
 
         // send email confirming trip completed
         sendEmail((END_EMAIL_URL + tripDetails.tripId))
+
+        // remove route from map
+        removeRoute()
 
         // push trip details to state to display in trip log
         dispatch({ type: 'ADD_TRIP', trip: trip})
