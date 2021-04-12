@@ -275,6 +275,7 @@ const Home = () => {
         postTrip(route)
     }
 
+    // add route to map
     const loadMap = (start, end) => {
         
         window.L.mapquest.key = API_KEY;
@@ -283,6 +284,11 @@ const Home = () => {
             start: start,
             end: end
         });
+    }
+    
+    // remove route from map
+    const removeRoute = () => {
+        window.L.mapquest.directions().remove()
     }
 
     const searchRoute = (e) => {
@@ -313,7 +319,7 @@ const Home = () => {
                 </Row>
                 <Row>
                     <Col>
-                        <TripDetails />
+                        <TripDetails removeRoute={() => removeRoute()} />
                     </Col>
                     <Col>
                         <Map />
