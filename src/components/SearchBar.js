@@ -23,7 +23,6 @@ const SearchBar = ({ searchRoute }) => {
                 <Row>
                     <Col>
                         <Form.Group controlId="origin">
-                            {/* <Form.Label>Origin</Form.Label> */}
                             <Form.Control 
                                 type="text" 
                                 placeholder="Where are you coming from?"
@@ -34,7 +33,6 @@ const SearchBar = ({ searchRoute }) => {
                     </Col>
                     <Col>
                         <Form.Group controlId='destination'>
-                            {/* <Form.Label>Destination</Form.Label> */}
                             <Form.Control 
                                 type="text" 
                                 placeholder="Where are you going?" 

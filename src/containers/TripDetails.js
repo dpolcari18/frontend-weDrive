@@ -135,7 +135,7 @@ const TripDetails = () => {
             case 'segments':
                 return (
                     <>
-                        {segments.sort((a,b) => a.index_num - b.index_num).map(seg => <Row><Col><RouteComponent key={seg.id} segment={seg} /></Col></Row> )}
+                        {segments.sort((a,b) => a.index_num - b.index_num).map(seg => <Row key={seg.id} ><Col key={seg.id} ><RouteComponent key={seg.id} segment={seg} /></Col></Row> )}
                         <Button onClick={() => finishTrip()}>Complete Trip</Button>
                     </>
                 )

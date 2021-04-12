@@ -17,7 +17,7 @@ const MaintenanceReportList = () => {
     return (
         <Container>
             <h4>Maintenance Reports</h4>
-            {maintenanceReports.map(mainRep => <Row><MaintenanceComponent report={mainRep} /></Row>)}
+            {maintenanceReports.map(mainRep => <Row key={mainRep.id}><MaintenanceComponent key={mainRep.id} report={mainRep} /></Row>)}
         </Container>
     )
 }
