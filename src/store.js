@@ -12,6 +12,7 @@ import tripDetailsReducer from './reducers/tripDetailsReducer'
 import locationsReducer from './reducers/locationsReducer'
 import segmentsReducer from './reducers/segmentsReducer'
 import weatherReducer from './reducers/weatherReducer'
+import popupReducer from './reducers/popupReducer'
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
     locations: locationsReducer,
     segments: segmentsReducer,
     weather: weatherReducer,
-    loginSignUp: loginSignUpReducer
+    loginSignUp: loginSignUpReducer,
+    popup: popupReducer
 })
 
 const store = createStore(

@@ -35,7 +35,8 @@ const Home = () => {
     const loggedIn = useSelector(state => state.loginSignUp.loggedIn)
     const origin = useSelector(state => state.search.origin)
     const destination = useSelector(state => state.search.destination)
-    const weatherPopup = useSelector(state => state.weather.popup)
+    const weatherPopup = useSelector(state => state.popup.weather)
+    const checkListPopup = useSelector(state => state.popup.checkList)
     
     // react-router-dom hooks
     const history = useHistory()
@@ -338,6 +339,7 @@ const Home = () => {
             </Container>
             <Container>
                 { weatherPopup ? <WeatherPopUp /> : null }
+                {/* { checkListPopup ? <CheckListPopup /> : null} */}
             </Container>
         </div>
     )

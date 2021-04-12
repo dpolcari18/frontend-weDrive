@@ -72,7 +72,7 @@ const TripDetails = ({ removeRoute }) => {
         // send email notification on start trip
         sendEmail((START_EMAIL_URL + tripDetails.tripId))
 
-        dispatch({ type: 'OPEN_POPUP' })
+        dispatch({ type: 'OPEN_WEATHER_POPUP' })
 
         dispatch({ type: 'START_TRIP' })
     }

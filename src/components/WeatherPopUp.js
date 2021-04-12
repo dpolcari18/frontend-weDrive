@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 
 const WeatherPopUp = () => {
 
@@ -88,6 +89,11 @@ const WeatherPopUp = () => {
                             <h5>Please plan accordingly and drive safely!</h5>
                         </Col>
                     </Row>
+                    <Row>
+                        <Col>
+                            <Button onClick={() => dispatch({ type: 'CLOSE_WEATHER_POPUP' })}>Continue</Button>
+                        </Col>
+                    </Row>
                 </Container>
             )
     
@@ -141,6 +147,11 @@ const WeatherPopUp = () => {
                             <h5>Please plan accordingly and drive safely!</h5>
                         </Col>
                     </Row>
+                    <Row>
+                        <Col>
+                        <Button onClick={() => dispatch({ type: 'CLOSE_WEATHER_POPUP' })}>Continue</Button>
+                        </Col>
+                    </Row>
                 </Container>
             )
         }   
@@ -149,7 +160,6 @@ const WeatherPopUp = () => {
     return (
         <div className="popup-box">
             <div className="box">
-                <span className="close-icon" onClick={() => dispatch({ type: 'CLOSE_POPUP' })}>x</span>
                 <Container>
                     <Row>
                         {displayWeather()}
