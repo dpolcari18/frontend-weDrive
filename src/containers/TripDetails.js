@@ -14,6 +14,8 @@ import Button from 'react-bootstrap/Button'
 
 // endpoints
 const TRIP_URL = 'http://localhost:3000/trips'
+const START_EMAIL_URL = 'http://localhost:3000/starttrip/'
+const END_EMAIL_URL = 'http://localhost:3000/endtrip/'
 
 const TripDetails = () => {
 
@@ -24,7 +26,6 @@ const TripDetails = () => {
     const tripDetails = useSelector(state => state.tripDetails)
 
     // update trip status
-
     const updateStatus = async (status) => {
         const authKey = localStorage.getItem('auth_key')
 
@@ -48,10 +49,31 @@ const TripDetails = () => {
         if (status === 'Finished') { return tripRes.trip}
     }
     
+    // email emergency contact
+    const sendEmail = async (url) => {
+        const authKey = localStorage.getItem('auth_key')
+
+        const obj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'GET'
+        }
+
+        const fetchEmail = await fetch(url, obj)
+        const emailRes = await fetchEmail.json()
+
+        console.log(emailRes)
+    }
+
     // start trip
     const startTrip = () => {
 
         updateStatus('Started')
+
+        // send email notification on start trip
+        sendEmail((START_EMAIL_URL + tripDetails.tripId))
 
         dispatch({ type: 'OPEN_POPUP' })
 
@@ -62,6 +84,9 @@ const TripDetails = () => {
     const finishTrip = async () => {
 
         const trip = await updateStatus('Finished')
+
+        // send email confirming trip completed
+        sendEmail((END_EMAIL_URL + tripDetails.tripId))
 
         // push trip details to state to display in trip log
         dispatch({ type: 'ADD_TRIP', trip: trip})
