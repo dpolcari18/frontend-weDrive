@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Map = () => {
+const MapDirections = () => {
 
     return (
         <>
@@ -10,4 +10,4 @@ const Map = () => {
     )
 }
 
-export default Map
+export default MapDirections

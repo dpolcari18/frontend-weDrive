@@ -36,6 +36,7 @@ const Home = () => {
     const origin = useSelector(state => state.search.origin)
     const destination = useSelector(state => state.search.destination)
     const weatherPopup = useSelector(state => state.weather.popup)
+    const map = useSelector(state => state.search.map)
     
     // react-router-dom hooks
     const history = useHistory()
@@ -57,7 +58,7 @@ const Home = () => {
         const firstScript = document.createElement('script')
         firstScript.src = 'https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js'
         firstScript.async = true
-        // firstScript.onload = () => renderBlankMap()
+        firstScript.onload = () => renderBlankMap()
         document.head.appendChild(firstScript)
     
         // mount link for mapQuest css
@@ -75,6 +76,8 @@ const Home = () => {
     }, [])
     
     const renderBlankMap = () => {
+
+
         window.L.mapquest.key = API_KEY;
     
         let map = window.L.mapquest.map('map', {
@@ -274,22 +277,13 @@ const Home = () => {
     }
 
     const loadMap = (start, end) => {
-
         
         window.L.mapquest.key = API_KEY;
-
-        let map = window.L.mapquest.map('map', {
-            center: [30.2672, -97.7431],
-            layers: window.L.mapquest.tileLayer('map'),
-            zoom: 12
-        });
 
         window.L.mapquest.directions().route({
             start: start,
             end: end
         });
-            
-        map.addControl(window.L.mapquest.control());
     }
 
     const searchRoute = (e) => {
@@ -301,7 +295,7 @@ const Home = () => {
         const end = destination
         
         // need to uncomment for demo!
-        // loadMap(start, end)
+        loadMap(start, end)
 
         findDirections(start, end)
         
