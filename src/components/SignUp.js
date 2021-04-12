@@ -7,6 +7,13 @@ import { useSelector, useDispatch } from 'react-redux'
 // Containers
 import About from './About'
 
+// react-bootstrap
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+
 // Endpoints
 const SIGN_UP_URL = 'http://localhost:3000/users'
 
@@ -62,34 +69,40 @@ const SignUp = ({ history }) => {
     }
     
     return (
-        <div>
-            <About />
-            <h3>Sign Up</h3>
-            <div>
-                <form onSubmit={(e) => handleSubmit(e)}>
-                    <div>
-                        <input type='text' name='firstName' placeholder='* First Name' required value={firstName} onChange={(e) => setFirstName(e.target.value)}></input>
-                    </div>
-                    <div>
-                        <input type='text' name='lastName' placeholder='* Last Name' required value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
-                    </div>
-                    <div>
-                        <input type='text' name='phoneNumber' placeholder='* Phone Number' required value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}></input>
-                    </div>
-                    <div>
-                        <input type='email' name='email' placeholder='* Email' required value={email} onChange={(e) => setEmail(e.target.value)}></input>
-                    </div>
-                    <div>
-                        <input type='password' name='password' placeholder='* Password' required value={password} onChange={(e) => setPassword(e.target.value)}></input>
-                    </div>
-                    <div>
-                        <button type='submit'>Sign Up</button>
-                    </div>
-                    <div>* Mandatory Fields</div>
-                    { showError ? <ul>{errors.map(msg => <li key={errors.indexOf(msg)}>{msg}</li>)}</ul> : null}
-                </form>
-            </div>
-        </div>
+        <Container>
+            <Row>
+                <Col>
+                    <About />
+                </Col>
+                <Col>
+                    <h3>Sign Up</h3>                    
+                    <Form onSubmit={(e) => handleSubmit(e)}>
+                        <Form.Group>
+                            <Form.Control type='text' name='firstName' placeholder='* First Name' required value={firstName} onChange={(e) => setFirstName(e.target.value)}></Form.Control>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Control type='text' name='lastName' placeholder='* Last Name' required value={lastName} onChange={(e) => setLastName(e.target.value)}></Form.Control>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Control type='text' name='phoneNumber' placeholder='* Phone Number' required value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}></Form.Control>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Control type='email' name='email' placeholder='* Email' required value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Control type='password' name='password' placeholder='* Password' required value={password} onChange={(e) => setPassword(e.target.value)}></Form.Control>
+                        </Form.Group>
+                        <Row>
+                            <Col>
+                                <Button variant='outline-primary' type='submit'>Sign Up</Button>
+                            </Col>
+                        </Row>
+                        <div>* Mandatory Fields</div>
+                        { showError ? <ul>{errors.map(msg => <li key={errors.indexOf(msg)}>{msg}</li>)}</ul> : null}
+                    </Form>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

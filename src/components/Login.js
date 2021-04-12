@@ -5,6 +5,13 @@ import { Link } from 'react-router-dom'
 // Redux
 import { useDispatch } from 'react-redux'
 
+// react-bootstrap
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+
 // Endpoints
 const LOGIN_URL = 'http://localhost:3000/sessions'
 
@@ -20,7 +27,7 @@ const Login = ({ history }) => {
     // send fetch to rails api to create session
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+        
         const user = {
             user: {
                 email: email,
@@ -61,25 +68,27 @@ const Login = ({ history }) => {
     }
 
     return (
-        <div>
+        <Container>
             <h3>LOGIN</h3>
-            <div>
-                <form onSubmit={(e) => handleSubmit(e)}>
-                    <div>
-                        <input type='email' name='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
-                    </div>
-                    <div>
-                        <input type='password' name='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
-                    </div>
-                    <div>
-                        <button>Login</button>
-                    </div>
-                </form>
-            </div>
-            <div>
-               Not a user? <Link to='/signup'>Sign Up</ Link>
-            </div>
-        </div>
+            <Form onSubmit={(e) => handleSubmit(e)}>
+                <Form.Group>
+                    <Form.Control type='email' name='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control type='password' name='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}></Form.Control>
+                </Form.Group>
+                <Row>
+                    <Col>
+                        <Button variant='outline-primary' type='submit'>Login</Button>
+                    </Col>
+                </Row>
+            </Form>
+            <Row>
+                <Col>
+                    Not a user? <Link to='/signup'>Sign Up</ Link>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
