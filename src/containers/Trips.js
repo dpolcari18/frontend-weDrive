@@ -32,13 +32,13 @@ const Trips = () => {
             history.push('/')
         }
     })
-
+    // debugger
     return(
         <Container>
         <h1>Trips</h1>
             <Row>
                 <Col>
-                    {trips.map(trip => <TripComponents 
+                    {trips.sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at)).map(trip => <TripComponents 
                                             key={trip.id}
                                             trip={trip}
                                             start={locations.filter(loc => trip.id === loc.trip_id && loc.start_end === 'Start')[0]}

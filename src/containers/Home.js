@@ -26,8 +26,7 @@ const LOCATION_URL = 'http://localhost:3000/locations'
 const SEGMENT_URL = 'http://localhost:3000/segments'
 
 // API KEY
-// const API_KEY = process.env.REACT_APP_MAP_API
-const API_KEY = 'jGOGNEMHEi4MNjU7LSSVTTYOoozrHXRW'
+const API_KEY = process.env.REACT_APP_MAP_API
 
 const Home = () => {
     
