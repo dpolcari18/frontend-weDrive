@@ -34,10 +34,10 @@ const NavBar = ({ history }) => {
                 <Navbar bg="light" variant="light" fixed='top'>
                     <Navbar.Brand><Link to='/home'><img src={Logo} alt='weDrive logo' /></ Link></Navbar.Brand>
                     <Nav className="mr-auto">
-                        <Nav.Link to='/home'>Home</Nav.Link>
-                        <Nav.Link to='/profile'>Profile</Nav.Link>
-                        <Nav.Link to='trips'>Trips</Nav.Link>
-                        <Nav.Link to='vehicles'>Vehicles</Nav.Link>
+                        <Nav.Link href='/home'>Home</Nav.Link>
+                        <Nav.Link href='/profile'>Profile</Nav.Link>
+                        <Nav.Link href='trips'>Trips</Nav.Link>
+                        <Nav.Link href='vehicles'>Vehicles</Nav.Link>
                         <Nav.Link onClick={() => handleLogout()}>Logout</Nav.Link>
                     </Nav>
                 </Navbar>
