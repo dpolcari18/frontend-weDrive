@@ -48,7 +48,11 @@ const Profile = () => {
             </Row>
             <Row>
                 <Col>
+                </Col>
+                <Col className='col-md-9'>
                     <User />
+                </Col>
+                <Col>
                 </Col>
             </Row>
             <Row>

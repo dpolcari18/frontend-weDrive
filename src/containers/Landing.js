@@ -12,7 +12,7 @@ import Col from 'react-bootstrap/Col'
 const Landing = () => {
     return (
         <Container>
-            <Row>
+            <Row className='landing-row'>
                 <Col>
                     <About />
                 </Col>

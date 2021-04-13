@@ -80,3 +80,52 @@
 .nav-link {
   font-size: 30px;
 }
+
+.styled-container {
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 5px;
+  padding: 15px 5px 15px 5px;
+}
+
+#trip-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 100px;
+}
+
+#start-trip {
+  margin: 20px;
+}
+
+#end-trip {
+  margin: 20px;
+}
+
+.checklist {
+  text-align: left;
+}
+
+.route {
+  margin: 5px;
+}
+
+.trip {
+  margin: 15px;
+}
+
+.scrollable {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.scroll-hide::-webkit-scrollbar{
+  width: 0;
+  display: none;
+}

@@ -17,7 +17,7 @@ const User = () => {
     const phone = useSelector(state => state.user.phone)
 
     return (
-        <Container>
+        <Container className='styled-container'>
             <Row>
                 <Col>
                     <div>First Name: {firstName}</div>

@@ -75,7 +75,7 @@ const WeatherPopup = () => {
                                 <h4>Tires</h4>
                             </Col>
                         </Row>
-                        <Row>
+                        <Row className='checklist'>
                             <Col>
                                 <Form.Check type='checkbox'
                                             label={'Tire Pressure'} 
@@ -91,7 +91,7 @@ const WeatherPopup = () => {
                                     />
                             </Col>
                         </Row>
-                        <Row>
+                        <Row className='checklist'>
                             <Col>
                                 <Form.Check type='checkbox' 
                                             label={'Sidewall Bulges'}
@@ -107,7 +107,7 @@ const WeatherPopup = () => {
                                 <h4>Lights</h4>
                             </Col>
                         </Row>
-                        <Row>
+                        <Row className='checklist'>
                             <Col>
                                 <Form.Check type='checkbox'
                                             label={'Blinkers'} 
@@ -123,7 +123,7 @@ const WeatherPopup = () => {
                                     />
                             </Col>
                         </Row>
-                        <Row>
+                        <Row className='checklist'>
                             <Col>
                                 <Form.Check type='checkbox' 
                                             label={'High Beams'}
@@ -144,7 +144,7 @@ const WeatherPopup = () => {
                                 <h4>Exterior</h4>
                             </Col>
                         </Row>
-                        <Row>
+                        <Row className='checklist'>
                             <Col>
                                 <Form.Check type='checkbox'
                                             label={'Windshield Cracks'} 
@@ -160,7 +160,7 @@ const WeatherPopup = () => {
                                     />
                             </Col>
                         </Row>
-                        <Row>
+                        <Row className='checklist'>
                             <Col>
                                 <Form.Check type='checkbox' 
                                             label={'Windshield Wipers'}
@@ -176,7 +176,7 @@ const WeatherPopup = () => {
                                              />
                             </Col>
                         </Row>
-                        <Row>
+                        <Row className='checklist'>
                             <Col>
                                 <Form.Check type='checkbox' 
                                             label={'Last Oil Change'}
@@ -192,7 +192,7 @@ const WeatherPopup = () => {
                                              />
                             </Col>
                         </Row>
-                        <Row>
+                        <Row className='checklist'>
                             <Col>
                                 <Form.Check type='checkbox' 
                                             label={'Brake Pad Dust'}
@@ -208,7 +208,7 @@ const WeatherPopup = () => {
                                 <h4>Interior</h4>
                             </Col>
                         </Row>
-                        <Row>
+                        <Row className='checklist'>
                             <Col>
                                 <Form.Check type='checkbox'
                                             label={'Mirrors'} 
@@ -224,7 +224,7 @@ const WeatherPopup = () => {
                                     />
                             </Col>
                         </Row>
-                        <Row>
+                        <Row  className='checklist'>
                             <Col>
                                 <Form.Check type='checkbox' 
                                             label={'Shoulder Strap Height'}

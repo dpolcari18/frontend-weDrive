@@ -330,10 +330,10 @@ const Home = () => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col id='trip-col'>
                         <TripDetails removeRoute={() => removeRoute()} />
                     </Col>
-                    <Col>
+                    <Col id='map-column'>
                         <Map />
                     </Col>
                 </Row>

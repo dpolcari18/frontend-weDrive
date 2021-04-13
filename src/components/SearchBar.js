@@ -41,10 +41,12 @@ const SearchBar = ({ searchRoute }) => {
                             />
                         </Form.Group>
                     </Col>
-                    <Col>
-                        <Button variant="primary" type="submit">
-                            Search
-                        </Button>
+                    <Col sm={1}>
+                        <Form.Group>
+                            <Button variant="primary" type="submit">
+                                Search
+                            </Button>
+                        </Form.Group>
                     </Col>
                 </Row>
             </Form>

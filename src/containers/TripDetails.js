@@ -132,14 +132,18 @@ const TripDetails = ({ removeRoute }) => {
                                 Estimated Fuel Usage: {tripDetails.fuelUsage} gal
                             </Col>
                         </Row>
-                        <Button onClick={() => startTrip()}>Start Trip!</Button>
+                        <Row>
+                            <Col>
+                                <Button id='start-trip' onClick={() => startTrip()}>Start Trip!</Button>
+                            </Col>
+                        </Row>
                     </>
                 )
             case 'segments':
                 return (
                     <>
                         {segments.sort((a,b) => a.index_num - b.index_num).map(seg => <Row key={seg.id} ><Col key={seg.id} ><RouteComponent key={seg.id} segment={seg} /></Col></Row> )}
-                        <Button onClick={() => finishTrip()}>Complete Trip</Button>
+                        <Button id='end-trip' onClick={() => finishTrip()}>Complete Trip</Button>
                     </>
                 )
             default:

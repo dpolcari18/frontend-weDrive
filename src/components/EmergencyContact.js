@@ -8,21 +8,29 @@ import Col from 'react-bootstrap/Col'
 const EmergencyContact = ({ ice }) => {
 
     return (
-        <Container>
+        <Container className='styled-container'>
             <Row>
+                <Col xs={2}>
+                </Col>
                 <Col>
                     <div>First Name: {ice.first_name}</div>
                 </Col>
                 <Col>
                     <div>Last Name: {ice.last_name}</div>
                 </Col>
+                <Col xs={2}>
+                </Col>
             </Row>
             <Row>
+                <Col xs={2}>
+                </Col>
                 <Col>
                     <div>Email: {ice.email}</div>
                 </Col>
                 <Col>
                     <div>Phone Number: {ice.phone}</div>
+                </Col>
+                <Col xs={2}>
                 </Col>
             </Row>
         </Container>
