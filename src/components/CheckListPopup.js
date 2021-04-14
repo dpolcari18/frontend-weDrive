@@ -11,7 +11,11 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
 const WeatherPopup = () => {
+    
+    // redux hooks
+    const dispatch = useDispatch()
 
+    // local state
     const [interior, setInterior] = useState(false)
     const [exterior, setExterior] = useState(false)
     const [tires, setTires] = useState(false)
@@ -40,7 +44,6 @@ const WeatherPopup = () => {
     }, [interior, lights, exterior, tires])
 
 
-    const dispatch = useDispatch()
 
     const closeChecklist = () => {
         dispatch({ type: 'CLOSE_CHECKLIST_POPUP' })
@@ -61,7 +64,7 @@ const WeatherPopup = () => {
                                 <h4><Form.Check type='checkbox'
                                             label={'Tires'}
                                             check={tires}
-                                            onChange={() => setTires(true)}
+                                            onChange={() => setTires(!tires)}
                                 /></h4>
                             </Col>
                         </Row>
@@ -85,7 +88,7 @@ const WeatherPopup = () => {
                                 <h4><Form.Check type='checkbox'
                                                 label={'Lights'}
                                                 check={lights}
-                                                onChange={() => setLights(true)} /></h4>
+                                                onChange={() => setLights(!lights)} /></h4>
                             </Col>
                         </Row>
                         <Row className='checklist'>
@@ -109,7 +112,7 @@ const WeatherPopup = () => {
                                 <h4><Form.Check type='checkbox'
                                                 label={'Exterior'}
                                                 check={exterior}
-                                                onChange={() => setExterior(true)} /></h4>
+                                                onChange={() => setExterior(!exterior)} /></h4>
                             </Col>
                         </Row>
                         <Row className='checklist'>
@@ -148,7 +151,7 @@ const WeatherPopup = () => {
                                 <h4><Form.Check type='checkbox'
                                                 label={'Interior'}
                                                 check={interior}
-                                                onChange={() => setInterior(true)} /></h4>
+                                                onChange={() => setInterior(!interior)} /></h4>
                             </Col>
                         </Row>
                         <Row className='checklist'>

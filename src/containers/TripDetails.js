@@ -141,10 +141,10 @@ const TripDetails = ({ removeRoute }) => {
                 )
             case 'segments':
                 return (
-                    <>
+                    <Container className='scrollable'>
                         {segments.sort((a,b) => a.index_num - b.index_num).map(seg => <Row key={seg.id} ><Col key={seg.id} ><RouteComponent key={seg.id} segment={seg} /></Col></Row> )}
                         <Button id='end-trip' onClick={() => finishTrip()}>Complete Trip</Button>
-                    </>
+                    </Container>
                 )
             default:
                 return (
