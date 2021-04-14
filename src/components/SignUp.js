@@ -4,9 +4,6 @@ import { withRouter } from 'react-router'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 
-// Containers
-import About from './About'
-
 // react-bootstrap
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'

@@ -118,7 +118,7 @@ const TripDetails = ({ removeRoute }) => {
                         </Row>
                         <Row>
                             <Col>
-                                Estimated Travel Time: {Math.floor(tripDetails.time/3600)} hrs {Math.floor((tripDetails.time % 3600)/60)} min
+                                Estimated Time: {Math.floor(tripDetails.time/3600)} hrs {Math.floor((tripDetails.time % 3600)/60)} min
                             </Col>
                             <Col>
                                 With Traffic: {Math.floor(tripDetails.realTime/3600)} hrs {Math.floor((tripDetails.realTime % 3600)/60)} min

@@ -19,6 +19,14 @@ const WeatherPopup = () => {
         dispatch({ type: 'CLOSE_WEATHER_POPUP' })
         dispatch({ type: 'OPEN_CHECKLIST_POPUP' })
     }
+
+    const getTime = (unixTime) => {
+        const dt = new Date(unixTime*1000)
+        const hours = dt.getHours()
+        const minutes = "0" + dt.getMinutes()
+
+        return hours + ":" + minutes.substr(-2)
+    }
     
     const displayWeather = () => {
         if (weather.length === 2) {
@@ -35,10 +43,10 @@ const WeatherPopup = () => {
                     </Row>
                     <Row>
                         <Col>
-                            {originWeather.name}
+                            <h4>{originWeather.name}</h4>
                         </Col>
                         <Col>
-                            {destinationWeather.name}
+                            <h4>{destinationWeather.name}</h4>
                         </Col>
                     </Row>
                     <Row>
@@ -87,6 +95,22 @@ const WeatherPopup = () => {
                         </Col>
                         <Col>
                             1 hr Snowfall: {destinationWeather.snow ? destinationWeather.snow['1h']: 0 } inches
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            Sunrise: {getTime(originWeather.sys.sunrise)}
+                        </Col>
+                        <Col>
+                            Sunrise: {getTime(destinationWeather.sys.sunrise)}
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            Sunset: {getTime(originWeather.sys.sunset)}
+                        </Col>
+                        <Col>
+                            Sunset: {getTime(destinationWeather.sys.sunset)}
                         </Col>
                     </Row>
                     <Row>
@@ -145,6 +169,16 @@ const WeatherPopup = () => {
                     <Row>
                         <Col>
                             1 hr Snowfall: {originWeather.snow ? originWeather.snow['1h'] : 0 } inches
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            Sunrise: {getTime(originWeather.sys.sunrise)}
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            Sunset: {getTime(originWeather.sys.sunset)} 
                         </Col>
                     </Row>
                     <Row>
