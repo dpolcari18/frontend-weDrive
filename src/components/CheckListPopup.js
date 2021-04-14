@@ -12,31 +12,17 @@ import Form from 'react-bootstrap/Form'
 
 const WeatherPopup = () => {
 
-    // local state for popup
-    const [tirePressure, setTirePressure] = useState(false)
-    const [treadDepth, setTreadDepth] = useState(false)
-    const [tireBulges, setTireBulges] = useState(false)
-    const [blinkers, setBlinkers] = useState(false)
-    const [headlights, setHeadlights] = useState(false)
-    const [highBeams, setHighBeams] = useState(false)
-    const [brakeLights, setBrakeLights] = useState(false)
-    const [windshieldCracks, setWindshieldCracks] = useState(false)
-    const [dirtyWindows, setDirtyWindows] = useState(false)
-    const [wiperCondition, setWiperCondition] = useState(false)
-    const [drippingFluid, setDrippingFluid] = useState(false)
-    const [mirrors, setMirrors] = useState(false)
-    const [headRest, setHeadRest] = useState(false)
-    const [shoulderStrap, setShoulderStrap] = useState(false)
-    const [oilChange, setOilChange] = useState(false)
-    const [wiperFluid, setWiperFluid] = useState(false)
-    const [brakeDust, setBrakeDust] = useState(false)
+    const [interior, setInterior] = useState(false)
+    const [exterior, setExterior] = useState(false)
+    const [tires, setTires] = useState(false)
+    const [lights, setLights] = useState(false)
     // check if all list items are checked => if true enable button
     const [allChecked, setAllChecked] = useState(false)
 
     useEffect (() => {
         
         // create array of state variables to test against
-        const arr = [tirePressure, treadDepth, tireBulges, blinkers, headlights, highBeams, brakeLights, windshieldCracks, dirtyWindows, wiperCondition, drippingFluid, mirrors, headRest, shoulderStrap, oilChange, wiperFluid, brakeDust]
+        const arr = [interior, exterior, tires, lights]
 
         // check if variable is true
         const isTrue = (i) => i === true 
@@ -51,7 +37,7 @@ const WeatherPopup = () => {
             setAllChecked(false)
         }
 
-    }, [tirePressure, treadDepth, tireBulges, blinkers, headlights, highBeams, brakeLights, windshieldCracks, dirtyWindows, wiperCondition, drippingFluid, mirrors, headRest, shoulderStrap, oilChange, wiperFluid, brakeDust])
+    }, [interior, lights, exterior, tires])
 
 
     const dispatch = useDispatch()
@@ -66,173 +52,119 @@ const WeatherPopup = () => {
                 <Container>
                     <Row>
                         <Col>
-                            <h2>Pre-Journey Checklist</h2>
+                            <h2>Vehicle Inspection Checklist</h2>
                         </Col>
                     </Row>
                     <Form>
                         <Row>
                             <Col>
-                                <h4>Tires</h4>
+                                <h4><Form.Check type='checkbox'
+                                            label={'Tires'}
+                                            check={tires}
+                                            onChange={() => setTires(true)}
+                                /></h4>
                             </Col>
                         </Row>
                         <Row className='checklist'>
                             <Col>
-                                <Form.Check type='checkbox'
-                                            label={'Tire Pressure'} 
-                                            checked={tirePressure} 
-                                            onChange={() => setTirePressure(!tirePressure)} 
-                                    />
+                                Tire Pressure
                             </Col>
                             <Col>
-                                <Form.Check type='checkbox' 
-                                            label={'Tread Depth'}
-                                            checked={treadDepth}
-                                            onChange={() => setTreadDepth(!treadDepth)} 
-                                    />
+                                Tread Depth
                             </Col>
                         </Row>
                         <Row className='checklist'>
                             <Col>
-                                <Form.Check type='checkbox' 
-                                            label={'Sidewall Bulges'}
-                                            checked={tireBulges}
-                                            onChange={() => setTireBulges(!tireBulges)}
-                                             />
+                            Sidewall Bulges
                             </Col>
                             <Col>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <h4>Lights</h4>
+                                <h4><Form.Check type='checkbox'
+                                                label={'Lights'}
+                                                check={lights}
+                                                onChange={() => setLights(true)} /></h4>
                             </Col>
                         </Row>
                         <Row className='checklist'>
                             <Col>
-                                <Form.Check type='checkbox'
-                                            label={'Blinkers'} 
-                                            checked={blinkers} 
-                                            onChange={() => setBlinkers(!blinkers)} 
-                                    />
+                                Blinkers
                             </Col>
                             <Col>
-                                <Form.Check type='checkbox'
-                                            label={'Head Lights'} 
-                                            checked={headlights} 
-                                            onChange={() => setHeadlights(!headlights)} 
-                                    />
+                                Head Lights
                             </Col>
                         </Row>
                         <Row className='checklist'>
                             <Col>
-                                <Form.Check type='checkbox' 
-                                            label={'High Beams'}
-                                            checked={highBeams}
-                                            onChange={() => setHighBeams(!highBeams)} 
-                                    />
+                                High Beams
                             </Col>
                             <Col>
-                                <Form.Check type='checkbox' 
-                                            label={'Brake Lights'}
-                                            checked={brakeLights}
-                                            onChange={() => setBrakeLights(!brakeLights)}
-                                             />
+                                Brake Lights
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <h4>Exterior</h4>
+                                <h4><Form.Check type='checkbox'
+                                                label={'Exterior'}
+                                                check={exterior}
+                                                onChange={() => setExterior(true)} /></h4>
                             </Col>
                         </Row>
                         <Row className='checklist'>
                             <Col>
-                                <Form.Check type='checkbox'
-                                            label={'Windshield Cracks'} 
-                                            checked={windshieldCracks} 
-                                            onChange={() => setWindshieldCracks(!windshieldCracks)} 
-                                    />
+                                Windshield Cracks
                             </Col>
                             <Col>
-                                <Form.Check type='checkbox'
-                                            label={'Dirty Windows'} 
-                                            checked={dirtyWindows} 
-                                            onChange={() => setDirtyWindows(!dirtyWindows)} 
-                                    />
+                                Dirty Windows
                             </Col>
                         </Row>
                         <Row className='checklist'>
                             <Col>
-                                <Form.Check type='checkbox' 
-                                            label={'Windshield Wipers'}
-                                            checked={wiperCondition}
-                                            onChange={() => setWiperCondition(!wiperCondition)} 
-                                    />
+                                Windshield Wipers
                             </Col>
                             <Col>
-                                <Form.Check type='checkbox' 
-                                            label={'Fluid Leaks on Ground'}
-                                            checked={drippingFluid}
-                                            onChange={() => setDrippingFluid(!drippingFluid)}
-                                             />
+                                Fluid Leaks on Ground
                             </Col>
                         </Row>
                         <Row className='checklist'>
                             <Col>
-                                <Form.Check type='checkbox' 
-                                            label={'Last Oil Change'}
-                                            checked={oilChange}
-                                            onChange={() => setOilChange(!oilChange)} 
-                                    />
+                                Last Oil Change
                             </Col>
                             <Col>
-                                <Form.Check type='checkbox' 
-                                            label={'Wiper Fluid'}
-                                            checked={wiperFluid}
-                                            onChange={() => setWiperFluid(!wiperFluid)}
-                                             />
+                                Wiper Fluid
                             </Col>
                         </Row>
                         <Row className='checklist'>
                             <Col>
-                                <Form.Check type='checkbox' 
-                                            label={'Brake Pad Dust'}
-                                            checked={brakeDust}
-                                            onChange={() => setBrakeDust(!brakeDust)} 
-                                    />
+                                Brake Pad Dust
                             </Col>
                             <Col>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <h4>Interior</h4>
+                                <h4><Form.Check type='checkbox'
+                                                label={'Interior'}
+                                                check={interior}
+                                                onChange={() => setInterior(true)} /></h4>
                             </Col>
                         </Row>
                         <Row className='checklist'>
                             <Col>
-                                <Form.Check type='checkbox'
-                                            label={'Mirrors'} 
-                                            checked={mirrors} 
-                                            onChange={() => setMirrors(!mirrors)} 
-                                    />
+                                Mirrors
                             </Col>
                             <Col>
-                                <Form.Check type='checkbox' 
-                                            label={'Head Rest Position'}
-                                            checked={headRest}
-                                            onChange={() => setHeadRest(!headRest)} 
-                                    />
+                                Head Rest Position
                             </Col>
                         </Row>
                         <Row  className='checklist'>
                             <Col>
-                                <Form.Check type='checkbox' 
-                                            label={'Shoulder Strap Height'}
-                                            checked={shoulderStrap}
-                                            onChange={() => setShoulderStrap(!shoulderStrap)}
-                                             />
+                                Shoulder Strap Height
                             </Col>
                             <Col>
+                                Fuel Level
                             </Col>
                         </Row>
                     </Form>
