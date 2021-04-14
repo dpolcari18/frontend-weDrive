@@ -93,6 +93,12 @@
   justify-content: center;
 }
 
+#trip-comp-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .landing-row {
   display: flex;
   align-items: center;

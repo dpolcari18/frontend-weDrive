@@ -214,11 +214,12 @@ const Home = () => {
     }
 
     // 2. post trip to rails (status = not_started)
-    const postTrip = async (route) => {
+    const postTrip = async (route, mapUrl) => {
 
         const userId = localStorage.getItem('user_id')
         const authKey = localStorage.getItem('auth_key')
 
+        
         const tripInfo = {
             trip: {
                 user_id: userId,
@@ -226,10 +227,11 @@ const Home = () => {
                 real_time: route.route.realTime,
                 distance: route.route.distance,
                 has_tolls: route.route.hasTollRoad,
-                fuel_usage: route.route.fuelUsed
+                fuel_usage: route.route.fuelUsed,
+                map_url: mapUrl 
             }
         }
-
+        
         const postObj = {
             headers: {
                 'Content-Type': 'application/json',
@@ -238,26 +240,26 @@ const Home = () => {
             method: 'POST',
             body: JSON.stringify(tripInfo)
         }
-
+        
         const postTrip = await fetch(TRIP_URL, postObj)
         const tripRes = await postTrip.json()
-
+        
         // Post start and end locations to rails
         postLocation(tripRes.trip.id, route.route.locations[0], 'Start')
         postLocation(tripRes.trip.id, route.route.locations[1], 'End')
-
+        
         // Post each segment to rails
         route.route.legs[0].maneuvers.forEach(segment => postSegment(tripRes.trip.id, segment))
-
+        
         // Refetch trip with locations and segments
         fetchTrip(tripRes.trip.id)
     }
-
+    
     // 1. fetch trip information => Rails => MQ
     const findDirections = async (start, end) => {
-
+        
         const authKey = localStorage.getItem('auth_key')
-
+        
         const fetchObj = {
             headers: {
                 'Content-Type': 'application/json',
@@ -265,15 +267,18 @@ const Home = () => {
             },
             method: 'GET'
         }
-
+        
         const fetchRoute = await fetch(ROUTE_URL + '/' + start + '/' + end, fetchObj)
         const routeRes = await fetchRoute.json()
         
         // response from mapquest (contains all trip, location and segment information)
         const route = JSON.parse(routeRes.route)
-
+        
+        // map url for static map
+        const mapUrl = `https://www.mapquestapi.com/staticmap/v5/map?start=${start}&end=${end}&size=170,110@2x&key=${API_KEY}`
+        
         // post trip to rails
-        postTrip(route)
+        postTrip(route, mapUrl)
     }
 
     // add route to map

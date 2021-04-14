@@ -27,14 +27,16 @@ const TripComponents = ({ trip, start, end }) => {
                     </Card.Header>
                     <Card.Body>
                         <Row>
-                            <Col>
-                                <div>Travel Time: {Math.floor(trip.time/3600)} hrs {Math.floor((trip.time % 3600)/60)} min</div>
-                                <div>Travel Time with Traffic: {Math.floor(trip.real_time/3600)} hrs {Math.floor((trip.real_time % 3600)/60)} min</div>
-                                <div>Distance: {Math.floor(trip.distance*10)/10} miles</div>
-                                <div>Estimated Fuel Usage: {Math.round(trip.fuel_usage*100)/100} gal</div>
+                            <Col id='trip-comp-col'>
+                                <div>
+                                    <div>Travel Time: {Math.floor(trip.time/3600)} hrs {Math.floor((trip.time % 3600)/60)} min</div>
+                                    <div>Travel Time with Traffic: {Math.floor(trip.real_time/3600)} hrs {Math.floor((trip.real_time % 3600)/60)} min</div>
+                                    <div>Distance: {Math.floor(trip.distance*10)/10} miles</div>
+                                    <div>Estimated Fuel Usage: {Math.round(trip.fuel_usage*100)/100} gal</div>
+                                </div>
                             </Col>
                             <Col>
-                                <img alt='map'/>
+                                <img alt='map' src={trip.map_url}/>
                             </Col>
                         </Row>
                     </Card.Body>
