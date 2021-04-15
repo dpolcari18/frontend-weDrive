@@ -3,7 +3,8 @@ const userReducer = (state = {
     firstName: '',
     lastName: '',
     phone: '',
-    email: ''
+    email: '',
+    edit: false
 } , action) => {
     switch(action.type) {
         case 'SET_USER':
@@ -23,6 +24,31 @@ const userReducer = (state = {
                 lastName: '',
                 phone: '',
                 email: ''
+            }
+        case 'EDIT_USER':
+            return {
+                ...state,
+                edit: true
+            }
+        case 'SET_USER_FIRST':
+            return {
+                ...state,
+                firstName: action.firstName
+            }
+        case 'SET_USER_LAST':
+            return {
+                ...state,
+                lastName: action.lastName
+            }
+        case 'SET_USER_EMAIL':
+            return {
+                ...state,
+                email: action.email
+            }
+        case 'SET_USER_PHONE':
+            return {
+                ...state,
+                phone: action.phone
             }
         default:
             return state

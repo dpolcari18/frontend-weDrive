@@ -1,5 +1,6 @@
 const emergencyContactReducer = (state = {
-    emergencyContacts: []
+    emergencyContacts: [],
+    edit: false
 } , action) => {
     switch(action.type) {
         case 'SET_EMERGENCY_CONTACTS':
@@ -11,6 +12,11 @@ const emergencyContactReducer = (state = {
             return {
                 ...state,
                 emergencyContacts: []
+            }
+        case 'EDIT_EC':
+            return {
+                ...state,
+                edit: true
             }
         default:
             return state

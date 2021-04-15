@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 // Redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 // Containers
 import EmergencyContactList from './EmergencyContactList'
@@ -19,6 +19,7 @@ import { PencilSquare } from 'react-bootstrap-icons'
 const Profile = () => {
 
     // redux hooks
+    const dispatch = useDispatch()
     const loggedIn = useSelector(state => state.loginSignUp.loggedIn)
     const firstName = useSelector(state => state.user.firstName)
     const lastName = useSelector(state => state.user.lastName)
@@ -42,9 +43,9 @@ const Profile = () => {
 
     return(
         <Container>
-            <Row>
+             <Row>
                 <Col>
-                    <h3>{fullName}'s Profile <PencilSquare className='edit edit-icon' /></h3>
+                    <h3>User Information <PencilSquare className='edit edit-icon' onClick={() => dispatch({ type: 'EDIT_USER' })} /></h3>
                 </Col>
             </Row>
             <Row>

@@ -1,13 +1,12 @@
 import React from 'react'
 
 // redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 // Components
 import EmergencyContact from '../components/EmergencyContact'
 
 // react-bootstrap
-import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { PencilSquare } from 'react-bootstrap-icons'
@@ -15,13 +14,14 @@ import { PencilSquare } from 'react-bootstrap-icons'
 const EmergencyContactList = () => {
 
     // redux hooks
+    const dispatch = useDispatch()
     const emergencyContacts = useSelector(state => state.emergencyContact.emergencyContacts)
 
     return (
             <>
             <Row>
                 <Col>
-                    <h3>Emergency Contact List <PencilSquare className='edit edit-icon' /></h3>
+                    <h3>Emergency Contact List <PencilSquare className='edit edit-icon' onClick={() => dispatch({ type: 'EDIT_EC' })} /></h3>
                 </Col>
             </Row>
             <Row>
