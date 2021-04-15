@@ -153,3 +153,11 @@
 .edit-icon {
   align-self: end;
 }
+
+.logout {
+  justify-content: flex-end;
+}
+
+.logo {
+  justify-content: center;
+}

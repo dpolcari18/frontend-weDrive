@@ -6,8 +6,12 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 // React-Bootstrap
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import { BoxArrowRight } from 'react-bootstrap-icons'
 
 // Styling
 import Logo from '../images/horizontal_logo.png'
@@ -31,22 +35,42 @@ const NavBar = ({ history }) => {
     const checkLoggedIn = () => {
         if (loggedIn) {
             return (
-                <Navbar bg="light" variant="light" fixed='top'>
-                    <Navbar.Brand><Link to='/home'><img src={Logo} alt='weDrive logo' /></ Link></Navbar.Brand>
-                    <Nav className="mr-auto">
-                        <Nav.Link href='/home'>Home</Nav.Link>
-                        <Nav.Link href='/profile'>Profile</Nav.Link>
-                        <Nav.Link href='trips'>Trips</Nav.Link>
-                        <Nav.Link href='vehicles'>Vehicles</Nav.Link>
-                        <Nav.Link onClick={() => handleLogout()}>Logout</Nav.Link>
-                    </Nav>
-                </Navbar>
+                <Container>
+                    <Row>
+                        <Navbar bg="light" variant="light" fixed='top'>
+                            <Col>
+                                <Nav>
+                                    <Nav.Link href='/home'>Home</Nav.Link>
+                                    <Nav.Link href='/profile'>Profile</Nav.Link>
+                                    <Nav.Link href='trips'>Trips</Nav.Link>
+                                    <Nav.Link href='vehicles'>Vehicles</Nav.Link>
+                                </Nav>
+                            </Col>
+                            <Col>
+                                <Nav className='logo'>
+                                    <Navbar.Brand><Link to='/home'><img src={Logo} alt='weDrive logo' /></ Link></Navbar.Brand>
+                                </Nav>
+                            </Col>
+                            <Col>
+                                <Nav className='logout'>
+                                    <Nav.Link onClick={() => handleLogout()}>Logout <BoxArrowRight/></Nav.Link>
+                                </Nav>
+                            </Col>
+                        </Navbar>
+                    </Row>
+                </Container>
             ) 
         } else {
             return(
-                <Navbar bg="light" variant="light" fixed='top'>
-                    <Navbar.Brand><Link to='/home'><img src={Logo} alt='weDrive logo' /></ Link></Navbar.Brand>
-                </Navbar>
+                <Container>
+                    <Row>
+                        <Navbar className='logo' bg="light" variant="light" fixed='top'>
+                            <Col>
+                                <Navbar.Brand><Link to='/home'><img src={Logo} alt='weDrive logo' /></ Link></Navbar.Brand>
+                            </Col>
+                        </Navbar>
+                    </Row>
+                </Container>
             )
         }
     }

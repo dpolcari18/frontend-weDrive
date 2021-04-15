@@ -18,7 +18,7 @@ const EmergencyContactList = () => {
     const emergencyContacts = useSelector(state => state.emergencyContact.emergencyContacts)
 
     return (
-        <Container>
+            <>
             <Row>
                 <Col>
                     <h3>Emergency Contact List <PencilSquare className='edit edit-icon' /></h3>
@@ -33,7 +33,7 @@ const EmergencyContactList = () => {
                 <Col>
                 </Col>
             </Row>
-        </Container>
+        </>
     )
 }
 
