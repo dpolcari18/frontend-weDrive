@@ -14,6 +14,7 @@ import User from '../components/User'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { PencilSquare } from 'react-bootstrap-icons'
 
 const Profile = () => {
 
@@ -43,7 +44,7 @@ const Profile = () => {
         <Container>
             <Row>
                 <Col>
-                    <h1>{fullName}'s Profile</h1>
+                    <h3>{fullName}'s Profile <PencilSquare className='edit edit-icon' /></h3>
                 </Col>
             </Row>
             <Row>

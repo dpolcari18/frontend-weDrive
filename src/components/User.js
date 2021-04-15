@@ -20,18 +20,18 @@ const User = () => {
         <Container className='styled-container'>
             <Row>
                 <Col>
-                    <div>First Name: {firstName}</div>
+                    First Name: {firstName}
                 </Col>
                 <Col>
-                    <div>Last Name: {lastName}</div>
+                    Last Name: {lastName}
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <div>Email: {email}</div>
+                    Email: {email}
                 </Col>
                 <Col>
-                    <div>Phone Number: {phone}</div>
+                    Phone Number: {phone}
                 </Col>
             </Row>
         </Container>

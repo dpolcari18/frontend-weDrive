@@ -13,10 +13,10 @@ const EmergencyContact = ({ ice }) => {
                 <Col xs={2}>
                 </Col>
                 <Col>
-                    <div>First Name: {ice.first_name}</div>
+                    First Name: {ice.first_name}
                 </Col>
                 <Col>
-                    <div>Last Name: {ice.last_name}</div>
+                    Last Name: {ice.last_name}
                 </Col>
                 <Col xs={2}>
                 </Col>
@@ -25,10 +25,10 @@ const EmergencyContact = ({ ice }) => {
                 <Col xs={2}>
                 </Col>
                 <Col>
-                    <div>Email: {ice.email}</div>
+                    Email: {ice.email}
                 </Col>
                 <Col>
-                    <div>Phone Number: {ice.phone}</div>
+                    Phone Number: {ice.phone}
                 </Col>
                 <Col xs={2}>
                 </Col>

@@ -145,3 +145,11 @@
   background-color: #858585;
   border-radius: 5px;
 }
+
+.edit {
+  cursor: pointer;
+}
+
+.edit-icon {
+  align-self: end;
+}

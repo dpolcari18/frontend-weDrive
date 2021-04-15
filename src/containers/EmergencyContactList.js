@@ -10,6 +10,7 @@ import EmergencyContact from '../components/EmergencyContact'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { PencilSquare } from 'react-bootstrap-icons'
 
 const EmergencyContactList = () => {
 
@@ -20,7 +21,7 @@ const EmergencyContactList = () => {
         <Container>
             <Row>
                 <Col>
-                    <h4>Emergency Contact List</h4>
+                    <h3>Emergency Contact List <PencilSquare className='edit edit-icon' /></h3>
                 </Col>
             </Row>
             <Row>
