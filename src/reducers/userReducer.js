@@ -30,6 +30,11 @@ const userReducer = (state = {
                 ...state,
                 edit: true
             }
+        case 'SAVE_USER':
+            return {
+                ...state,
+                edit: false
+            }
         case 'SET_USER_FIRST':
             return {
                 ...state,

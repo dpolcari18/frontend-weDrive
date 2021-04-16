@@ -1,4 +1,5 @@
 const emergencyContactReducer = (state = {
+    id: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -9,6 +10,7 @@ const emergencyContactReducer = (state = {
         case 'SET_EMERGENCY_CONTACTS':
             return {
                 ...state,
+                id: action.emergencyContacts[0].id,
                 firstName: action.emergencyContacts[0].first_name,
                 lastName: action.emergencyContacts[0].last_name,
                 email: action.emergencyContacts[0].email,
@@ -17,6 +19,7 @@ const emergencyContactReducer = (state = {
         case 'RESET':
             return {
                 ...state,
+                id: '',
                 firstName: '',
                 lastName: '',
                 email: '',
@@ -26,6 +29,11 @@ const emergencyContactReducer = (state = {
             return {
                 ...state,
                 edit: true
+            }
+        case 'SAVE_EC':
+            return {
+                ...state,
+                edit: false
             }
         case 'SET_EC_FIRST':
             return {
