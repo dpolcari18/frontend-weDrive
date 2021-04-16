@@ -15,7 +15,6 @@ const EmergencyContactList = () => {
 
     // redux hooks
     const dispatch = useDispatch()
-    const emergencyContacts = useSelector(state => state.emergencyContact.emergencyContacts)
 
     return (
             <>
@@ -28,7 +27,7 @@ const EmergencyContactList = () => {
                 <Col>
                 </Col>
                 <Col md={9}>
-                    {emergencyContacts.map(ice => <EmergencyContact key={ice.id} ice={ice} /> )}
+                    <EmergencyContact />
                 </Col>
                 <Col>
                 </Col>
