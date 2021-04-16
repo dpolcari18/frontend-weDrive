@@ -27,6 +27,26 @@ const emergencyContactReducer = (state = {
                 ...state,
                 edit: true
             }
+        case 'SET_EC_FIRST':
+            return {
+                ...state,
+                firstName: action.firstName
+            }
+        case 'SET_EC_LAST':
+            return {
+                ...state,
+                lastName: action.lastName
+            }
+        case 'SET_EC_EMAIL':
+            return {
+                ...state,
+                email: action.email
+            }
+        case 'SET_EC_PHONE':
+            return {
+                ...state,
+                phone: action.phone
+            }
         default:
             return state
     }

@@ -25,18 +25,18 @@ const EmergencyContact = () => {
                 <Form>
                     <Row>
                         <Col>
-                            <Form.Control value={firstName} placeholder='First Name' onChange={(e) => dispatch({ type: 'SET_USER_FIRST', firstName: e.target.value }) } />
+                            <Form.Control value={firstName} placeholder='First Name' onChange={(e) => dispatch({ type: 'SET_EC_FIRST', firstName: e.target.value }) } />
                         </Col>
                         <Col>
-                            <Form.Control value={lastName} placeholder='Last Name' onChange={(e) => dispatch({ type: 'SET_USER_LAST', lastName: e.target.value }) } />
+                            <Form.Control value={lastName} placeholder='Last Name' onChange={(e) => dispatch({ type: 'SET_EC_LAST', lastName: e.target.value }) } />
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <Form.Control value={email} placeholder='Email' onChange={(e) => dispatch({ type: 'SET_USER_EMAIL', email: e.target.value }) } />
+                            <Form.Control value={email} placeholder='Email' onChange={(e) => dispatch({ type: 'SET_EC_EMAIL', email: e.target.value }) } />
                         </Col>
                         <Col>
-                            <Form.Control value={phone} placeholder='Phone Number' onChange={(e) => dispatch({ type: 'SET_USER_PHONE', phone: e.target.value }) } />
+                            <Form.Control value={phone} placeholder='Phone Number' onChange={(e) => dispatch({ type: 'SET_EC_PHONE', phone: e.target.value }) } />
                         </Col>
                     </Row>   
                 </Form>
