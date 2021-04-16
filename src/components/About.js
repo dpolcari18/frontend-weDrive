@@ -7,7 +7,7 @@ const About = () => {
             <p>Driving is the most <strong>dangerous</strong> thing most people do on a daily basis.</p> 
             <p> At weDrive we try to <strong>mitigate</strong> that risk by providing the information necessary to make <strong>smart decisions</strong>.</p>
             <h4>Information Provided</h4>
-            <ul style={{'list-style': 'none'}}>
+            <ul style={{'listStyle': 'none'}}>
                 <li>Directions</li>
                 <li>Traffic Conditions</li>
                 <li>Weather Conditions</li>

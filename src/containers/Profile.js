@@ -21,11 +21,6 @@ const Profile = () => {
     // redux hooks
     const dispatch = useDispatch()
     const loggedIn = useSelector(state => state.loginSignUp.loggedIn)
-    const firstName = useSelector(state => state.user.firstName)
-    const lastName = useSelector(state => state.user.lastName)
-
-    // combine first and last names
-    const fullName = firstName.concat(' ', lastName)
     
     // react-router-dom hooks
     const history = useHistory()

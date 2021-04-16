@@ -27,7 +27,6 @@ const EmergencyContact = () => {
         e.preventDefault()
         
         const authKey = localStorage.getItem('auth_key')
-        const userId = localStorage.getItem('user_id')
 
         const emergencyContact = {
             emergency_contact: {
