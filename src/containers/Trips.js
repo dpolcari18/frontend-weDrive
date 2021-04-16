@@ -35,7 +35,7 @@ const Trips = () => {
     // debugger
     return(
         <Container>
-        <h1>Trips</h1>
+        <h1>Past Trips</h1>
             <Row>
                 <Col>
                     {trips.sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at)).map(trip => <TripComponents 

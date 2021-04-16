@@ -38,7 +38,7 @@ const Profile = () => {
 
     return(
         <Container>
-             <Row>
+             <Row className='profile-row'>
                 <Col>
                     <h3>User Information <PencilSquare className='edit edit-icon' onClick={() => dispatch({ type: 'EDIT_USER' })} /></h3>
                 </Col>
@@ -52,7 +52,7 @@ const Profile = () => {
                 <Col>
                 </Col>
             </Row>
-            <Row>
+            <Row className='profile-row'>
                 <Col>
                     <EmergencyContactList />
                 </Col>
