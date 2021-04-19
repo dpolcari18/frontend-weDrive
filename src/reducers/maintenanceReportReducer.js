@@ -22,9 +22,19 @@ const maintenanceReportReducer = (state = {
                 addForm: false
             }
         case 'ADD_MAIN_REPORT':
+            let newReports = []
+
+            if (state.filter === action.maintenanceReport.description) {
+                newReports = [...state.filteredReports, action.maintenanceReport.id]
+            } else if (state.filter === 'All') {
+                newReports = [...state.filteredReports, action.maintenanceReport.id]
+            } else {
+                newReports = state.filteredReports
+            }
             return {
                 ...state,
-                maintenanceReports: [...state.maintenanceReports, action.maintenanceReport]
+                maintenanceReports: [...state.maintenanceReports, action.maintenanceReport],
+                filteredReports: newReports
             }
         case 'SET_REPORT_FILTER':
             let newlyFilteredReports = []
