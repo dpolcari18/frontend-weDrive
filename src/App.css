@@ -170,3 +170,13 @@
 .logo {
   justify-content: center;
 }
+
+.vehicle-list-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#vehicle-row {
+  padding-bottom: 20px;
+}

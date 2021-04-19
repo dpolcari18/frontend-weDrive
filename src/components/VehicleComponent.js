@@ -1,30 +1,19 @@
 import React from 'react'
 
 // react-bootstrap
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
 
 const VehicleComponent = ({ car }) => {
     return (
-        <Container>
-            <Row>
-                <Col>
-                    Make: {car.make}
-                </Col>
-                <Col>
-                    Model: {car.model}
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    Year: {car.year}
-                </Col>
-                <Col>
-                    Mileage: {car.mileage}
-                </Col>
-            </Row>
-        </Container>
+        <Card style={{ width: '18rem' }}>
+            <Card.Body>
+                <Card.Title>{car.make} - {car.model}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">{car.year}</Card.Subtitle>
+                <Card.Text>
+                {car.mileage} miles
+                </Card.Text>
+            </Card.Body>
+        </Card>
     )
 }
 

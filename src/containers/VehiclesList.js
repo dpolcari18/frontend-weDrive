@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 // Components
 import VehicleComponent from '../components/VehicleComponent'
@@ -9,16 +9,23 @@ import VehicleComponent from '../components/VehicleComponent'
 // react-bootstrap
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import { PlusCircle } from 'react-bootstrap-icons'
 
 const VehiclesList = () => {
 
     // redux hooks
+    const dispatch = useDispatch()
     const vehicles = useSelector(state => state.vehicle.vehicles)
 
     return (
         <Container>
-            <h4>Vehicles</h4>
-            {vehicles.map(car => <Row key={car.id}><VehicleComponent key={car.id} car={car} /></Row> )}
+            <Col>
+                <h4>Vehicles <PlusCircle className='edit' onClick={() => dispatch({ type: 'OPEN_ADD_VEHICLE_FORM' })} /></h4>
+                <Row>
+                    {vehicles ? vehicles.map(car => <Col key={car.id} className='vehicle-list-col'><VehicleComponent key={car.id} car={car} /></Col> ) : <h3>Add Vehicle</h3>}                    
+                </Row>
+            </Col>
         </Container>
     )
 }

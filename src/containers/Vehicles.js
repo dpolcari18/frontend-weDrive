@@ -8,6 +8,9 @@ import { useSelector } from 'react-redux'
 import VehiclesList from './VehiclesList'
 import MaintenanceReportList from './MaintenanceReportList'
 
+// Components
+import AddVehiclePopup from '../components/AddVehiclePopup'
+
 // react-bootstrap
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -17,6 +20,7 @@ const Vehicles = () => {
     
     // redux hooks
     const loggedIn = useSelector(state => state.loginSignUp.loggedIn)
+    const addVehiclePopup = useSelector(state => state.vehicle.addForm)
     
     // react-router-dom hooks
     const history = useHistory()
@@ -33,17 +37,24 @@ const Vehicles = () => {
     })
 
     return(
-        <Container>
-            <h1>Vehicle Maintenance</h1>
-            <Row>
-                <Col>
-                    <VehiclesList />
-                </Col>
-                <Col>
-                    <MaintenanceReportList />
-                </Col>
-            </Row>
-        </Container>
+        <>
+            <Container>
+                <h1>Vehicle Maintenance Tracker</h1>
+                <Row id='vehicle-row'>
+                    <Col>
+                        <VehiclesList />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <MaintenanceReportList />
+                    </Col>
+                </Row>
+            </Container>
+            <Container>
+                {addVehiclePopup ?  <AddVehiclePopup/> : null } 
+            </Container>
+        </>
     )
 }
 
