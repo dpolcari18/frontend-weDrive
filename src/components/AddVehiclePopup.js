@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 
+// Redux
+import { useDispatch } from 'react-redux'
+
 // react-bootstrap
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+
+// endpoints
+const VEHICLE_URL = 'http://localhost:3000/vehicles/'
 
 const AddVehiclePopup = () => {
 
@@ -12,9 +18,44 @@ const AddVehiclePopup = () => {
     const [year, setYear] = useState('')
     const [mileage, setMileage] = useState('')
 
-    const handleSubmit = (e) => {
+    // redux hooks
+    const dispatch = useDispatch()
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('add vehicle')
+
+        const userId = localStorage.getItem('user_id')
+        const authKey = localStorage.getItem('auth_key')
+
+        const vehicleObj = {
+            vehicle: {
+                user_id: userId,
+                make: make,
+                model: model,
+                year: year,
+                mileage: mileage
+            }
+        }
+
+        const postObj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'POST',
+            body: JSON.stringify(vehicleObj)
+        }
+
+        const postVeh = await fetch(VEHICLE_URL, postObj)
+
+        const vehRes = await postVeh.json()
+        console.log(vehRes)
+        debugger
+        // add vehicle to state
+        dispatch ({ type: 'ADD_VEHICLE', vehicle: vehRes.vehicle})
+        debugger
+        // close popup
+        dispatch({ type: 'CLOSE_ADD_VEHICLE_FORM' })
     }
 
     return (

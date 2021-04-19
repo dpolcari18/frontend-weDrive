@@ -18,6 +18,11 @@ const vehicleReducer = (state = {
                 ...state,
                 addForm: false
             }
+        case 'ADD_VEHICLE':
+            return {
+                ...state,
+                vehicles: [...state.vehicles, action.vehicle]
+            }
         case 'RESET':
             return {
                 ...state,
