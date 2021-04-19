@@ -24,7 +24,7 @@ const MaintenanceComponent = ({ report }) => {
             </Row>
             <Row>
                 <Col>
-                    Maintenance On: {converDate()}
+                    Maintenance On: {converDate()} @ {report.mileage} miles
                 </Col>
                 <Col>
                     Notes: {report.notes}

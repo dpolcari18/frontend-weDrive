@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Redux
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 // Components
 import MaintenanceComponent from '../components/MaintenanceComponent'
@@ -9,14 +9,17 @@ import MaintenanceComponent from '../components/MaintenanceComponent'
 // react-bootstrap
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import { PlusCircle } from 'react-bootstrap-icons'
 
 const MaintenanceReportList = () => {
 
+    // redux hooks
+    const dispatch = useDispatch()
     const maintenanceReports = useSelector(state => state.maintenanceReport.maintenanceReports)
 
     return (
         <Container>
-            <h4>Maintenance Reports</h4>
+            <h4>Maintenance Reports <PlusCircle className='edit' onClick={() => dispatch({ type: 'ADD_MAIN_REPORT' })} /></h4>
             {maintenanceReports.map(mainRep => <Row key={mainRep.id}><MaintenanceComponent key={mainRep.id} report={mainRep} /></Row>)}
         </Container>
     )

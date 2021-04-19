@@ -10,6 +10,7 @@ import MaintenanceReportList from './MaintenanceReportList'
 
 // Components
 import AddVehiclePopup from '../components/AddVehiclePopup'
+import AddMaintenanceReportPopup from '../components/AddMaintenanceReportPopup'
 
 // react-bootstrap
 import Container from 'react-bootstrap/Container'
@@ -21,6 +22,7 @@ const Vehicles = () => {
     // redux hooks
     const loggedIn = useSelector(state => state.loginSignUp.loggedIn)
     const addVehiclePopup = useSelector(state => state.vehicle.addForm)
+    const addMainReportPopup = useSelector(state => state.maintenanceReport.addForm)
     
     // react-router-dom hooks
     const history = useHistory()
@@ -52,7 +54,8 @@ const Vehicles = () => {
                 </Row>
             </Container>
             <Container>
-                {addVehiclePopup ?  <AddVehiclePopup/> : null } 
+                {addVehiclePopup ?  <AddVehiclePopup/> : null }
+                {addMainReportPopup ? <AddMaintenanceReportPopup /> : null} 
             </Container>
         </>
     )
