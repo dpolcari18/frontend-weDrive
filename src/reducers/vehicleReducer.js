@@ -23,6 +23,11 @@ const vehicleReducer = (state = {
                 ...state,
                 vehicles: [...state.vehicles, action.vehicle]
             }
+        case 'REMOVE_VEHICLE':
+            return {
+                ...state,
+                vehicles: state.vehicles.filter(veh => veh.id !== action.id)
+            }
         case 'RESET':
             return {
                 ...state,

@@ -49,11 +49,8 @@ const AddVehiclePopup = () => {
         const postVeh = await fetch(VEHICLE_URL, postObj)
 
         const vehRes = await postVeh.json()
-        console.log(vehRes)
-        debugger
         // add vehicle to state
         dispatch ({ type: 'ADD_VEHICLE', vehicle: vehRes.vehicle})
-        debugger
         // close popup
         dispatch({ type: 'CLOSE_ADD_VEHICLE_FORM' })
     }
