@@ -181,6 +181,10 @@
   padding-bottom: 20px;
 }
 
+.report {
+  padding-bottom: 20px;
+}
+
 .buttons {
   display: flex;
   justify-content: space-around;

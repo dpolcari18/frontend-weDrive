@@ -73,7 +73,7 @@ const Login = ({ history }) => {
             <Form onSubmit={(e) => handleSubmit(e)}>
                 <Form.Group>
                     <Form.Control type='email' name='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
-                </Form.Group>
+                </Form.Group>                
                 <Form.Group>
                     <Form.Control type='password' name='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}></Form.Control>
                 </Form.Group>

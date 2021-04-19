@@ -4,6 +4,7 @@ import React from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
 
 const MaintenanceComponent = ({ report }) => {
 
@@ -16,21 +17,18 @@ const MaintenanceComponent = ({ report }) => {
     }
 
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <h6>Report Type: {report.description}</h6>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    Maintenance On: {converDate()} @ {report.mileage} miles
-                </Col>
-                <Col>
-                    Notes: {report.notes}
-                </Col>
-            </Row>
-        </Container>
+        <>
+            <Col>
+            </Col>
+            <Col className='col-md-9'>
+                <Card>
+                    <h5>{report.description}</h5>
+                    <p>{report.notes} on {converDate()} @ {report.mileage} miles</p>
+                </Card>
+            </Col>
+            <Col>
+            </Col>
+        </>
     )
 }
 
