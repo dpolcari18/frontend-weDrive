@@ -23,7 +23,7 @@ const VehiclesList = () => {
             <Col>
                 <h4>Vehicles <PlusCircle className='edit' onClick={() => dispatch({ type: 'OPEN_ADD_VEHICLE_FORM' })} /></h4>
                 <Row>
-                    {vehicles ? vehicles.map(car => <Col key={car.id} className='vehicle-list-col'><VehicleComponent key={car.id} car={car} /></Col> ) : <h3>Add Vehicle</h3>}                    
+                    {vehicles.length !== 0 ? vehicles.map(car => <Col key={car.id} className='vehicle-list-col'><VehicleComponent key={car.id} car={car} /></Col> ) : <Col><h3>Add Vehicle To Begin</h3></Col>}                    
                 </Row>
             </Col>
         </Container>
