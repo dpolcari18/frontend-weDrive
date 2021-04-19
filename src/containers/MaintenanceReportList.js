@@ -20,7 +20,7 @@ const MaintenanceReportList = () => {
     return (
         <Container>
             <h4>Maintenance Reports <PlusCircle className='edit' onClick={() => dispatch({ type: 'OPEN_MAIN_REPORT_FORM' })} /></h4>
-            {maintenanceReports.map(mainRep => <Row key={mainRep.id}><MaintenanceComponent key={mainRep.id} report={mainRep} /></Row>)}
+            {maintenanceReports.sort((a,b) => Date.parse(b.created_at) - Date.parse(a.created_at)).map(mainRep => <Row key={mainRep.id}><MaintenanceComponent key={mainRep.id} report={mainRep} /></Row>)}
         </Container>
     )
 }
