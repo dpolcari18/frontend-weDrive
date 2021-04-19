@@ -19,7 +19,7 @@ const MaintenanceReportList = () => {
 
     return (
         <Container>
-            <h4>Maintenance Reports <PlusCircle className='edit' onClick={() => dispatch({ type: 'ADD_MAIN_REPORT' })} /></h4>
+            <h4>Maintenance Reports <PlusCircle className='edit' onClick={() => dispatch({ type: 'OPEN_MAIN_REPORT_FORM' })} /></h4>
             {maintenanceReports.map(mainRep => <Row key={mainRep.id}><MaintenanceComponent key={mainRep.id} report={mainRep} /></Row>)}
         </Container>
     )

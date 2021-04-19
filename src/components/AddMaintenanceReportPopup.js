@@ -48,7 +48,8 @@ const AddMaintenanceReportPopup = () => {
         const postRepo = await fetch(REPO_URL, postObj)
         const repoRes = await postRepo.json()
 
-        console.log(repoRes.maintenance_report)
+        
+        dispatch({ type: 'ADD_MAIN_REPORT', maintenanceReport: repoRes.maintenance_report})
 
         dispatch({ type: 'CLOSE_MAIN_REPORT_FORM' })
     } 

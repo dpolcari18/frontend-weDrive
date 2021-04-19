@@ -8,7 +8,7 @@ const maintenanceReportReducer = (state = {
                 ...state,
                 maintenanceReports: action.maintenanceReports
             }
-        case 'ADD_MAIN_REPORT':
+        case 'OPEN_MAIN_REPORT_FORM':
             return {
                 ...state,
                 addForm: true
@@ -17,6 +17,11 @@ const maintenanceReportReducer = (state = {
             return {
                 ...state,
                 addForm: false
+            }
+        case 'ADD_MAIN_REPORT':
+            return {
+                ...state,
+                maintenanceReports: [...state.maintenanceReports, action.maintenanceReport]
             }
         case 'RESET':
             return {
