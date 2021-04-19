@@ -49,6 +49,13 @@ const maintenanceReportReducer = (state = {
                 filter: action.filter,
                 filteredReports: newlyFilteredReports.map(repo => repo.id)
             }
+        case 'REMOVE_MAINTENANCE_REPORTS':
+            let keptReports = state.maintenanceReports.filter(report => report.vehicle_id !== action.vehicle_id).map(repo => repo.id)
+            return {
+                ...state,
+                maintenanceReports: state.maintenanceReports.filter(report => report.vehicle_id !== action.vehicle_id),
+                filteredReports: state.filteredReports.filter(repoId => keptReports.includes(repoId) )
+            }
         case 'RESET':
             return {
                 ...state,

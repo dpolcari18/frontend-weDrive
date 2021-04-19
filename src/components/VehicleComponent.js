@@ -35,6 +35,7 @@ const VehicleComponent = ({ car }) => {
         const delVeh = await fetch(VEHICLE_URL + car.id, delObj)
         const vehRes = await delVeh.json()
 
+        dispatch({ type: 'REMOVE_MAINTENANCE_REPORTS', vehicle_id: car.id })
         dispatch({ type: 'REMOVE_VEHICLE', id: car.id })        
     }
 
