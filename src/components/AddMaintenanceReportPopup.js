@@ -94,7 +94,10 @@ const AddMaintenanceReportPopup = () => {
                             onChange={(e) => setNotes(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='outline-primary' type='submit'>Add Report</Button>
+                    <Form.Group className='buttons'>
+                        <Button variant='secondary' onClick={() => dispatch({ type: 'CLOSE_MAIN_REPORT_FORM' })}>Cancel</Button>
+                        <Button variant='outline-primary' type='submit'>Add Report</Button>
+                    </Form.Group>
                 </Form>
             </div>
         </div>

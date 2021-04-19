@@ -88,7 +88,10 @@ const AddVehiclePopup = () => {
                             onChange={(e) => setMileage(e.target.value)} 
                         />
                     </Form.Group>
-                    <Button variant='outline-primary' type='submit'>Save</Button>
+                    <Form.Group className='buttons'>
+                        <Button variant='secondary' onClick={() => dispatch({ type: 'CLOSE_ADD_VEHICLE_FORM' })}>Cancel</Button>
+                        <Button variant='outline-primary' type='submit'>Save</Button>
+                    </Form.Group>
                 </Form>
             </div>
         </div>
