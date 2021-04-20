@@ -189,3 +189,7 @@
   display: flex;
   justify-content: space-around;
 }
+
+#home-container {
+  padding-top: 140px;
+}

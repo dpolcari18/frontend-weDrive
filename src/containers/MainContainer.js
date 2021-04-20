@@ -56,7 +56,7 @@ const MainContainer = () => {
 
     return(
         <Router>
-            <div>
+            <div id='home-container'>
                 <NavBar />
                 <Route exact path='/' render={() => <Landing /> } />
                 <Route path='/signup' render={() => <SignUp /> } />
