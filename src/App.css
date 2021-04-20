@@ -55,7 +55,7 @@
   max-height: 70vh;
   margin-top: calc(110vh - 85vh - 20px);
   background: #fff;
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 20px;
   border: 1px solid #999;
   overflow: auto;
@@ -104,6 +104,12 @@
   justify-content: center;
 }
 
+.trip-comp-det {
+  display: flex;
+  justify-content: flex-start;
+  font-size: x-large;
+}
+
 .landing-row {
   display: flex;
   align-items: center;
@@ -147,7 +153,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #858585;
+  background-color: #dbdbdb;
   border-radius: 5px;
 }
 
@@ -173,8 +179,19 @@
   justify-content: space-around;
 }
 
+#vehicles {
+  background-color: white;
+  max-width: 800px;
+  border-radius: 10px;
+  margin-bottom: 60px;
+}
+
 #vehicle-row {
   padding-bottom: 20px;
+}
+
+.vehicle-card {
+  margin: 10px 10px 10px 10px;
 }
 
 .report {
@@ -206,15 +223,9 @@
 
 #profile {
   background-color: white;
-  padding: 40px 0px 40px 0px;
+  padding: 20px 0px 20px 0px;
   border-radius: 10px;
-}
-
-#vehicles {
-  background-color: white;
-  max-width: 800px;
-  border-radius: 10px;
-  margin-bottom: 60px;
+  max-width: 880px;
 }
 
 #trips {
@@ -241,4 +252,29 @@
   background-color: white;
   border-radius: 10px;
   padding: 10px;
+}
+
+#ec-row {
+  padding-top: 10px;
+}
+
+#ec-box {
+  display: flex;
+  justify-content: center;
+}
+
+#user-row {
+  display: flex;
+  justify-content: center;
+}
+
+#maintenance-filter {
+  width: 25%;
+}
+
+#filter-title {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+  padding-top: 5px;
 }

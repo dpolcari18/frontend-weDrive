@@ -85,7 +85,7 @@ const VehicleComponent = ({ car }) => {
     }
 
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem' }} className='vehicle-card'>
             <Card.Body>
                 <Card.Title>{car.make} - {car.model}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">{car.year}</Card.Subtitle>

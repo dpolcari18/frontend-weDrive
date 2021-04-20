@@ -23,16 +23,16 @@ const TripComponents = ({ trip, start, end }) => {
                 <Col>
                 <Card className='text-center'>
                     <Card.Header>
-                        <h4>Trip from {start.city} to {end.city} on {converDate()}</h4>
+                        <h2>Trip from {start.city} to {end.city} on {converDate()}</h2>
                     </Card.Header>
                     <Card.Body>
                         <Row>
                             <Col id='trip-comp-col'>
                                 <div>
-                                    <div>Travel Time: {Math.floor(trip.time/3600)} hrs {Math.floor((trip.time % 3600)/60)} min</div>
-                                    <div>Travel Time with Traffic: {Math.floor(trip.real_time/3600)} hrs {Math.floor((trip.real_time % 3600)/60)} min</div>
-                                    <div>Distance: {Math.floor(trip.distance*10)/10} miles</div>
-                                    <div>Estimated Fuel Usage: {Math.round(trip.fuel_usage*100)/100} gal</div>
+                                    <div className='trip-comp-det'>Travel Time: {Math.floor(trip.time/3600)} hrs {Math.floor((trip.time % 3600)/60)} min</div>
+                                    <div className='trip-comp-det'>With Traffic: {Math.floor(trip.real_time/3600)} hrs {Math.floor((trip.real_time % 3600)/60)} min</div>
+                                    <div className='trip-comp-det'>Distance: {Math.floor(trip.distance*10)/10} miles</div>
+                                    <div className='trip-comp-det'>Estimated Fuel Usage: {Math.round(trip.fuel_usage*100)/100} gal</div>
                                 </div>
                             </Col>
                             <Col>

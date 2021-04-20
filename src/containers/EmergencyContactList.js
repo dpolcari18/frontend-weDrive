@@ -23,13 +23,9 @@ const EmergencyContactList = () => {
                     <h3>Emergency Contact List <PencilSquare className='edit edit-icon' onClick={() => dispatch({ type: 'EDIT_EC' })} /></h3>
                 </Col>
             </Row>
-            <Row>
-                <Col>
-                </Col>
+            <Row id='ec-box'>
                 <Col md={9}>
                     <EmergencyContact />
-                </Col>
-                <Col>
                 </Col>
             </Row>
         </>

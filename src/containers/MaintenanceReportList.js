@@ -9,6 +9,7 @@ import MaintenanceComponent from '../components/MaintenanceComponent'
 // react-bootstrap
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Form from 'react-bootstrap/Form'
 import { PlusCircle } from 'react-bootstrap-icons'
 
 const MaintenanceReportList = () => {
@@ -30,8 +31,8 @@ const MaintenanceReportList = () => {
             return (
                 <>
                     <h4>Maintenance Reports <PlusCircle className='edit' onClick={() => dispatch({ type: 'OPEN_MAIN_REPORT_FORM' })} /></h4>
-                    <h6>
-                        <select onChange={(e) => dispatch({ type: 'SET_REPORT_FILTER', filter: e.target.value })}>
+                    <h6 id='filter-title'>
+                        <Form.Control as='select' id='maintenance-filter' onChange={(e) => dispatch({ type: 'SET_REPORT_FILTER', filter: e.target.value })}>
                             <option value='All'>Show All</option>
                             <option value='Air Filter'>Air Filter</option>
                             <option value='Battery'>Battery</option>
@@ -43,9 +44,9 @@ const MaintenanceReportList = () => {
                             <option value='Spark Plugs'>Spark Plugs</option>
                             <option value='Tires'>Tires</option>
                             <option value='Windshield Wipers'>Windshield Wipers</option>
-                        </select>
+                        </Form.Control>
                     </h6>
-                    {maintenanceReports.sort((a,b) => Date.parse(b.created_at) - Date.parse(a.created_at)).map(mainRep => <Row className='report' key={mainRep.id}><MaintenanceComponent key={mainRep.id} report={mainRep} /></Row>)}
+                    {maintenanceReports.length === 0 ? <h4 style={{paddingBottom: '5px'}}>There are no maintenance reports for this type</h4> : maintenanceReports.sort((a,b) => Date.parse(b.created_at) - Date.parse(a.created_at)).map(mainRep => <Row className='report' key={mainRep.id}><MaintenanceComponent key={mainRep.id} report={mainRep} /></Row>)}
                 </>
             )
         }

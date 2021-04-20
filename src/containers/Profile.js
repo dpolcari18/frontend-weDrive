@@ -43,16 +43,12 @@ const Profile = () => {
                     <h3>User Information <PencilSquare className='edit edit-icon' onClick={() => dispatch({ type: 'EDIT_USER' })} /></h3>
                 </Col>
             </Row>
-            <Row>
-                <Col>
-                </Col>
+            <Row id='user-row'>              
                 <Col className='col-md-9'>
                     <User />
-                </Col>
-                <Col>
-                </Col>
+                </Col>              
             </Row>
-            <Row>
+            <Row id='ec-row'>
                 <Col>
                     <EmergencyContactList />
                 </Col>
