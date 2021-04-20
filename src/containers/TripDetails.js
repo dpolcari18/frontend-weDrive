@@ -102,7 +102,7 @@ const TripDetails = ({ removeRoute }) => {
         switch (tripDetails.display) {
             case 'details':
                 return (
-                    <>
+                    <div id='trip-summary'>
                         <Row>
                             <Col>
                                 <h3>Trip Summary</h3>
@@ -137,7 +137,7 @@ const TripDetails = ({ removeRoute }) => {
                                 <Button id='start-trip' onClick={() => startTrip()}>Start Trip!</Button>
                             </Col>
                         </Row>
-                    </>
+                    </div>
                 )
             case 'segments':
                 return (
@@ -150,7 +150,7 @@ const TripDetails = ({ removeRoute }) => {
                 return (
                     <Row>
                         <Col>
-                            <h3>Search a trip to begin!</h3>
+                            <h3 style={{ color: 'white'}}>Search a trip to begin!</h3>
                         </Col>
                     </Row>
                 )

@@ -68,7 +68,7 @@ const Login = ({ history }) => {
     }
 
     return (
-        <Container>
+        <Container id='login'>
             <h3>LOGIN</h3>
             <Form onSubmit={(e) => handleSubmit(e)}>
                 <Form.Group>
@@ -83,7 +83,7 @@ const Login = ({ history }) => {
                     </Col>
                 </Row>
             </Form>
-            <Row>
+            <Row id='sign-up-link'>
                 <Col>
                     Not a user? <Link to='/signup'>Sign Up</ Link>
                 </Col>

@@ -98,10 +98,6 @@
   padding-top: 30px;
 }
 
-.profile-row {
-  padding-top: 50px;
-}
-
 #trip-comp-col {
   display: flex;
   align-items: center;
@@ -191,5 +187,58 @@
 }
 
 #home-container {
-  padding-top: 140px;
+  margin-top: 140px;
+}
+
+#trip-summary {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 10px 0px 10px;
+}
+
+#safety {
+  padding-top: 10px;
+}
+
+#finish-inspection {
+  padding-top: 10px;
+}
+
+#profile {
+  background-color: white;
+  padding: 40px 0px 40px 0px;
+  border-radius: 10px;
+}
+
+#vehicles {
+  background-color: white;
+  max-width: 800px;
+  border-radius: 10px;
+  margin-bottom: 60px;
+}
+
+#trips {
+  margin-bottom: 30px;
+}
+
+#about {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#login {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#sign-up-link {
+  padding-top: 10px;
+}
+
+#sign-up-form {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
 }

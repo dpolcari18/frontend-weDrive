@@ -56,7 +56,7 @@ const User = () => {
 
     const renderUser = () => {
         return editUser ? 
-            <>
+            <div>
                 <Form id='edit-user-form'
                       onBlur={(e) => {if (!e.currentTarget.contains(e.relatedTarget)) {document.getElementById('edit-user-form').requestSubmit()}}}
                       onSubmit={(e) => handleSubmit(e)}
@@ -78,9 +78,9 @@ const User = () => {
                         </Col>
                     </Row>                    
                 </Form>
-            </>
+            </div>
         : 
-            <>
+            <div>
                 <Row>
                     <Col>
                         First Name: {firstName}
@@ -97,7 +97,7 @@ const User = () => {
                         Phone Number: {phone}
                     </Col>
                 </Row>
-            </>
+            </div>
     }
 
     return (

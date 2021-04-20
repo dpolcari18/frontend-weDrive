@@ -2,7 +2,7 @@ import React from 'react'
 
 const About = () => {
     return (
-        <div>
+        <div id='about'>
             <h2>About weDrive</h2>
             <p>Driving is the most <strong>dangerous</strong> thing most people do on a daily basis.</p> 
             <p> At weDrive we try to <strong>mitigate</strong> that risk by providing the information necessary to make <strong>smart decisions</strong>.</p>

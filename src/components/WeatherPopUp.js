@@ -113,7 +113,7 @@ const WeatherPopup = () => {
                             Sunset: {getTime(destinationWeather.sys.sunset)}
                         </Col>
                     </Row>
-                    <Row>
+                    <Row id='safety'>
                         <Col>
                             <h5>Please plan accordingly and drive safely!</h5>
                         </Col>
@@ -181,7 +181,7 @@ const WeatherPopup = () => {
                             Sunset: {getTime(originWeather.sys.sunset)} 
                         </Col>
                     </Row>
-                    <Row>
+                    <Row id='safety'>
                         <Col>
                             <h5>Please plan accordingly and drive safely!</h5>
                         </Col>

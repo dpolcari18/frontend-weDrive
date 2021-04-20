@@ -171,7 +171,7 @@ const WeatherPopup = () => {
                             </Col>
                         </Row>
                     </Form>
-                    <Row>
+                    <Row id='finish-inspection'>
                         <Col>
                             <Button disabled={!allChecked} onClick={() => closeChecklist()}>Finish Inspection</Button>
                         </Col>

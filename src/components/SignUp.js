@@ -96,8 +96,7 @@ const SignUp = ({ history }) => {
     }
     
     return (
-        <Container>
-    
+        <Container id='sign-up-form'>
             <Form onSubmit={(e) => handleSubmit(e)}>
                 <Row>
                     <Col>
