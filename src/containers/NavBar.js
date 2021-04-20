@@ -67,7 +67,7 @@ const NavBar = ({ history }) => {
                         <Navbar id='nav' variant="light" fixed='top'>
                             <Col>
                                 <Nav>
-                                    <Nav.Link><Link to='/about'>About</Link></Nav.Link>
+                                    <Nav.Link href='/about'>About</Nav.Link>
                                 </Nav>
                             </Col>
                             <Col>
@@ -77,7 +77,7 @@ const NavBar = ({ history }) => {
                             </Col>
                             <Col>
                                 <Nav id='login-link'>
-                                    <Nav.Link><Link to='/login'>Login</Link></Nav.Link>
+                                    <Nav.Link href='/login'>Login</Nav.Link>
                                 </Nav>
                             </Col>
                         </Navbar>

@@ -206,6 +206,7 @@
 
 #home-container {
   margin-top: 140px;
+  height: 100vh;
 }
 
 #trip-summary {
@@ -233,6 +234,10 @@
   margin-bottom: 30px;
 }
 
+#about-con {
+  margin-top: 100px;
+}
+
 .about {
   background-color: white;
   border-radius: 10px;
@@ -244,6 +249,8 @@
   background-color: white;
   border-radius: 10px;
   padding: 10px;
+  max-width: 30%;
+  margin-top: 100px;
 }
 
 #sign-up-link {

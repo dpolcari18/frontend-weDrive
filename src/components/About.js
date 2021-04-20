@@ -8,7 +8,7 @@ import Nav from 'react-bootstrap/esm/Nav'
 
 const About = () => {
     return (
-        <div>
+        <div id='about-con'>
             <Container>
                 <Row>
                     <Col className='about'>
