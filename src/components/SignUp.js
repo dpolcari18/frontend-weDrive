@@ -86,7 +86,7 @@ const SignUp = ({ history }) => {
         // If success redirect to home for login or show errors
         if (userRes.status === 'Success') {
             alert(userRes.msg)
-            history.push('/')
+            history.push('/login')
         } else if (userRes.status === 'Failed') {
             // throw_error(userRes.msg)
             dispatch({ type: 'SHOW_ERRORS', showError: true, errors: userRes.msg})
