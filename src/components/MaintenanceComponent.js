@@ -26,7 +26,7 @@ const MaintenanceComponent = ({ report }) => {
             </Col>
             <Col className='col-md-9'>
                 <Card>
-                    <h5>{car.make} {car.model} - {report.description}</h5>
+                    <h5 style={{paddingTop: '15px'}}>{car.make} {car.model} - {report.description}</h5>
                     <p>{report.notes} on {convertDate()} @ {report.mileage} miles</p>
                 </Card>
             </Col>

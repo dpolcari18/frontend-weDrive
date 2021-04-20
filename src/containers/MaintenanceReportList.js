@@ -30,7 +30,7 @@ const MaintenanceReportList = () => {
         } else {
             return (
                 <>
-                    <h4>Maintenance Reports <PlusCircle className='edit' onClick={() => dispatch({ type: 'OPEN_MAIN_REPORT_FORM' })} /></h4>
+                    <h4>Maintenance Reports <PlusCircle className='edit highlight-text' onClick={() => dispatch({ type: 'OPEN_MAIN_REPORT_FORM' })} /></h4>
                     <h6 id='filter-title'>
                         <Form.Control as='select' id='maintenance-filter' onChange={(e) => dispatch({ type: 'SET_REPORT_FILTER', filter: e.target.value })}>
                             <option value='All'>Show All</option>

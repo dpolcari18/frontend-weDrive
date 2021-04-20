@@ -21,7 +21,7 @@ const VehiclesList = () => {
     return (
         <Container>
             <Col>
-                <h4>Vehicles <PlusCircle className='edit' onClick={() => dispatch({ type: 'OPEN_ADD_VEHICLE_FORM' })} /></h4>
+                <h4>Vehicles <PlusCircle className='edit highlight-text' onClick={() => dispatch({ type: 'OPEN_ADD_VEHICLE_FORM' })} /></h4>
                 <Row>
                     {vehicles.length !== 0 ? vehicles.map(car => <Col key={car.id} className='vehicle-list-col'><VehicleComponent key={car.id} car={car} /></Col> ) : <Col><h3>Add Vehicle To Begin</h3></Col>}                    
                 </Row>

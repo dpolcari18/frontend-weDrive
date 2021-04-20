@@ -278,3 +278,11 @@
   padding-bottom: 10px;
   padding-top: 5px;
 }
+
+.highlight-text {
+  color: #007ec7;
+}
+
+#nav {
+  background-color: white;
+}
