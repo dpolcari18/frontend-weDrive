@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 // Containers
 import Home from './Home'
+import About from '../components/About'
+import Login from '../components/Login'
 import Landing from './Landing'
 import NavBar from './NavBar'
 import Profile from './Profile'
@@ -59,6 +61,8 @@ const MainContainer = () => {
             <div id='home-container'>
                 <NavBar />
                 <Route exact path='/' render={() => <Landing /> } />
+                <Route path='/about' render={() => <About /> } />
+                <Route path='/login' render={() => <Login /> } />
                 <Route path='/signup' render={() => <SignUp /> } />
                 <Route path='/home' render={() => <Home /> } />
                 <Route path='/profile' render={() => <Profile /> } />

@@ -64,9 +64,21 @@ const NavBar = ({ history }) => {
             return(
                 <Container>
                     <Row>
-                        <Navbar id='nav' className='logo' variant="light" fixed='top'>
+                        <Navbar id='nav' variant="light" fixed='top'>
                             <Col>
-                                <Navbar.Brand><Link to='/home'><img src={Logo} alt='weDrive logo' /></ Link></Navbar.Brand>
+                                <Nav>
+                                    <Nav.Link><Link to='/about'>About</Link></Nav.Link>
+                                </Nav>
+                            </Col>
+                            <Col>
+                                <Nav className='logo'>
+                                    <Navbar.Brand><Link to='/home'><img src={Logo} alt='weDrive logo' /></ Link></Navbar.Brand>
+                                </Nav>
+                            </Col>
+                            <Col>
+                                <Nav id='login-link'>
+                                    <Nav.Link><Link to='/login'>Login</Link></Nav.Link>
+                                </Nav>
                             </Col>
                         </Navbar>
                     </Row>
