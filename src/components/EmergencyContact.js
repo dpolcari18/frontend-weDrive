@@ -81,18 +81,18 @@ const EmergencyContact = () => {
         : 
             <>
                 <Row>
-                    <Col>
+                    <Col className='user-col'>
                         First Name: {firstName}
                     </Col>
-                    <Col>
+                    <Col className='user-col'>
                         Last Name: {lastName}
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col className='user-col'>
                         Email: {email}
                     </Col>
-                    <Col>
+                    <Col className='user-col'>
                         Phone Number: {phone}
                     </Col>
                 </Row>
