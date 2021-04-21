@@ -21,19 +21,15 @@ const MaintenanceComponent = ({ report }) => {
     }
 
     return (
-        <>
+        <div style={{width: '100%'}}>
             <Col>
-            </Col>
-            <Col className='col-md-9'>
-                <Card>
+                <Card style={{width: '100%'}}>
                     <h4 style={{paddingTop: '15px'}}><strong>{report.description}</strong></h4>
                     <h5>{car.make} {car.model}</h5>
-                    <p style={{fontSize: 'larger'}}>{report.notes} on <strong style={{color: '#8abd00'}}>{convertDate()}</strong> @ {report.mileage} miles</p>
+                    <p style={{fontSize: 'larger', color: 'grey'}}>{report.notes} on <strong style={{color: '#8abd00'}}>{convertDate()}</strong> @ {report.mileage} miles</p>
                 </Card>
             </Col>
-            <Col>
-            </Col>
-        </>
+        </div>
     )
 }
 

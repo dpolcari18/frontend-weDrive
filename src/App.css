@@ -189,15 +189,18 @@
   justify-content: space-around;
 }
 
-#vehicles {
+.vehicles {
   background-color: white;
   max-width: 800px;
   border-radius: 10px;
   margin-bottom: 60px;
+  justify-content: center;
+  padding: 10px;
 }
 
-#vehicle-row {
-  padding-bottom: 20px;
+.veh-con {
+  display: flex;
+  justify-content: center;
 }
 
 .vehicle-card {

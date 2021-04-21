@@ -40,14 +40,22 @@ const Vehicles = () => {
 
     return(
         <>
-            <Container id='vehicles'>
-                <h1>Vehicle Maintenance Tracker</h1>
-                <Row id='vehicle-row'>
+            <Container className='veh-con'>
+                <Row className='vehicles'>
+                    <Col>
+                        <h1>Vehicle Maintenance Tracker</h1>
+                    </Col>
+                </Row>
+            </Container>
+            <Container className='veh-con'>
+                <Row className='vehicles'>
                     <Col>
                         <VehiclesList />
                     </Col>
                 </Row>
-                <Row>
+            </Container>
+            <Container className='veh-con'>
+                <Row className='vehicles'>
                     <Col>
                         <MaintenanceReportList />
                     </Col>
