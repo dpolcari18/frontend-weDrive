@@ -150,7 +150,7 @@ const TripDetails = ({ removeRoute }) => {
                 return (
                     <Row>
                         <Col>
-                            <h3 style={{ color: 'white'}}>Search a trip to begin!</h3>
+                            {/* <h1>Search a trip to begin!</h1> */}
                         </Col>
                     </Row>
                 )

@@ -10,20 +10,20 @@ import Button from 'react-bootstrap/Button'
 const Landing = ({ history }) => {
     return (
         <Container>
-            <Row className='landing-row'>
+            <Row className='landing-row-one'>
                 <Col>
-                    <h1 style={{color: 'white'}} >PREPARE FOR YOUR TRIP TODAY</h1>
+                    <h1 id='first-about'><strong>Prepare For Your Trip Today</strong></h1>
                 </Col>
             </Row>
-            <Row className='landing-row'>
+            <Row className='landing-row-two'>
                 <Col>
-                    <h3 style={{color: 'white'}} >An Informed Driver is a Smart Driver. A Smart Driver is a Safe Driver.</h3>
-                    <h1 style={{color: 'white'}} >At weDrive Your Safety is our Priority</h1>
+                    <h3 >An Informed Driver is a Smart Driver. A Smart Driver is a Safe Driver.</h3>
+                    <h1>At <strong style={{color: '#007ec7'}}>weDrive</strong> Your Safety is our Priority</h1>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <Button variant='primary' onClick={() => history.push('/signup')} >Get Started Today</Button>
+                    <Button variant='primary' size='lg' onClick={() => history.push('/signup')} >Get Started Now</Button>
                 </Col>
             </Row>
         </Container>

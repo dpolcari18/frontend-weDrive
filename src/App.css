@@ -110,11 +110,20 @@
   font-size: x-large;
 }
 
-.landing-row {
+.landing-row-one {
   display: flex;
-  align-items: center;
   justify-content: center;
   margin: 100px;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 10px;
+}
+
+.landing-row-two {
+  display: flex;
+  justify-content: center;
+  margin: 100px;
+  background-color:  rgba(255,255,255,0.8);
+  border-radius: 10px;
 }
 
 #start-trip {
@@ -153,7 +162,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #dbdbdb;
+  background-color: #5c5959;
   border-radius: 5px;
 }
 
@@ -307,4 +316,10 @@
   display: flex;
   justify-content: flex-end;
   max-width: 90%;
+}
+
+#first-about {
+  font-variant: small-caps;
+  color: #8abd00;
+  font-size: 3.2em;
 }
