@@ -70,7 +70,7 @@ const Login = ({ history }) => {
     return (
         <Container id='login'>
             <h3>LOGIN</h3>
-            <Form onSubmit={(e) => handleSubmit(e)}>
+            <Form onSubmit={(e) => handleSubmit(e)} autoComplete='off'>
                 <Form.Group>
                     <Form.Control type='email' name='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
                 </Form.Group>                

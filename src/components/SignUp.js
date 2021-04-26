@@ -97,7 +97,7 @@ const SignUp = ({ history }) => {
     
     return (
         <Container id='sign-up-form'>
-            <Form onSubmit={(e) => handleSubmit(e)}>
+            <Form onSubmit={(e) => handleSubmit(e)} autoComplete='off'>
                 <Row>
                     <Col>
                         <h2>User Information</h2>

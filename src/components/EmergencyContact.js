@@ -59,6 +59,7 @@ const EmergencyContact = () => {
                 <Form id='edit-ec-form' 
                       onBlur={(e) => {if (!e.currentTarget.contains(e.relatedTarget)) {document.getElementById('edit-ec-form').requestSubmit()}}} 
                       onSubmit={(e) => handleSubmit(e)}
+                      autoComplete='off'
                 >
                     <Row>
                         <Col>

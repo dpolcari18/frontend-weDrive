@@ -10,7 +10,7 @@ const RouteComponent = ({ segment }) => {
         <Card className='route'>
             <Card.Header>
                 <Col>
-                    {segment.index_num + 1}. {segment.instructions} for {Math.floor(segment.distance*10)/10} miles.
+                    {segment.instructions} for {Math.floor(segment.distance*10)/10} miles.
                 </Col>
             </Card.Header>
             <Card.Body>
