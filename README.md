@@ -1,6 +1,53 @@
-# Getting Started with Create React App
+# README
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+---
+## weDrive - Frontend
+
+weDrive is a journey management application that aims to reduce the risks associated with driving by providing the user with the information necessary to make smart driving decisions before they get in their car.
+
+---
+## Motivation
+
+Driving is the most dangerous thing most people do on a daily basis but it's also something we take for granted and don't pay it the respect it deserves. weDrive was created to help encourage users to really think about the factors that impact their safety before they get in the car so they can plan accordingly and hopefully reduce the risk of an accident.
+
+--- 
+## Technology
+
+* Front End - React
+* State Management - Redux
+* Backend - Ruby on Rails
+* Styling - React Bootstrap
+
+---
+## Features
+
+* OpenWeather API pulls current weather forecast for origin and destination of trip
+* MapQuest map API utilized for step-by-step routing as well as real time traffic
+* ActionMailer used to send notifications to Emergency Contacts
+* JSON web tokens for authentication
+* Bcrypt for password hashing on backend
+
+
+---
+## Demo
+
+Full Demo: https://youtu.be/9KVhCc_vHVg
+
+Starting a Trip:
+
+![Starting a trip](src/gifs/start-trip.gif)
+
+Weather and Vehicle Inspection:
+
+![Weather and inspection](src/gifs/weather-inspection.gif)
+
+Routing and Emergency Contact Notification: 
+
+![Routing and Emergency Contact Notification](src/gifs/routing-notification.gif)
+
+---
 
 ## Available Scripts
 
@@ -39,32 +86,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
