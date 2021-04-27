@@ -15,9 +15,11 @@ Driving is the most dangerous thing most people do on a daily basis but it's als
 --- 
 ## Technology
 
-* Front End - React
+* Frontend - React
 * State Management - Redux
 * Backend - Ruby on Rails
+* MapQuest.js SKD
+* OpenWeather API
 * Styling - React Bootstrap
 
 ---
