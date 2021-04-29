@@ -10,6 +10,7 @@ import NavBar from './NavBar'
 import Profile from './Profile'
 import Trips from './Trips'
 import Vehicles from './Vehicles'
+import Demo from './Demo'
 
 // Components
 import SignUp from '../components/SignUp'
@@ -62,6 +63,7 @@ const MainContainer = () => {
                 <NavBar />
                 <Route exact path='/' render={() => <Landing /> } />
                 <Route path='/about' render={() => <About /> } />
+                <Route path='/demo' render={() => <Demo /> } />
                 <Route path='/login' render={() => <Login /> } />
                 <Route path='/signup' render={() => <SignUp /> } />
                 <Route path='/home' render={() => <Home /> } />

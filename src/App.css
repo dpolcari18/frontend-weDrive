@@ -331,3 +331,16 @@
   color: #8abd00;
   font-size: 3.2em;
 }
+
+#video {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#demo-warning {
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 100px;
+}

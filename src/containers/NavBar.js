@@ -68,6 +68,7 @@ const NavBar = ({ history }) => {
                             <Col>
                                 <Nav>
                                     <Nav.Link href='/about'>About</Nav.Link>
+                                    <Nav.Link href='/demo'>Demo</Nav.Link>
                                 </Nav>
                             </Col>
                             <Col>

@@ -26,6 +26,12 @@ const Landing = ({ history }) => {
                     <Button variant='primary' size='lg' onClick={() => history.push('/signup')} >Get Started Now</Button>
                 </Col>
             </Row>
+            <Row>
+                <Col>
+                    <p id='demo-warning'>VISITORS: Please note that this project utilizes a free API with a monthly request limit. If that rate has been exceeded and the project is not working please refer to the demo video. Enjoy!</p>
+                    <Button variant='primary' size='lg' onClick={() => history.push('/demo')} >Watch Demo Here</Button>
+                </Col>
+            </Row>
         </Container>
     )
 }
