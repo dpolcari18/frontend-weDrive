@@ -9,7 +9,8 @@ import Form from 'react-bootstrap/Form'
 import { Trash } from 'react-bootstrap-icons'
 
 // endpoints
-const VEHICLE_URL = 'http://localhost:3000/vehicles/'
+const VEHICLE_URL = 'https://wedrive.netlify.app/vehicles/'
+// const VEHICLE_URL = 'http://localhost:3000/vehicles/'
 
 const VehicleComponent = ({ car }) => {
 

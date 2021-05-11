@@ -8,7 +8,8 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 // endpoints
-const VEHICLE_URL = 'http://localhost:3000/vehicles/'
+const VEHICLE_URL = 'https://wedrive.netlify.app/vehicles/'
+// const VEHICLE_URL = 'http://localhost:3000/vehicles/'
 
 const AddVehiclePopup = () => {
 

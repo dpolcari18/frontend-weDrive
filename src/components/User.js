@@ -10,7 +10,8 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 
 // endpoints
-const USER_URL = 'http://localhost:3000/users/'
+const USER_URL = 'https://wedrive.netlify.app/users/'
+// const USER_URL = 'http://localhost:3000/users/'
 
 const User = () => {
 
