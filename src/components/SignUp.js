@@ -12,9 +12,9 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 // Endpoints
-const SIGN_UP_URL = 'https://wedrive.netlify.app/users'
+const SIGN_UP_URL = 'https://wedrive-backend-hosting.herokuapp.com/users'
 // const SIGN_UP_URL = 'http://localhost:3000/users'
-const EC_URL = 'https://wedrive.netlify.app/emergency_contacts'
+const EC_URL = 'https://wedrive-backend-hosting.herokuapp.com/emergency_contacts'
 // const EC_URL = 'http://localhost:3000/emergency_contacts'
 
 const SignUp = ({ history }) => {

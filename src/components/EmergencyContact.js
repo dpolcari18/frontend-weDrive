@@ -10,7 +10,7 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 
 // endpoints
-const EC_URL = 'https://wedrive.netlify.app/emergency_contacts/'
+const EC_URL = 'https://wedrive-backend-hosting.herokuapp.com/emergency_contacts/'
 // const EC_URL = 'http://localhost:3000/emergency_contacts/'
 
 const EmergencyContact = () => {

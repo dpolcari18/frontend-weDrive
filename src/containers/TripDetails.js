@@ -13,11 +13,11 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 
 // endpoints
-const TRIP_URL = 'https://wedrive.netlify.app/trips'
+const TRIP_URL = 'https://wedrive-backend-hosting.herokuapp.com/trips'
 // const TRIP_URL = 'http://localhost:3000/trips'
-const START_EMAIL_URL = 'https://wedrive.netlify.app/starttrip/'
+const START_EMAIL_URL = 'https://wedrive-backend-hosting.herokuapp.com/starttrip/'
 // const START_EMAIL_URL = 'http://localhost:3000/starttrip/'
-const END_EMAIL_URL = 'https://wedrive.netlify.app/endtrip/'
+const END_EMAIL_URL = 'https://wedrive-backend-hosting.herokuapp.com/endtrip/'
 // const END_EMAIL_URL = 'http://localhost:3000/endtrip/'
 
 const TripDetails = ({ removeRoute }) => {

@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 // endpoints
-const REPO_URL = 'https://wedrive.netlify.app/maintenance_reports/'
+const REPO_URL = 'https://wedrive-backend-hosting.herokuapp.com/maintenance_reports/'
 // const REPO_URL = 'http://localhost:3000/maintenance_reports/'
 
 const AddMaintenanceReportPopup = () => {

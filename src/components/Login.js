@@ -13,7 +13,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 // Endpoints
-const LOGIN_URL = 'https://wedrive.netlify.app/sessions'
+const LOGIN_URL = 'https://wedrive-backend-hosting.herokuapp.com/sessions'
 // const LOGIN_URL = 'http://localhost:3000/sessions'
 
 const Login = ({ history }) => {

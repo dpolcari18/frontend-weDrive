@@ -19,15 +19,15 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 // Endpoints
-const ROUTE_URL = 'https://wedrive.netlify.app/routes'
+const ROUTE_URL = 'https://wedrive-backend-hosting.herokuapp.com/routes'
 // const ROUTE_URL = 'http://localhost:3000/routes'
-const WEATHER_URL = 'https://wedrive.netlify.app/weather'
+const WEATHER_URL = 'https://wedrive-backend-hosting.herokuapp.com/weather'
 // const WEATHER_URL = 'http://localhost:3000/weather'
-const TRIP_URL = 'https://wedrive.netlify.app/trips'
+const TRIP_URL = 'https://wedrive-backend-hosting.herokuapp.com/trips'
 // const TRIP_URL = 'http://localhost:3000/trips'
-const LOCATION_URL = 'https://wedrive.netlify.app/locations'
+const LOCATION_URL = 'https://wedrive-backend-hosting.herokuapp.com/locations'
 // const LOCATION_URL = 'http://localhost:3000/locations'
-const SEGMENT_URL = 'https://wedrive.netlify.app/segments'
+const SEGMENT_URL = 'https://wedrive-backend-hosting.herokuapp.com/segments'
 // const SEGMENT_URL = 'http://localhost:3000/segments'
 
 // API KEY

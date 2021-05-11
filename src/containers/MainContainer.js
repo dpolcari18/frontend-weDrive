@@ -19,7 +19,7 @@ import SignUp from '../components/SignUp'
 import { useDispatch } from 'react-redux'
 
 // endpoints
-const USER_URL = 'https://wedrive.netlify.app/users'
+const USER_URL = 'https://wedrive-backend-hosting.herokuapp.com/users'
 // const USER_URL = 'http://localhost:3000/users'
 
 const MainContainer = () => {
