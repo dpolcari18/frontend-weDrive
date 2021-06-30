@@ -10,8 +10,9 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 
 // endpoints
-const USER_URL = 'https://wedrive-backend-hosting.herokuapp.com/users/'
-// const USER_URL = 'http://localhost:3000/users/'
+const BASE = process.env.REACT_APP_BASE
+// const USER_URL = 'https://wedrive-backend-hosting.herokuapp.com/users/'
+const USER_URL = `${BASE}users/`
 
 const User = () => {
 

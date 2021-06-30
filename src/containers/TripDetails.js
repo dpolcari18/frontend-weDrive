@@ -13,12 +13,13 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 
 // endpoints
-const TRIP_URL = 'https://wedrive-backend-hosting.herokuapp.com/trips'
-// const TRIP_URL = 'http://localhost:3000/trips'
-const START_EMAIL_URL = 'https://wedrive-backend-hosting.herokuapp.com/starttrip/'
-// const START_EMAIL_URL = 'http://localhost:3000/starttrip/'
-const END_EMAIL_URL = 'https://wedrive-backend-hosting.herokuapp.com/endtrip/'
-// const END_EMAIL_URL = 'http://localhost:3000/endtrip/'
+const BASE = process.env.REACT_APP_BASE
+// const TRIP_URL = 'https://wedrive-backend-hosting.herokuapp.com/trips'
+const TRIP_URL = `${BASE}trips`
+// const START_EMAIL_URL = 'https://wedrive-backend-hosting.herokuapp.com/starttrip/'
+const START_EMAIL_URL = `${BASE}starttrip/`
+// const END_EMAIL_URL = 'https://wedrive-backend-hosting.herokuapp.com/endtrip/'
+const END_EMAIL_URL = `${BASE}endtrip/`
 
 const TripDetails = ({ removeRoute }) => {
 

@@ -19,16 +19,17 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 // Endpoints
-const ROUTE_URL = 'https://wedrive-backend-hosting.herokuapp.com/routes'
-// const ROUTE_URL = 'http://localhost:3000/routes'
-const WEATHER_URL = 'https://wedrive-backend-hosting.herokuapp.com/weather'
-// const WEATHER_URL = 'http://localhost:3000/weather'
-const TRIP_URL = 'https://wedrive-backend-hosting.herokuapp.com/trips'
-// const TRIP_URL = 'http://localhost:3000/trips'
-const LOCATION_URL = 'https://wedrive-backend-hosting.herokuapp.com/locations'
-// const LOCATION_URL = 'http://localhost:3000/locations'
-const SEGMENT_URL = 'https://wedrive-backend-hosting.herokuapp.com/segments'
-// const SEGMENT_URL = 'http://localhost:3000/segments'
+const BASE = process.env.REACT_APP_BASE
+// const ROUTE_URL = 'https://wedrive-backend-hosting.herokuapp.com/routes'
+const ROUTE_URL = `${BASE}routes`
+// const WEATHER_URL = 'https://wedrive-backend-hosting.herokuapp.com/weather'
+const WEATHER_URL = `${BASE}weather`
+// const TRIP_URL = 'https://wedrive-backend-hosting.herokuapp.com/trips'
+const TRIP_URL = `${BASE}trips`
+// const LOCATION_URL = 'https://wedrive-backend-hosting.herokuapp.com/locations'
+const LOCATION_URL = `${BASE}locations`
+// const SEGMENT_URL = 'https://wedrive-backend-hosting.herokuapp.com/segments'
+const SEGMENT_URL = `${BASE}segments`
 
 // API KEY
 const API_KEY = process.env.REACT_APP_MAP_API

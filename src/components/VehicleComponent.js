@@ -9,8 +9,9 @@ import Form from 'react-bootstrap/Form'
 import { Trash } from 'react-bootstrap-icons'
 
 // endpoints
-const VEHICLE_URL = 'https://wedrive-backend-hosting.herokuapp.com/vehicles/'
-// const VEHICLE_URL = 'http://localhost:3000/vehicles/'
+const BASE = process.env.REACT_APP_BASE
+// const VEHICLE_URL = 'https://wedrive-backend-hosting.herokuapp.com/vehicles/'
+const VEHICLE_URL = `${BASE}vehicles/`
 
 const VehicleComponent = ({ car }) => {
 
