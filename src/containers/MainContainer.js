@@ -4,40 +4,28 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 // Components / Containers
 import { About, Demo, Home, Landing, Login, NavBar, Profile, SignUp, Trips, Vehicles } from '../Imports'
 
+// APIs
+import API from '../API'
+
 // Redux
 import { useDispatch } from 'react-redux'
 
-// endpoints
-const BASE = process.env.REACT_APP_BASE
-const USER_URL = `${BASE}users`
-
 const MainContainer = () => {
     
-    // const USER_URL = 'https://wedrive-backend-hosting.herokuapp.com/users'
     // redux hooks
     const dispatch = useDispatch()
 
     // On refresh - refetch user information
     const refetchUser = async () => {
-        const userId = localStorage.getItem('user_id')
-        const authKey = localStorage.getItem('auth_key')
+    
+        const userRes = await API.fetchUser()
+        const userInfo = await userRes.json()
 
-        const fetchObj = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            }
-        }
-
-        const fetchUser = await fetch(USER_URL+'/'+userId, fetchObj)
-        const userRes = await fetchUser.json()
-
-        dispatch({ type: 'SET_USER', user: userRes.user})
-        dispatch({ type: 'SET_TRIPS', trips: userRes.user.trips, locations: userRes.user.locations})
-        dispatch({ type: 'SET_VEHICLES', vehicles: userRes.user.vehicles})
-        dispatch({ type: 'SET_MAINTENANCE_REPORTS', maintenanceReports: userRes.user.maintenance_reports})
-        dispatch({ type: 'SET_EMERGENCY_CONTACTS', emergencyContacts: userRes.user.emergency_contacts})
+        dispatch({ type: 'SET_USER', user: userInfo.user})
+        dispatch({ type: 'SET_TRIPS', trips: userInfo.user.trips, locations: userInfo.user.locations})
+        dispatch({ type: 'SET_VEHICLES', vehicles: userInfo.user.vehicles})
+        dispatch({ type: 'SET_MAINTENANCE_REPORTS', maintenanceReports: userInfo.user.maintenance_reports})
+        dispatch({ type: 'SET_EMERGENCY_CONTACTS', emergencyContacts: userInfo.user.emergency_contacts})
     }
 
     // Maintain state logged in on refresh

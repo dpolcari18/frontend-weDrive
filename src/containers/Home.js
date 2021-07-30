@@ -12,18 +12,21 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
+// APIs
+import API from '../API'
+
 // Endpoints
-const BASE = process.env.REACT_APP_BASE
-// const ROUTE_URL = 'https://wedrive-backend-hosting.herokuapp.com/routes'
-const ROUTE_URL = `${BASE}routes`
-// const WEATHER_URL = 'https://wedrive-backend-hosting.herokuapp.com/weather'
-const WEATHER_URL = `${BASE}weather`
-// const TRIP_URL = 'https://wedrive-backend-hosting.herokuapp.com/trips'
-const TRIP_URL = `${BASE}trips`
-// const LOCATION_URL = 'https://wedrive-backend-hosting.herokuapp.com/locations'
-const LOCATION_URL = `${BASE}locations`
-// const SEGMENT_URL = 'https://wedrive-backend-hosting.herokuapp.com/segments'
-const SEGMENT_URL = `${BASE}segments`
+// const BASE = process.env.REACT_APP_BASE
+// // const ROUTE_URL = 'https://wedrive-backend-hosting.herokuapp.com/routes'
+// const ROUTE_URL = `${BASE}routes`
+// // const WEATHER_URL = 'https://wedrive-backend-hosting.herokuapp.com/weather'
+// const WEATHER_URL = `${BASE}weather`
+// // const TRIP_URL = 'https://wedrive-backend-hosting.herokuapp.com/trips'
+// const TRIP_URL = `${BASE}trips`
+// // const LOCATION_URL = 'https://wedrive-backend-hosting.herokuapp.com/locations'
+// const LOCATION_URL = `${BASE}locations`
+// // const SEGMENT_URL = 'https://wedrive-backend-hosting.herokuapp.com/segments'
+// const SEGMENT_URL = `${BASE}segments`
 
 // API KEY
 const API_KEY = process.env.REACT_APP_MAP_API
@@ -54,7 +57,6 @@ const Home = () => {
 
     // mount and unmount MQ scripts to head
     useEffect(() => {
-
         const firstScript = document.createElement('script')
         firstScript.src = 'https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js'
         firstScript.async = true
@@ -68,7 +70,6 @@ const Home = () => {
         link.href = 'https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css'
         document.head.appendChild(link)
 
-        
         return () => {
             document.head.removeChild(firstScript)
             document.head.removeChild(link)
@@ -76,8 +77,6 @@ const Home = () => {
     }, [])
     
     const renderBlankMap = () => {
-
-
         window.L.mapquest.key = API_KEY;
     
         let map = window.L.mapquest.map('map', {
@@ -90,18 +89,7 @@ const Home = () => {
     }
 
     const fetchWeather = async (city) => {
-
-        const authKey = localStorage.getItem('auth_key')
-    
-        const fetchObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'GET'
-        }
-    
-        const fetchWeather = await fetch(WEATHER_URL + '/' + city, fetchObj)
+        const fetchWeather = await API.fetchWeather(city)
         const wethRes = await fetchWeather.json()
 
         const weather = JSON.parse(wethRes.weather)
@@ -110,7 +98,6 @@ const Home = () => {
 
     // 6. Fetch weather at start and end locations
     const getWeather = async (locations) => {
-
         const startCity = locations.filter(loc => loc.start_end === 'Start')[0].city
         const endCity = locations.filter(loc => loc.start_end === 'End')[0].city
     
@@ -129,17 +116,7 @@ const Home = () => {
 
     // 5. Fetch trip including locations and segments
     const fetchTrip = async (tripId) => {
-
-        const authKey = localStorage.getItem('auth_key')
-
-        const fetchObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'GET'
-        }
-        const fetchTrip = await fetch(TRIP_URL+'/'+tripId, fetchObj)
+        const fetchTrip = await API.fetchTrip(tripId)
         const tripRes = await fetchTrip.json()
 
         // fetch weather from open weather API
@@ -148,100 +125,22 @@ const Home = () => {
         dispatch({ type: 'SET_LOCATIONS', locations: tripRes.trip.locations})
         dispatch({ type: 'SET_SEGMENTS', segments: tripRes.trip.segments})
         dispatch({ type: 'SET_TRIP_DETAILS', tripId: tripRes.trip.id, time: tripRes.trip.time, realTime: tripRes.trip.real_time, distance: tripRes.trip.distance, hasTolls: tripRes.trip.has_tolls, fuelUsage: tripRes.trip.fuel_usage })
-
     }
 
     // 4. post segments to rails
-    const postSegment = async (tripId, segment) => {
-
-        const authKey = localStorage.getItem('auth_key')
-
-        const segmentInfo = {
-            segment: {
-                trip_id: tripId,
-                index_num: segment.index,
-                instructions: segment.narrative,
-                icon_url: segment.iconUrl,
-                distance: segment.distance,
-                time: segment.time,
-                direction: segment.directionName,
-                turn_type: segment.turnType,
-                map_url: segment.mapUrl
-            }
-        }
-
-        const postObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'POST',
-            body: JSON.stringify(segmentInfo)
-        }
-
-        const postSeg = await  fetch(SEGMENT_URL, postObj)
-        const segRes = await postSeg.json()
+    const postSegment = (tripId, segment) => {
+        API.postSegment(tripId, segment)
     }
 
     // 3. post locations to rails
-    const postLocation = async (tripId, location, point) => {
-
-        const authKey = localStorage.getItem('auth_key')
-
-        const locationInfo = {
-            location: {
-                trip_id: tripId,
-                start_end: point,
-                street: location.street,
-                city: location.adminArea5,
-                county: location.adminArea4,
-                state: location.adminArea3,
-                zip_code: location.postalCode
-            }
-        }
-
-        const postObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'POST',
-            body: JSON.stringify(locationInfo)
-        }
-
-        const postLocation = await fetch(LOCATION_URL, postObj)
-        const locRes = await postLocation.json()
+    const postLocation = (tripId, location, point) => {
+        API.postLocation(tripId, location, point)
     }
 
     // 2. post trip to rails (status = not_started)
     const postTrip = async (route, mapUrl) => {
-
-        const userId = localStorage.getItem('user_id')
-        const authKey = localStorage.getItem('auth_key')
-
         
-        const tripInfo = {
-            trip: {
-                user_id: userId,
-                time: route.route.time,
-                real_time: route.route.realTime,
-                distance: route.route.distance,
-                has_tolls: route.route.hasTollRoad,
-                fuel_usage: route.route.fuelUsed,
-                map_url: mapUrl 
-            }
-        }
-        
-        const postObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'POST',
-            body: JSON.stringify(tripInfo)
-        }
-        
-        const postTrip = await fetch(TRIP_URL, postObj)
+        const postTrip = await API.postTrip(route, mapUrl)
         const tripRes = await postTrip.json()
         
         // Post start and end locations to rails
@@ -257,18 +156,7 @@ const Home = () => {
     
     // 1. fetch trip information => Rails => MQ
     const findDirections = async (start, end) => {
-        
-        const authKey = localStorage.getItem('auth_key')
-        
-        const fetchObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'GET'
-        }
-        
-        const fetchRoute = await fetch(ROUTE_URL + '/' + start + '/' + end, fetchObj)
+        const fetchRoute = await API.fetchDirections(start, end)
         const routeRes = await fetchRoute.json()
         
         // response from mapquest (contains all trip, location and segment information)
@@ -283,7 +171,6 @@ const Home = () => {
 
     // add route to map
     const loadMap = (start, end) => {
-        
         window.L.mapquest.key = API_KEY;
 
         window.L.mapquest.directions().route({
@@ -294,7 +181,6 @@ const Home = () => {
     
     // remove route from map
     const removeRoute = () => {
-
         document.getElementById('map').remove()
 
         const newMap = document.createElement('div')
