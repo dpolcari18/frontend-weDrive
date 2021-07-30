@@ -3,8 +3,8 @@ import React from 'react'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 
-// components
-import RouteComponent from '../components/RouteComponent'
+// Components / Containers
+import { RouteComponent } from '../Imports'
 
 // react-bootstrap
 import Container from 'react-bootstrap/Container'

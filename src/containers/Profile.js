@@ -4,11 +4,8 @@ import { useHistory } from 'react-router-dom'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 
-// Containers
-import EmergencyContactList from './EmergencyContactList'
-
-// Components
-import User from '../components/User'
+// Components / Containers
+import { EmergencyContactList, User } from '../Imports'
 
 // react-bootstrap
 import Container from 'react-bootstrap/Container'

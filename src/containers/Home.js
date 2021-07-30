@@ -4,14 +4,8 @@ import { useHistory } from 'react-router-dom'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 
-// Containers
-import TripDetails from './TripDetails'
-
-// Components
-import SearchBar from '../components/SearchBar'
-import Map from '../components/Map'
-import WeatherPopup from '../components/WeatherPopup'
-import CheckListPopup from '../components/CheckListPopup'
+// Components / Containers
+import { CheckListPopup, Map, SearchBar, TripDetails, WeatherPopup } from '../Imports'
 
 // react-bootstrap
 import Container from 'react-bootstrap/Container'

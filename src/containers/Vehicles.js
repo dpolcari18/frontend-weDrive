@@ -4,13 +4,8 @@ import { useHistory } from 'react-router-dom'
 // Redux
 import { useSelector } from 'react-redux'
 
-// Containers
-import VehiclesList from './VehiclesList'
-import MaintenanceReportList from './MaintenanceReportList'
-
-// Components
-import AddVehiclePopup from '../components/AddVehiclePopup'
-import AddMaintenanceReportPopup from '../components/AddMaintenanceReportPopup'
+// Components / Containers
+import { AddMaintenanceReportPopup, AddVehiclePopup, MaintenanceReportList, VehiclesList } from '../Imports'
 
 // react-bootstrap
 import Container from 'react-bootstrap/Container'

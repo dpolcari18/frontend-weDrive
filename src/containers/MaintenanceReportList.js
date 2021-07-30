@@ -3,8 +3,8 @@ import React from 'react'
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
 
-// Components
-import MaintenanceComponent from '../components/MaintenanceComponent'
+// Components / Containers
+import { MaintenanceComponent } from '../Imports'
 
 // react-bootstrap
 import Container from 'react-bootstrap/Container'

@@ -1,30 +1,19 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-// Containers
-import Home from './Home'
-import About from '../components/About'
-import Login from '../components/Login'
-import Landing from './Landing'
-import NavBar from './NavBar'
-import Profile from './Profile'
-import Trips from './Trips'
-import Vehicles from './Vehicles'
-import Demo from './Demo'
-
-// Components
-import SignUp from '../components/SignUp'
+// Components / Containers
+import { About, Demo, Home, Landing, Login, NavBar, Profile, SignUp, Trips, Vehicles } from '../Imports'
 
 // Redux
 import { useDispatch } from 'react-redux'
 
 // endpoints
 const BASE = process.env.REACT_APP_BASE
-// const USER_URL = 'https://wedrive-backend-hosting.herokuapp.com/users'
 const USER_URL = `${BASE}users`
 
 const MainContainer = () => {
-
+    
+    // const USER_URL = 'https://wedrive-backend-hosting.herokuapp.com/users'
     // redux hooks
     const dispatch = useDispatch()
 

@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom'
 // Redux
 import { useSelector } from 'react-redux'
 
-// Components
-import TripComponents from '../components/TripComponents'
+// Components / Containers
+import { TripComponents } from '../Imports'
 
 // react-bootstrap
 import Container from 'react-bootstrap/Container'

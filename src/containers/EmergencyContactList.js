@@ -3,8 +3,8 @@ import React from 'react'
 // redux
 import { useDispatch } from 'react-redux'
 
-// Components
-import EmergencyContact from '../components/EmergencyContact'
+// Components / Containers
+import { EmergencyContact } from '../Imports'
 
 // react-bootstrap
 import Row from 'react-bootstrap/Row'
