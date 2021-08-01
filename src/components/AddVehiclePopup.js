@@ -7,10 +7,8 @@ import { useDispatch } from 'react-redux'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-// endpoints
-const BASE = process.env.REACT_APP_BASE
-// const VEHICLE_URL = 'https://wedrive-backend-hosting.herokuapp.com/vehicles/'
-const VEHICLE_URL = `${BASE}vehicles/`
+// APIs
+import API from '../API'
 
 const AddVehiclePopup = () => {
 
@@ -26,31 +24,9 @@ const AddVehiclePopup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const userId = localStorage.getItem('user_id')
-        const authKey = localStorage.getItem('auth_key')
-
-        const vehicleObj = {
-            vehicle: {
-                user_id: userId,
-                make: make,
-                model: model,
-                year: year,
-                mileage: mileage
-            }
-        }
-
-        const postObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'POST',
-            body: JSON.stringify(vehicleObj)
-        }
-
-        const postVeh = await fetch(VEHICLE_URL, postObj)
-
+        const postVeh = await API.postVehicle(make, model, year, mileage)
         const vehRes = await postVeh.json()
+
         // add vehicle to state
         dispatch ({ type: 'ADD_VEHICLE', vehicle: vehRes.vehicle})
         // close popup

@@ -187,6 +187,32 @@ export default class API {
         return fetch(`${BASE_URL}segments`, postObj)
     }
 
+    static postVehicle(make, model, year, mileage) {
+        const userId = localStorage.getItem('user_id')
+        const authKey = localStorage.getItem('auth_key')
+
+        const vehicleObj = {
+            vehicle: {
+                user_id: userId,
+                make: make,
+                model: model,
+                year: year,
+                mileage: mileage
+            }
+        }
+
+        const postObj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'POST',
+            body: JSON.stringify(vehicleObj)
+        }
+
+        return fetch(`${BASE_URL}vehicles/`, postObj)
+    }
+
     static sendEmail(type, tripId) {
         const authKey = localStorage.getItem('auth_key')
 
