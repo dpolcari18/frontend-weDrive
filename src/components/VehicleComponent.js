@@ -8,6 +8,9 @@ import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import { Trash } from 'react-bootstrap-icons'
 
+// APIs
+import API from '../API'
+
 // endpoints
 const BASE = process.env.REACT_APP_BASE
 // const VEHICLE_URL = 'https://wedrive-backend-hosting.herokuapp.com/vehicles/'
@@ -23,19 +26,8 @@ const VehicleComponent = ({ car }) => {
     // local state
     const [mileage, setMileage] = useState(car.mileage)
 
-    const deleteVehicle = async () => {
-        const authKey = localStorage.getItem('auth_key')
-
-        const delObj =  {
-            headers: {
-                'Content-Type': 'applications/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'DELETE'    
-        }
-
-        const delVeh = await fetch(VEHICLE_URL + car.id, delObj)
-        const vehRes = await delVeh.json()
+    const deleteVehicle = () => {
+        API.deleteVehicle(car.id)
 
         dispatch({ type: 'REMOVE_MAINTENANCE_REPORTS', vehicle_id: car.id })
         dispatch({ type: 'REMOVE_VEHICLE', id: car.id })        
@@ -43,25 +35,8 @@ const VehicleComponent = ({ car }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        
-        const authKey = localStorage.getItem('auth_key')
 
-        const mileageObj = {
-            vehicle: {
-                mileage: mileage
-            }
-        }
-
-        const updateObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'PATCH',
-            body: JSON.stringify(mileageObj)
-        }
-
-        const patchVeh = await fetch(VEHICLE_URL + editId, updateObj)
+        const patchVeh = await API.patchVehicle(editId, mileage)
         const patchRes = await patchVeh.json()
 
         dispatch({ type: 'REPLACE_VEHICLE', vehicle: patchRes.vehicle })

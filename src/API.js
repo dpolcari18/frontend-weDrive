@@ -1,6 +1,20 @@
 const BASE_URL = process.env.REACT_APP_BASE
 
 export default class API {
+    static deleteVehicle(vehicleId) {
+        const authKey = localStorage.getItem('auth_key')
+
+        const deleteObj =  {
+            headers: {
+                'Content-Type': 'applications/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'DELETE'    
+        }
+
+        fetch(`${BASE_URL}vehicles/${vehicleId}`, deleteObj)
+    }
+
     static fetchDirections(start, end) {
         const authKey = localStorage.getItem('auth_key')
 
@@ -127,6 +141,27 @@ export default class API {
 
         fetch(`${BASE_URL}users/${userId}`, patchObj)
 
+    }
+
+    static patchVehicle(vehicleId, mileage) {
+        const authKey = localStorage.getItem('auth_key')
+
+        const mileageObj = {
+            vehicle: {
+                mileage: mileage
+            }
+        }
+
+        const patchObj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'PATCH',
+            body: JSON.stringify(mileageObj)
+        }
+
+        return fetch(`${BASE_URL}vehicles/${vehicleId}`, patchObj)
     }
 
     static postEmergencyContact(userId, firstName, lastName, email, phoneNumber) {
