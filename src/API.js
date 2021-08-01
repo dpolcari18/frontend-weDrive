@@ -103,52 +103,26 @@ export default class API {
         return fetch(`${BASE_URL}trips/${tripDetails.tripId}`, patchObj)
     }
 
-    static postLogin(email, password) {
-        const user = {
-            user: {
+    static postEmergencyContact(userId, firstName, lastName, email, phoneNumber) {
+        const newEc ={
+            emergency_contact: {
+                user_id: userId,
+                first_name: firstName,
+                last_name: lastName,
                 email: email,
-                password: password
+                phone: phoneNumber
             }
         }
-        
+
         const postObj = {
             headers: {
                 'Content-Type': 'application/json'
             },
             method: 'POST',
-            body: JSON.stringify(user)
-        }
-        
-        return fetch(`${BASE_URL}sessions`, postObj)
-        
-    }
-
-    static postTrip(route, mapUrl) {
-        const userId = localStorage.getItem('user_id')
-        const authKey = localStorage.getItem('auth_key')
-    
-        const tripInfo = {
-            trip: {
-                user_id: userId,
-                time: route.route.time,
-                real_time: route.route.realTime,
-                distance: route.route.distance,
-                has_tolls: route.route.hasTollRoad,
-                fuel_usage: route.route.fuelUsed,
-                map_url: mapUrl 
-            }
+            body: JSON.stringify(newEc)
         }
 
-        const postObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'POST',
-            body: JSON.stringify(tripInfo)
-        }
-
-        return fetch(`${BASE_URL}trips`, postObj)
+        return fetch(`${BASE_URL}emergency_contacts`, postObj)
     }
 
     static postLocation(tripId, location, point) {
@@ -176,6 +150,26 @@ export default class API {
         }
 
         return fetch(`${BASE_URL}locations`, postObj)
+    }
+
+    static postLogin(email, password) {
+        const user = {
+            user: {
+                email: email,
+                password: password
+            }
+        }
+        
+        const postObj = {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(user)
+        }
+        
+        return fetch(`${BASE_URL}sessions`, postObj)
+        
     }
 
     static postMaintenanceReport(vehicleId, type, notes, mileage) {
@@ -229,6 +223,56 @@ export default class API {
         }
 
         return fetch(`${BASE_URL}segments`, postObj)
+    }
+
+    static postTrip(route, mapUrl) {
+        const userId = localStorage.getItem('user_id')
+        const authKey = localStorage.getItem('auth_key')
+    
+        const tripInfo = {
+            trip: {
+                user_id: userId,
+                time: route.route.time,
+                real_time: route.route.realTime,
+                distance: route.route.distance,
+                has_tolls: route.route.hasTollRoad,
+                fuel_usage: route.route.fuelUsed,
+                map_url: mapUrl 
+            }
+        }
+
+        const postObj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'POST',
+            body: JSON.stringify(tripInfo)
+        }
+
+        return fetch(`${BASE_URL}trips`, postObj)
+    }
+    
+    static postUser(firstName, lastName, email, phoneNumber, password) {
+         const newUser = {
+            user: {
+                first_name: firstName,
+                last_name: lastName,
+                email: email,
+                phone: phoneNumber,
+                password: password
+            }
+        }
+
+        const postObj = {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(newUser)
+        }
+
+        return fetch(`${BASE_URL}users`, postObj)
     }
 
     static postVehicle(make, model, year, mileage) {

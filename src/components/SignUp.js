@@ -11,12 +11,8 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-// Endpoints
-const BASE = process.env.REACT_APP_BASE
-// const SIGN_UP_URL = 'https://wedrive-backend-hosting.herokuapp.com/users'
-const SIGN_UP_URL = `${BASE}users`
-// const EC_URL = 'https://wedrive-backend-hosting.herokuapp.com/emergency_contacts'
-const EC_URL = `${BASE}emergency_contacts`
+// APIs
+import API from '../API'
 
 const SignUp = ({ history }) => {
 
@@ -42,48 +38,12 @@ const SignUp = ({ history }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        // create user in db
-        const newUser = {
-            user: {
-                first_name: firstName,
-                last_name: lastName,
-                email: email,
-                phone: phoneNumber,
-                password: password
-            }
-        }
-
-        const userObj = {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method: 'POST',
-            body: JSON.stringify(newUser)
-        }
-        
-        const postUser = await fetch(SIGN_UP_URL, userObj)
+        // create new user
+        const postUser = await API.postUser(firstName, lastName, email, phoneNumber, password)
         const userRes = await postUser.json()
 
-        // receive user info and create emergency contact
-        const newEc ={
-            emergency_contact: {
-                user_id: userRes.user_id,
-                first_name: ecFirstName,
-                last_name: ecLastName,
-                email: ecEmail,
-                phone: ecPhoneNumber
-            }
-        }
-
-        const ecObj = {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method: 'POST',
-            body: JSON.stringify(newEc)
-        }
-
-        const postEc = await fetch(EC_URL, ecObj)
+        // get user info from above and create new emergency contact
+        const postEc = await API.postEmergencyContact(userRes.user_id, ecFirstName, ecLastName, ecEmail, ecPhoneNumber)
         const ecRes = await postEc.json()
 
         // If success redirect to home for login or show errors
