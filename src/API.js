@@ -103,6 +103,26 @@ export default class API {
         return fetch(`${BASE_URL}trips/${tripDetails.tripId}`, patchObj)
     }
 
+    static postLogin(email, password) {
+        const user = {
+            user: {
+                email: email,
+                password: password
+            }
+        }
+        
+        const postObj = {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(user)
+        }
+        
+        return fetch(`${BASE_URL}sessions`, postObj)
+        
+    }
+
     static postTrip(route, mapUrl) {
         const userId = localStorage.getItem('user_id')
         const authKey = localStorage.getItem('auth_key')

@@ -12,10 +12,8 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-// Endpoints
-const BASE = process.env.REACT_APP_BASE
-// const LOGIN_URL = 'https://wedrive-backend-hosting.herokuapp.com/sessions'
-const LOGIN_URL = `${BASE}sessions`
+// APIs
+import API from '../API'
 
 const Login = ({ history }) => {
 
@@ -29,23 +27,8 @@ const Login = ({ history }) => {
     // send fetch to rails api to create session
     const handleSubmit = async (e) => {
         e.preventDefault()
-        
-        const user = {
-            user: {
-                email: email,
-                password: password
-            }
-        }
-        
-        const userObj = {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method: 'POST',
-            body: JSON.stringify(user)
-        }
 
-        const postSes = await fetch(LOGIN_URL, userObj)
+        const postSes = await API.postLogin(email, password)
         const sesRes = await postSes.json()
 
         // set all state
