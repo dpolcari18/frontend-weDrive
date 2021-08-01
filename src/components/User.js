@@ -9,10 +9,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 
-// endpoints
-const BASE = process.env.REACT_APP_BASE
-// const USER_URL = 'https://wedrive-backend-hosting.herokuapp.com/users/'
-const USER_URL = `${BASE}users/`
+// APIs
+import API from '../API'
 
 const User = () => {
 
@@ -24,33 +22,10 @@ const User = () => {
     const phone = useSelector(state => state.user.phone)
     const editUser = useSelector(state => state.user.edit)
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         
-        const authKey = localStorage.getItem('auth_key')
-        const userId = localStorage.getItem('user_id')
-
-        const user = {
-            user: {
-                first_name: firstName,
-                last_name: lastName,
-                email: email,
-                phone: phone
-            }
-        }
-
-        const userObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'PATCH',
-            body: JSON.stringify(user)
-        }
-        
-        const patchUser = await fetch(USER_URL + userId, userObj)
-
-        const patchRes = await patchUser.json()
+        API.patchUser(firstName, lastName, email, phone)
         
         dispatch({ type: 'SAVE_USER' })
     }

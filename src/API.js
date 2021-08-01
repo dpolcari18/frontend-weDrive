@@ -103,6 +103,32 @@ export default class API {
         return fetch(`${BASE_URL}trips/${tripDetails.tripId}`, patchObj)
     }
 
+    static patchUser(firstName, lastName, email, phone) {
+        const authKey = localStorage.getItem('auth_key')
+        const userId = localStorage.getItem('user_id')
+
+        const user = {
+            user: {
+                first_name: firstName,
+                last_name: lastName,
+                email: email,
+                phone: phone
+            }
+        }
+
+        const patchObj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'PATCH',
+            body: JSON.stringify(user)
+        }
+
+        fetch(`${BASE_URL}users/${userId}`, patchObj)
+
+    }
+
     static postEmergencyContact(userId, firstName, lastName, email, phoneNumber) {
         const newEc ={
             emergency_contact: {
@@ -318,5 +344,4 @@ export default class API {
 
         fetch(url, obj)
     }
-
 }
