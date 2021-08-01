@@ -134,6 +134,30 @@ export default class API {
         return fetch(`${BASE_URL}locations`, postObj)
     }
 
+    static postMaintenanceReport(vehicleId, type, notes, mileage) {
+        const authKey = localStorage.getItem('auth_key')
+
+        const mainRepoObj = {
+            maintenance_report: {
+                vehicle_id: vehicleId,
+                description: type,
+                notes: notes,
+                mileage: mileage
+            }
+        }
+
+        const postObj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'POST',
+            body: JSON.stringify(mainRepoObj)
+        }
+
+        return fetch(`${BASE_URL}maintenance_reports/`, postObj)
+    }
+
     static postSegment(tripId, segment) {
         const authKey = localStorage.getItem('auth_key')
 

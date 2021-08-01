@@ -7,10 +7,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-// endpoints
-const BASE = process.env.REACT_APP_BASE
-// const REPO_URL = 'https://wedrive-backend-hosting.herokuapp.com/maintenance_reports/'
-const REPO_URL = `${BASE}maintenance_reports/`
+// APIs
+import API from '../API'
 
 const AddMaintenanceReportPopup = () => {
     
@@ -27,29 +25,8 @@ const AddMaintenanceReportPopup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         
-        const authKey = localStorage.getItem('auth_key')
-
-        const mainRepoObj = {
-            maintenance_report: {
-                vehicle_id: vehicleId,
-                description: type,
-                notes: notes,
-                mileage: mileage
-            }
-        }
-
-        const postObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'POST',
-            body: JSON.stringify(mainRepoObj)
-        }
-
-        const postRepo = await fetch(REPO_URL, postObj)
+        const postRepo = await API.postMaintenanceReport(vehicleId, type, notes, mileage)
         const repoRes = await postRepo.json()
-
         
         dispatch({ type: 'ADD_MAIN_REPORT', maintenanceReport: repoRes.maintenance_report})
 
