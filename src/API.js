@@ -58,6 +58,27 @@ export default class API {
         return fetch(`${BASE_URL}weather/${city}`, fetchObj)
     }
 
+    static patchTripStatus(status, tripDetails) {
+        const authKey = localStorage.getItem('auth_key')
+
+        const patchObj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'PATCH',
+            body: JSON.stringify({
+                trip: {
+                    id: tripDetails.tripId,
+                    trip_status: status
+                }
+            })
+
+        }
+
+        return fetch(`${BASE_URL}trips/${tripDetails.tripId}`, patchObj)
+    }
+
     static postTrip(route, mapUrl) {
         const userId = localStorage.getItem('user_id')
         const authKey = localStorage.getItem('auth_key')
@@ -140,6 +161,24 @@ export default class API {
         }
 
         return fetch(`${BASE_URL}segments`, postObj)
+    }
+
+    static sendEmail(type, tripId) {
+        const authKey = localStorage.getItem('auth_key')
+
+        const obj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'GET'
+        }
+
+        let url
+
+        type === 'Start' ? url = `${BASE_URL}starttrip/${tripId}` : url = `${BASE_URL}endtrip/${tripId}`
+
+        fetch(url, obj)
     }
 
 }

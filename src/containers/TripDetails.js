@@ -12,14 +12,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 
-// endpoints
-const BASE = process.env.REACT_APP_BASE
-// const TRIP_URL = 'https://wedrive-backend-hosting.herokuapp.com/trips'
-const TRIP_URL = `${BASE}trips`
-// const START_EMAIL_URL = 'https://wedrive-backend-hosting.herokuapp.com/starttrip/'
-const START_EMAIL_URL = `${BASE}starttrip/`
-// const END_EMAIL_URL = 'https://wedrive-backend-hosting.herokuapp.com/endtrip/'
-const END_EMAIL_URL = `${BASE}endtrip/`
+// APIs 
+import API from '../API'
 
 const TripDetails = ({ removeRoute }) => {
 
@@ -31,50 +25,23 @@ const TripDetails = ({ removeRoute }) => {
 
     // update trip status
     const updateStatus = async (status) => {
-        const authKey = localStorage.getItem('auth_key')
-
-        const patchObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'PATCH',
-            body: JSON.stringify({
-                trip: {
-                    id: tripDetails.tripId,
-                    trip_status: status
-                }
-            })
-        }
-
-        const patchTrip = await fetch(TRIP_URL+'/'+tripDetails.tripId, patchObj)
+        const patchTrip = await API.patchTripStatus(status, tripDetails)
         const tripRes = await patchTrip.json()
 
         if (status === 'Finished') { return tripRes.trip}
     }
     
     // email emergency contact
-    const sendEmail = async (url) => {
-        const authKey = localStorage.getItem('auth_key')
-
-        const obj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'GET'
-        }
-
-        const fetchEmail = await fetch(url, obj)
+    const sendEmail = async (type, tripId) => {
+        API.sendEmail(type, tripId)
     }
 
     // start trip
     const startTrip = () => {
-
         updateStatus('Started')
-
+        
         // send email notification on start trip
-        sendEmail((START_EMAIL_URL + tripDetails.tripId))
+        sendEmail('Start', tripDetails.tripId)
 
         dispatch({ type: 'OPEN_WEATHER_POPUP' })
 
@@ -83,11 +50,10 @@ const TripDetails = ({ removeRoute }) => {
 
     // finish trip
     const finishTrip = async () => {
-
         const trip = await updateStatus('Finished')
 
         // send email confirming trip completed
-        sendEmail((END_EMAIL_URL + tripDetails.tripId))
+        sendEmail('Finish', tripDetails.tripId)
 
         // remove route from map
         removeRoute()
