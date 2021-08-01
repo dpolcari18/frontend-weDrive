@@ -9,10 +9,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 
-// endpoints
-const BASE = process.env.REACT_APP_BASE
-// const EC_URL = 'https://wedrive-backend-hosting.herokuapp.com/emergency_contacts/'
-const EC_URL = `${BASE}emergency_contacts/`
+// APIs
+import API from '../API'
 
 const EmergencyContact = () => {
 
@@ -25,32 +23,10 @@ const EmergencyContact = () => {
     const phone = useSelector(state => state.emergencyContact.phone)
     const editEc = useSelector(state => state.emergencyContact.edit)
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         
-        const authKey = localStorage.getItem('auth_key')
-
-        const emergencyContact = {
-            emergency_contact: {
-                first_name: firstName,
-                last_name: lastName,
-                email: email,
-                phone: phone
-            }
-        }
-
-        const emergencyObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
-            method: 'PATCH',
-            body: JSON.stringify(emergencyContact)
-        }
-        
-        const patchEc = await fetch(EC_URL + ecId, emergencyObj)
-
-        const patchRes = await patchEc.json()
+        API.patchEmergencyContact(ecId, firstName, lastName, email, phone)
 
         dispatch({ type: 'SAVE_EC' })
     }

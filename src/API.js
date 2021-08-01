@@ -58,6 +58,30 @@ export default class API {
         return fetch(`${BASE_URL}weather/${city}`, fetchObj)
     }
 
+    static patchEmergencyContact(ecId, firstName, lastName, email, phone) {
+        const authKey = localStorage.getItem('auth_key')
+
+        const emergencyContact = {
+            emergency_contact: {
+                first_name: firstName,
+                last_name: lastName,
+                email: email,
+                phone: phone
+            }
+        }
+
+        const patchObj = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authKey}`
+            },
+            method: 'PATCH',
+            body: JSON.stringify(emergencyContact)
+        }
+
+        fetch(`${BASE_URL}emergency_contacts/${ecId}`, patchObj)
+    }
+
     static patchTripStatus(status, tripDetails) {
         const authKey = localStorage.getItem('auth_key')
 
