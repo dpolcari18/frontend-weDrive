@@ -1,14 +1,16 @@
 const BASE_URL = process.env.REACT_APP_BASE
+const AUTH_KEY = localStorage.getItem('auth_key')
+const USER_ID = localStorage.getItem('user_id')
+const HEADERS = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${AUTH_KEY}`
+}
 
 export default class API {
-    static deleteVehicle(vehicleId) {
-        const authKey = localStorage.getItem('auth_key')
 
+    static deleteVehicle(vehicleId) {
         const deleteObj =  {
-            headers: {
-                'Content-Type': 'applications/json',
-                'Authorization': `Bearer ${authKey}`
-            },
+            headers: HEADERS,
             method: 'DELETE'    
         }
 
@@ -16,13 +18,8 @@ export default class API {
     }
 
     static fetchDirections(start, end) {
-        const authKey = localStorage.getItem('auth_key')
-
         const fetchObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
+            headers: HEADERS,
             method: 'GET'
         }
 
@@ -30,13 +27,8 @@ export default class API {
     }
 
     static fetchTrip(tripId) {
-        const authKey = localStorage.getItem('auth_key')
-
         const fetchObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
+            headers: HEADERS,
             method: 'GET'
         }
 
@@ -44,28 +36,17 @@ export default class API {
     }
 
     static fetchUser() {
-        const userId = localStorage.getItem('user_id')
-        const authKey = localStorage.getItem('auth_key')
-
         const fetchObj  = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            }
+            headers: HEADERS,
+            method: 'GET'
         }
 
-        return fetch(`${BASE_URL}users/${userId}`, fetchObj)
+        return fetch(`${BASE_URL}users/${USER_ID}`, fetchObj)
     }
 
     static fetchWeather(city) {
-        const authKey = localStorage.getItem('auth_key')
-    
         const fetchObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
+            headers: HEADERS,
             method: 'GET'
         }
 
@@ -73,8 +54,6 @@ export default class API {
     }
 
     static patchEmergencyContact(ecId, firstName, lastName, email, phone) {
-        const authKey = localStorage.getItem('auth_key')
-
         const emergencyContact = {
             emergency_contact: {
                 first_name: firstName,
@@ -85,10 +64,7 @@ export default class API {
         }
 
         const patchObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
+            headers: HEADERS,
             method: 'PATCH',
             body: JSON.stringify(emergencyContact)
         }
@@ -97,13 +73,8 @@ export default class API {
     }
 
     static patchTripStatus(status, tripDetails) {
-        const authKey = localStorage.getItem('auth_key')
-
         const patchObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
+            headers: HEADERS,
             method: 'PATCH',
             body: JSON.stringify({
                 trip: {
@@ -118,9 +89,6 @@ export default class API {
     }
 
     static patchUser(firstName, lastName, email, phone) {
-        const authKey = localStorage.getItem('auth_key')
-        const userId = localStorage.getItem('user_id')
-
         const user = {
             user: {
                 first_name: firstName,
@@ -131,21 +99,16 @@ export default class API {
         }
 
         const patchObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
+            headers: HEADERS,
             method: 'PATCH',
             body: JSON.stringify(user)
         }
 
-        fetch(`${BASE_URL}users/${userId}`, patchObj)
+        fetch(`${BASE_URL}users/${USER_ID}`, patchObj)
 
     }
 
     static patchVehicle(vehicleId, mileage) {
-        const authKey = localStorage.getItem('auth_key')
-
         const mileageObj = {
             vehicle: {
                 mileage: mileage
@@ -153,10 +116,7 @@ export default class API {
         }
 
         const patchObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
+            headers: HEADERS,
             method: 'PATCH',
             body: JSON.stringify(mileageObj)
         }
@@ -187,8 +147,6 @@ export default class API {
     }
 
     static postLocation(tripId, location, point) {
-        const authKey = localStorage.getItem('auth_key')
-
         const locationInfo = {
             location: {
                 trip_id: tripId,
@@ -202,10 +160,7 @@ export default class API {
         }
 
         const postObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
+            headers: HEADERS,
             method: 'POST',
             body: JSON.stringify(locationInfo)
         }
@@ -234,8 +189,6 @@ export default class API {
     }
 
     static postMaintenanceReport(vehicleId, type, notes, mileage) {
-        const authKey = localStorage.getItem('auth_key')
-
         const mainRepoObj = {
             maintenance_report: {
                 vehicle_id: vehicleId,
@@ -246,10 +199,7 @@ export default class API {
         }
 
         const postObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
+            headers: HEADERS,
             method: 'POST',
             body: JSON.stringify(mainRepoObj)
         }
@@ -258,8 +208,6 @@ export default class API {
     }
 
     static postSegment(tripId, segment) {
-        const authKey = localStorage.getItem('auth_key')
-
         const segmentInfo = {
             segment: {
                 trip_id: tripId,
@@ -275,10 +223,7 @@ export default class API {
         }
 
         const postObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
+            headers: HEADERS,
             method: 'POST',
             body: JSON.stringify(segmentInfo)
         }
@@ -287,12 +232,9 @@ export default class API {
     }
 
     static postTrip(route, mapUrl) {
-        const userId = localStorage.getItem('user_id')
-        const authKey = localStorage.getItem('auth_key')
-    
         const tripInfo = {
             trip: {
-                user_id: userId,
+                user_id: USER_ID,
                 time: route.route.time,
                 real_time: route.route.realTime,
                 distance: route.route.distance,
@@ -303,10 +245,7 @@ export default class API {
         }
 
         const postObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
+            headers: HEADERS,
             method: 'POST',
             body: JSON.stringify(tripInfo)
         }
@@ -337,12 +276,9 @@ export default class API {
     }
 
     static postVehicle(make, model, year, mileage) {
-        const userId = localStorage.getItem('user_id')
-        const authKey = localStorage.getItem('auth_key')
-
         const vehicleObj = {
             vehicle: {
-                user_id: userId,
+                user_id: USER_ID,
                 make: make,
                 model: model,
                 year: year,
@@ -351,10 +287,7 @@ export default class API {
         }
 
         const postObj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
+            headers: HEADERS,
             method: 'POST',
             body: JSON.stringify(vehicleObj)
         }
@@ -363,13 +296,8 @@ export default class API {
     }
 
     static sendEmail(type, tripId) {
-        const authKey = localStorage.getItem('auth_key')
-
         const obj = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authKey}`
-            },
+            headers: HEADERS,
             method: 'GET'
         }
 
